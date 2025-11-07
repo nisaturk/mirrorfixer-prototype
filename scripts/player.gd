@@ -5,6 +5,8 @@ const JUMP_VELOCITY = -300.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+var nearby_interactables: Array = [] # newly added variable for overlapping zones
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -32,7 +34,6 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide() 
 
-var nearby_interactable = null
 
 
 func _ready():
@@ -40,28 +41,39 @@ func _ready():
 	$InteractionDetector.area_exited.connect(_on_detector_area_exited)
 	
 func _on_detector_area_entered(area):
-	nearby_interactable = area
-	print("Player can now interact with: ", area.name)
+	if not nearby_interactables.has(area):
+		nearby_interactables.append(area)
+	print("Player entered: ", area.name)
 
 func _on_detector_area_exited(area):
-	if area == nearby_interactable:
-		nearby_interactable = null
-		print("Player moved away from interactable:", area.name)
+	if nearby_interactables.has(area):
+		nearby_interactables.erase(area)
+	print("Player exited: ", area.name)
 
-func _process(delta):	
+func _input(event):
 	var ui = $"/root/Game/GameUI" 
 	var is_ui_visible = ui.visible
 
-	# only check for new interactions if:
-	# we are near an object, interact is pressed,dialogue UI is not open
-	if nearby_interactable and Input.is_action_just_pressed("interact") and not is_ui_visible:
+	# check if the list is NOT empty, if interact is pressed, and if UI is hidden
+	if not nearby_interactables.is_empty() and event.is_action_pressed("interact") and not is_ui_visible:
 		
-		var object_id = nearby_interactable.dialogue_id
-		var caller = nearby_interactable.get_parent()
+		# new logic for priority
+		var best_interactable = nearby_interactables[0]
+		
+		# if there's more than one, loop through and find the one with the highest priority
+		if nearby_interactables.size() > 1:
+			for i in range(1, nearby_interactables.size()):
+				if nearby_interactables[i].prioritylevel > best_interactable.prioritylevel:
+					best_interactable = nearby_interactables[i]
+		
+		# use the "best_interactable" found
+		var object_id = best_interactable.dialogue_id
+		var caller = best_interactable.get_parent()
 		
 		if not object_id.is_empty():
 			ui.start_dialogue(object_id, caller)
-			
+			get_viewport().set_input_as_handled()
+
 
 ## just an idea for a future function
 #func allow_pass():

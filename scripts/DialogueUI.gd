@@ -8,16 +8,7 @@ var current_node_id: String = "" # tracks our current position in the dialogue J
 
 func _ready():
 	hide_box()
-
-# takes a starting ID and the node that triggered the dialogue.
-func start_dialogue(start_id: String, caller):
-	if start_id.is_empty():
-		return
-		
-	current_caller = caller
-	visible = true
-	process_node(start_id)
-
+	
 func process_node(id: String):
 	# clear any old buttons
 	for button in choice_container.get_children():
@@ -62,6 +53,15 @@ func process_node(id: String):
 			
 			choice_container.add_child(button)
 
+# takes a starting ID and the node that triggered the dialogue.
+func start_dialogue(start_id: String, caller):
+	if start_id.is_empty():
+		return
+		
+	current_caller = caller
+	visible = true
+	process_node(start_id)
+
 # called when a choice button is pressed
 func _on_choice_made(next_id: String):
 	process_node(next_id)
@@ -101,7 +101,6 @@ func handle_action(action_name: String):
 			current_caller.allow_pass()
 
 func _process(delta):
-	# Only run this if the box is visible
 	if not visible:
 		return
 

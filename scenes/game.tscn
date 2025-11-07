@@ -3121,11 +3121,6 @@ visible = false
 position = Vector2(129, 31)
 dialogue_id = "sofa"
 
-[node name="InteractableObjectReception" parent="IAAreas" instance=ExtResource("11_kvpfn")]
-visible = false
-position = Vector2(-104, -5)
-dialogue_id = "reception"
-
 [node name="Bell" parent="." instance=ExtResource("8_gee14")]
 position = Vector2(-76, 26)
 

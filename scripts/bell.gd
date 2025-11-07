@@ -4,20 +4,29 @@ signal bell_rung(count)
 
 var player_in_range: bool = false
 var ring_count: int = 0
+var is_active = true
 
 func _ready():
 	$AnimatedSprite2D.frame = 0
 
 func _input(event):
+	if not is_active: return
+	
 	if not player_in_range:
+		return
+
+	var ui = $"/root/Game/GameUI"
+	if ui and ui.visible:
 		return
 
 	if event.is_action_pressed("interact") \
 	or (event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed):
 		ring_bell()
+		
+		get_viewport().set_input_as_handled() # consume input so it wont keep ringin
+
 
 func ring_bell():
-
 	ring_count += 1
 	emit_signal("bell_rung", ring_count)
 	$AnimatedSprite2D.frame = 0
@@ -35,4 +44,8 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.name == "Player":
-		player_in_range = false 
+		player_in_range = false
+
+func deactivate():
+	is_active = false
+	print("Bell has been deactivated.")

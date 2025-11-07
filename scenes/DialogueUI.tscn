@@ -53,6 +53,7 @@ theme_override_constants/margin_bottom = 6
 [node name="DialogueLabel" type="Label" parent="PanelContainer/MainLayoutContainer/MarginContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_7de8d")
+horizontal_alignment = 1
 
 [node name="ChoiceContainer" type="VBoxContainer" parent="PanelContainer/MainLayoutContainer"]
 layout_mode = 2

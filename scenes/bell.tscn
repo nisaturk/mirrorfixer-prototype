@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://go5wucntiyvl" path="res://assets/sprites/interior/bell/bell-still.png" id="4_8g6tv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sdw5a"]
-radius = 16.0
+radius = 20.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e52fn"]
 animations = [{
