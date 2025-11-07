@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://dttu5x0kixbi6"]
+
+[ext_resource type="Script" uid="uid://b2htyd0eu21ua" path="res://scripts/DialogueUI.gd" id="1_rc1id"]
+[ext_resource type="Texture2D" uid="uid://dpl3hp1goeo7k" path="res://assets/ui/dialogue_box_texture.tres" id="2_rmr67"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="3_7de8d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmr67"]
+
+[sub_resource type="Theme" id="Theme_rmr67"]
+default_font = ExtResource("3_7de8d")
+default_font_size = 16
+Button/styles/normal = SubResource("StyleBoxEmpty_rmr67")
+
+[sub_resource type="Theme" id="Theme_rc1id"]
+
+[node name="DialogueUI" type="CanvasLayer"]
+visible = false
+script = ExtResource("1_rc1id")
+
+[node name="PanelContainer" type="NinePatchRect" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_rmr67")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+
+[node name="MainLayoutContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_rmr67")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MainLayoutContainer"]
+layout_mode = 2
+theme = SubResource("Theme_rc1id")
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="DialogueLabel" type="Label" parent="PanelContainer/MainLayoutContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_7de8d")
+
+[node name="ChoiceContainer" type="VBoxContainer" parent="PanelContainer/MainLayoutContainer"]
+layout_mode = 2

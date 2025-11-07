@@ -1,0 +1,122 @@
+[gd_scene load_steps=18 format=3 uid="uid://8xmdwikm2ght"]
+
+[ext_resource type="Script" uid="uid://gfll26wo62px" path="res://scripts/miss_manager.gd" id="1_cfrt7"]
+[ext_resource type="Texture2D" uid="uid://diupaqg4doxy1" path="res://assets/sprites/characters/dummy-placeholder.png" id="1_p2pks"]
+[ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="3_7e2hn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfrt7"]
+size = Vector2(14, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfrt7"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e2hn"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3mnw"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0vl1"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2pks"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6djcx"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oecu"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4hnl0"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp5g2"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yraqj"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gsc1"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pgn5"]
+atlas = ExtResource("1_p2pks")
+region = Rect2(448, 192, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g6h1f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfrt7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e2hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c3mnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0vl1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2pks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6djcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2oecu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4hnl0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp5g2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yraqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gsc1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pgn5")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="MissManager" type="CharacterBody2D"]
+script = ExtResource("1_cfrt7")
+
+[node name="InteractableObject" parent="." instance=ExtResource("3_7e2hn")]
+position = Vector2(-24, -22)
+dialogue_id = "miss_manager_greet"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_cfrt7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g6h1f")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.50929064

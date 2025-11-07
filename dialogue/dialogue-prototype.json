@@ -1,0 +1,130 @@
+{
+  "mirror": {
+	"type": "line",
+	"text": "Ah, what a nice mirror.",
+	"next_id": "mirror_2"
+  },
+  "mirror_2": {
+	"type": "line",
+	"text": "It makes the room look bigger!",
+	"next_id": "mirror_3"
+  },
+  "mirror_3": {
+	"type": "line",
+	"text": "Wait, I don't have a reflection?",
+	"next_id": "end"
+  },
+
+  "sofa": {
+	"type": "line",
+	"text": "Someone with a fat bottom has been sitting here.",
+	"next_id": "sofa_2"
+  },
+  "sofa_2": {
+	"type": "line",
+	"text": "Was it...me?",
+	"next_id": "sofa_3"
+  },
+  "sofa_3": {
+	"type": "line",
+	"text": "I don't remember being here.",
+	"next_id": "end"
+  },
+
+  "reception": {
+	"type": "line",
+	"text": "Oh, here's a bell.",
+	"next_id": "reception_1"
+  },
+  "reception_1": {
+	"type": "line",
+	"text": "Maybe I should ring it?",
+	"next_id": "end"
+  },
+
+  "miss_manager_greet": {
+	"type": "choice",
+	"text": "What do you need?",
+	"options": [
+	  { "text": "Who are you?", "next_id": "chat1" },
+	  { "text": "Where am I?", "next_id": "chat2" },
+	  { "text": "Can I pass through?", "next_id": "chat3" },
+	  { "text": "Nevermind.", "next_id": "end"}
+	]
+  },
+
+  "chat1": {
+	"type": "line",
+	"text": "Who am I?",
+	"next_id": "chat1_2"
+  },
+
+  "chat1_2": {
+	"type": "choice",
+	"text": "Oh, here we go again. Have you been drinking?",
+	"options": [
+	  { "text": "Yes, I think...", "next_id": "chat1_3" },
+	  { "text": "What?? No. I don't drink.", "next_id": "chat1_3" },
+	]
+  },
+
+  "chat1_3": {
+	"type": "line",
+	"text": "Sure... whatever. I am Miss Manager.",
+	"next_id": "chat1_4"
+  },
+
+  "chat1_4": {
+	"type": "choice",
+	"text": "And let me guess... You're Miss Aligned?",
+	"options": [
+	  { "text": "Oh, ha ha. You're funny.", "next_id": "miss_manager_greet" },
+	  { "text": "More like Miss Erable...", "next_id": "chat1_5" },
+	]
+  },
+  "chat1_5": {
+	"type": "line",
+	"text": "You know that I am not keeping record of your 'creative' jokes right?",
+	"next_id": "miss_manager_greet"
+  },
+
+  "chat2": {
+	"type": "line",
+	"text": "Where you've always been.",
+	"next_id": "miss_manager_greet"
+  },
+
+	"chat3": {
+	"type": "line",
+	"text": "Not now. You're missing it.",
+	"next_id": "chat3_1"
+  },
+
+  "chat3_1": {
+	"type": "choice",
+	"text": "Not now. You're missing it.",
+	"options": [
+	  { "text": "It? What is 'it'?", "next_id": "chat3_2" },
+	  { "text": "I'll come back later.", "next_id": "end" },
+	]
+  },
+
+	"chat3_2": {
+	"type": "line",
+	"text": "You'll know it when you see it.",
+	"next_id": "end"
+  },
+
+  "quiz_wrong": {
+	"type": "line",
+	"text": "That is incorrect. You may not pass. Feel free to try again.",
+	"next_id": "miss_manager_greet"
+  },
+
+  "quiz_pass": {
+	"type": "line",
+	"text": "You are very observant indeed. You may pass.",
+	"action": "allow_pass",
+	"next_id": "end"
+  }
+}
