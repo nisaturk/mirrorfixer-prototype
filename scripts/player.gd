@@ -54,10 +54,8 @@ func _input(event):
 
 	# check if the list is NOT empty, if interact is pressed, and if UI is hidden
 	if not nearby_interactables.is_empty() and event.is_action_pressed("interact") and not is_ui_visible:
-		
 		# new logic for priority
 		var best_interactable = nearby_interactables[0]
-		
 		# if there's more than one, loop through and find the one with the highest priority
 		if nearby_interactables.size() > 1:
 			for i in range(1, nearby_interactables.size()):

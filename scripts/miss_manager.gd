@@ -10,12 +10,12 @@ var active := false
 func _ready():
 	position = start_pos
 	visible = false
-	animated_sprite.play("idle")  # start in idle animation
 
 func appear():
 	visible = true
 	active = true
-	print("Miss Manager is coming!")
+	animated_sprite.play("idle") # start in idle animation
+	#print("Miss Manager is coming!")
 	
 	var game_scene = get_parent()
 	if game_scene:

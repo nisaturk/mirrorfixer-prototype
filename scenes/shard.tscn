@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnmhg1unk4m10"]
+
+[ext_resource type="Texture2D" uid="uid://bh36pfi11j3li" path="res://assets/sprites/interior/shard.png" id="1_pmddc"]
+[ext_resource type="Script" uid="uid://cp17fbwl2ejfo" path="res://scripts/shard.gd" id="1_ua2y8"]
+[ext_resource type="AudioStream" uid="uid://tk8ni3boah2r" path="res://assets/audio/reception-bell-14620.mp3" id="2_x0ayr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ua2y8"]
+radius = 11.0
+
+[node name="shard" type="Area2D"]
+script = ExtResource("1_ua2y8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ua2y8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pmddc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_x0ayr")
+
+[connection signal="shard_collected" from="." to="." method="_on_shard_collected"]

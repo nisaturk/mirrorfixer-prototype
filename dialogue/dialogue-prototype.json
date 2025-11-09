@@ -30,15 +30,19 @@
 	"text": "I don't remember being here.",
 	"next_id": "end"
   },
-
-  "reception": {
+  "shard": {
 	"type": "line",
-	"text": "Oh, here's a bell.",
-	"next_id": "reception_1"
+	"text": "What's this shiny thing?",
+	"next_id": "shard_1"
   },
-  "reception_1": {
+  "shard_1": {
 	"type": "line",
-	"text": "Maybe I should ring it?",
+	"text": "A shard? But this mirror isn't broken?",
+	"next_id": "shard_3"
+  },
+  "shard_3": {
+	"type": "line",
+	"text": "Interesting...",
 	"next_id": "end"
   },
 

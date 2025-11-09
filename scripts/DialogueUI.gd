@@ -1,16 +1,17 @@
 extends CanvasLayer
 
+const portrait_map = { # new portrait library hehe
+	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
+	"MissManager": "res://assets/ui/portraits/missmanager-idle.png"}
+	
 @onready var portrait_box = $MainLayout/PortraitBox
 @onready var portrait_texture = $MainLayout/PortraitBox/PortraitTexture
 @onready var dialogue_label = $MainLayout/ContentBox/MainLayoutContainer/MarginContainer/DialogueLabel
 @onready var choice_container = $MainLayout/ContentBox/MainLayoutContainer/ChoiceContainer
 
-const portrait_map = { # new portrait library hehe
-	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
-	"MissManager": "res://assets/ui/portraits/missmanager-idle.png"}
-
 var current_caller = null
 var current_node_id: String = ""
+
 
 func _ready():
 	hide_box()
@@ -36,8 +37,8 @@ func process_node(id: String):
 	
 	if node_data["type"] == "line":
 		dialogue_label.show()
-		choice_container.hide()
 		dialogue_label.text = node_data.get("text", "...")
+		choice_container.hide()
 		
 	elif node_data["type"] == "choice":
 		dialogue_label.show()
@@ -76,23 +77,21 @@ func hide_box():
 	visible = false
 	current_caller = ""
 	current_node_id = ""
-	portrait_box.hide() # new line for portraits
+	portrait_box.hide() # hide the portraits
 	# clear buttons when hiding
 	for button in choice_container.get_children():
 		button.queue_free()
 
 func _input(event):
-	# do if the dialogue box is visible
 	if not visible:
 		return
 		
-	# get the data for our current node
 	var node_data = DialogueData.get_dialogue_node(current_node_id)
 	if not node_data:
 		return
 
-	# only advance on "interact" if it's a "line" node.
-	# choices are handled by their buttons.
+	# only advance on "interact" if it's a "line" node
+	# choices are handled by the buttons above
 	if node_data["type"] == "line" and Input.is_action_just_pressed("interact"):
 		get_viewport().set_input_as_handled()
 		# get the next ID and process it

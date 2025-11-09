@@ -3115,16 +3115,17 @@ visible = false
 [node name="IAAreas" type="Node2D" parent="."]
 position = Vector2(5, -35)
 
-[node name="InteractableObjectMirror" parent="IAAreas" instance=ExtResource("11_kvpfn")]
+[node name="IAsofa" parent="IAAreas" instance=ExtResource("11_kvpfn")]
 visible = false
 position = Vector2(20, 0)
 
-[node name="InteractableObjectSofa" parent="IAAreas" instance=ExtResource("11_kvpfn")]
+[node name="IAmirror" parent="IAAreas" instance=ExtResource("11_kvpfn")]
 visible = false
 position = Vector2(129, 31)
 dialogue_id = "sofa"
 
 [node name="Bell" parent="." instance=ExtResource("8_gee14")]
-position = Vector2(-76, 26)
+position = Vector2(-73, 28)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="bell_rung" from="Bell" to="MissManager" method="_on_bell_bell_rung"]

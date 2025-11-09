@@ -19,7 +19,6 @@ func _ready():
 # function to get a dialogue node (object) for an ID
 func get_dialogue_node(id: String):
 	if dialogue_data.has(id):
-		# returns the dialogue object like {"type": "line", "text": "..."}
 		return dialogue_data[id]
 	else:
 		print("ERROR: No dialogue found for ID: " + id)
