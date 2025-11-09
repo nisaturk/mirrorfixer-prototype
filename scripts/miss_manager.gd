@@ -48,3 +48,6 @@ func _physics_process(delta):
 func _on_bell_bell_rung(count: int) -> void:
 	if count >= 10 and not active:
 		appear()
+		
+func allow_pass():
+	$CollisionShape2D.disabled = true

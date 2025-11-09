@@ -42,8 +42,17 @@
 	"next_id": "shard_3"
   },
   "shard_3": {
+	"type": "choice",
+	"text": "Interesting... Should I take it?",
+	"options": [
+	  { "text": "✦ Take it.", "next_id": "shard_taken" },
+	  { "text": "✦ Leave it.", "next_id": "end" }
+	]
+  },
+  "shard_taken": {
 	"type": "line",
-	"text": "Interesting...",
+	"text": "It looks important.",
+	"action": "take_shard",
 	"next_id": "end"
   },
 
@@ -68,7 +77,7 @@
 	"text": "Oh, here we go again. Have you been drinking?",
 	"options": [
 	  { "text": "✦ Yes, I think...", "next_id": "chat1_3" },
-	  { "text": "✦ What?? No. I don't drink.", "next_id": "chat1_3" },
+	  { "text": "✦ What?? No. I don't drink.", "next_id": "chat1_3" }
 	]
   },
   "chat1_3": {
@@ -81,7 +90,7 @@
 	"text": "And let me guess... You're Miss Aligned?",
 	"options": [
 	  { "text": "✦ Oh, ha ha. You're funny.", "next_id": "miss_manager_greet" },
-	  { "text": "✦ More like Miss Erable...", "next_id": "chat1_5" },
+	  { "text": "✦ More like Miss Erable...", "next_id": "chat1_5" }
 	]
   },
   "chat1_5": {
@@ -94,24 +103,35 @@
 	"text": "Where you've always been.",
 	"next_id": "miss_manager_greet"
   },
-	"chat3": {
-	"type": "line",
-	"text": "Not now. You're missing it.",
-	"next_id": "chat3_1"
+  
+  "chat3": {
+	"type": "conditional",
+	"variable": "has_shard",
+	"on_true": "chat3_has_shard",
+	"on_false": "chat3_1"
   },
+  
   "chat3_1": {
 	"type": "choice",
 	"text": "Not now. You're missing it.",
 	"options": [
 	  { "text": "✦ It? What is 'it'?", "next_id": "chat3_2" },
-	  { "text": "✦ I'll come back later.", "next_id": "end" },
+	  { "text": "✦ I'll come back later.", "next_id": "end" }
 	]
   },
-	"chat3_2": {
+  "chat3_2": {
 	"type": "line",
 	"text": "You'll know it when you see it.",
 	"next_id": "end"
   },
+
+  "chat3_has_shard": {
+	"type": "line",
+	"text": "Ah, you found what you were missing. You may pass.",
+	"action": "allow_pass",
+	"next_id": "end"
+  },
+
   "quiz_wrong": {
 	"type": "line",
 	"text": "That is incorrect. You may not pass. Feel free to try again.",

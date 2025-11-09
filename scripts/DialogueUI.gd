@@ -12,7 +12,6 @@ const portrait_map = { # new portrait library hehe
 var current_caller = null
 var current_node_id: String = ""
 
-
 func _ready():
 	hide_box()
 	
@@ -51,6 +50,12 @@ func process_node(id: String):
 			button.text = option_data.get("text", "...")
 			button.pressed.connect(self._on_choice_made.bind(option_data.get("next_id", "end")))
 			choice_container.add_child(button)
+	
+	elif node_data["type"] == "conditional":
+		if DialogueData.has_shard == true: 
+			process_node(node_data.get("on_true", "end")) 
+		else: 
+			process_node(node_data.get("on_false", "end"))
 
 # takes a starting ID and the node that triggered the dialogue.
 func start_dialogue(start_id: String, caller):
@@ -100,7 +105,11 @@ func _input(event):
 
 # handles the "action" tags from the JSON
 func handle_action(action_name: String):
+	if action_name == "take_shard":
+		DialogueData.has_shard = true
+		current_caller.queue_free()
+		
 	if action_name == "allow_pass" and current_caller:
-		# Check if the caller (Miss Manager) has the "allow_pass" function
+		# check if the caller (mismanager) has "allow_pass"
 		if current_caller.has_method("allow_pass"):
 			current_caller.allow_pass()

@@ -1,6 +1,7 @@
 extends Node
 
 var dialogue_data: Dictionary = {}
+var has_shard: bool = false
 
 func _ready():
 	var file = FileAccess.open("res://dialogue/dialogue-prototype.json", FileAccess.READ)
