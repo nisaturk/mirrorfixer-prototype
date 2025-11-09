@@ -25,7 +25,6 @@ func _input(event):
 		
 		get_viewport().set_input_as_handled() # consume input so it wont keep ringin
 
-
 func ring_bell():
 	ring_count += 1
 	emit_signal("bell_rung", ring_count)

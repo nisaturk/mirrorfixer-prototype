@@ -28,7 +28,7 @@ func appear():
 func _physics_process(delta):
 	if active:
 		var distance = position.distance_to(target_pos)
-		# Stop if she reached the target
+		# if she reached the target
 		if distance < 2.0:
 			active = false
 			position = target_pos # snap precisely

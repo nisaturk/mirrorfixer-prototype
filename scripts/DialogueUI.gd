@@ -1,56 +1,54 @@
 extends CanvasLayer
 
-@onready var dialogue_label = $PanelContainer/MainLayoutContainer/MarginContainer/DialogueLabel
-@onready var choice_container = $PanelContainer/MainLayoutContainer/ChoiceContainer
+@onready var portrait_box = $MainLayout/PortraitBox
+@onready var portrait_texture = $MainLayout/PortraitBox/PortraitTexture
+@onready var dialogue_label = $MainLayout/ContentBox/MainLayoutContainer/MarginContainer/DialogueLabel
+@onready var choice_container = $MainLayout/ContentBox/MainLayoutContainer/ChoiceContainer
+
+const portrait_map = { # new portrait library hehe
+	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
+	"MissManager": "res://assets/ui/portraits/missmanager-idle.png"}
 
 var current_caller = null
-var current_node_id: String = "" # tracks our current position in the dialogue JSON
+var current_node_id: String = ""
 
 func _ready():
 	hide_box()
 	
 func process_node(id: String):
-	# clear any old buttons
 	for button in choice_container.get_children():
 		button.queue_free()
 	
-	# "end" is the keyword to close the dialogue
 	if id == "end":
 		hide_box()
 		return
 	
-	# get the dialogue data from the singleton
 	var node_data = DialogueData.get_dialogue_node(id)
 	
 	if not node_data:
 		hide_box()
 		return
 	
-	# store current ID
 	current_node_id = id
 	
-	# set the main text
-	dialogue_label.text = node_data.get("text", "...")
-	
-	# check for special game logic actions
 	if node_data.has("action"):
 		handle_action(node_data["action"])
 	
-	# check the type to see what to do next
 	if node_data["type"] == "line":
-		pass
+		dialogue_label.show()
+		choice_container.hide()
+		dialogue_label.text = node_data.get("text", "...")
 		
 	elif node_data["type"] == "choice":
-		# choices gotta be made. need to create buttons.
+		dialogue_label.show()
+		dialogue_label.text = node_data.get("text", "...")
+		choice_container.show()
+
 		var options = node_data.get("options", [])
 		for option_data in options:
 			var button = Button.new()
 			button.text = option_data.get("text", "...")
-			
-			# connect the button's "pressed" signal to a new function
-			# .bind() the "next_id" from the JSON to the function call
 			button.pressed.connect(self._on_choice_made.bind(option_data.get("next_id", "end")))
-			
 			choice_container.add_child(button)
 
 # takes a starting ID and the node that triggered the dialogue.
@@ -60,6 +58,13 @@ func start_dialogue(start_id: String, caller):
 		
 	current_caller = caller
 	visible = true
+	
+	if caller and portrait_map.has(caller.name):
+		portrait_texture.texture = load(portrait_map[caller.name])
+		portrait_box.show()
+	else:
+		portrait_box.hide()
+	
 	process_node(start_id)
 
 # called when a choice button is pressed
@@ -71,6 +76,7 @@ func hide_box():
 	visible = false
 	current_caller = ""
 	current_node_id = ""
+	portrait_box.hide() # new line for portraits
 	# clear buttons when hiding
 	for button in choice_container.get_children():
 		button.queue_free()
@@ -99,17 +105,3 @@ func handle_action(action_name: String):
 		# Check if the caller (Miss Manager) has the "allow_pass" function
 		if current_caller.has_method("allow_pass"):
 			current_caller.allow_pass()
-
-func _process(delta):
-	if not visible:
-		return
-
-	# get the container that holds both your label and your buttons
-	var main_layout = $PanelContainer/MainLayoutContainer
-	
-	# get the minimum size that the layout *wants* to be
-	var content_height = main_layout.get_combined_minimum_size().y
-	
-	# set the parent PanelContainer's offset_top
-	# to be that height (but negative, since it's an offset from the bottom)
-	$PanelContainer.offset_top = -content_height

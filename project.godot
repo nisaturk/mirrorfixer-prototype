@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="mirrorfixer-prototype"
+config/name="mirrorfixer-prototype (Copy)"
 run/main_scene="uid://lkwtvc1psycb"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 
@@ -27,7 +27,8 @@ layout/style_directory={}
 [display]
 
 window/size/viewport_width=384
-window/size/viewport_height=216
+window/size/viewport_height=280
+window/size/mode=2
 window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="canvas_items"

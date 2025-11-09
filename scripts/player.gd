@@ -32,9 +32,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
-	move_and_slide() 
-
-
+	move_and_slide()
 
 func _ready():
 	$InteractionDetector.area_entered.connect(_on_detector_area_entered)
@@ -73,7 +71,6 @@ func _input(event):
 		if not object_id.is_empty():
 			ui.start_dialogue(object_id, caller)
 			get_viewport().set_input_as_handled()
-
 
 ## just an idea for a future function
 #func allow_pass():
