@@ -18,6 +18,7 @@ position = Vector2(24.5, 27.25)
 shape = SubResource("RectangleShape2D_56v82")
 
 [node name="DebugSprite" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.42352942, 0.23137255, 0.4627451, 0.78039217)
 visibility_layer = 2
 position = Vector2(24.375002, 27.09375)

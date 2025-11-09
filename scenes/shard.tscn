@@ -19,4 +19,5 @@ texture = ExtResource("1_pmddc")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_x0ayr")
 
-[connection signal="shard_collected" from="." to="." method="_on_shard_collected"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

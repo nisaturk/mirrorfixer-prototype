@@ -30,6 +30,7 @@
 	"text": "I don't remember being here.",
 	"next_id": "end"
   },
+
   "shard": {
 	"type": "line",
 	"text": "What's this shiny thing?",
@@ -62,7 +63,6 @@
 	"text": "Who am I?",
 	"next_id": "chat1_2"
   },
-
   "chat1_2": {
 	"type": "choice",
 	"text": "Oh, here we go again. Have you been drinking?",
@@ -71,13 +71,11 @@
 	  { "text": "✦ What?? No. I don't drink.", "next_id": "chat1_3" },
 	]
   },
-
   "chat1_3": {
 	"type": "line",
 	"text": "Sure... whatever. I am Miss Manager.",
 	"next_id": "chat1_4"
   },
-
   "chat1_4": {
 	"type": "choice",
 	"text": "And let me guess... You're Miss Aligned?",
@@ -91,19 +89,16 @@
 	"text": "You know that I am not keeping record of your 'creative' jokes right?",
 	"next_id": "miss_manager_greet"
   },
-
   "chat2": {
 	"type": "line",
 	"text": "Where you've always been.",
 	"next_id": "miss_manager_greet"
   },
-
 	"chat3": {
 	"type": "line",
 	"text": "Not now. You're missing it.",
 	"next_id": "chat3_1"
   },
-
   "chat3_1": {
 	"type": "choice",
 	"text": "Not now. You're missing it.",
@@ -112,19 +107,16 @@
 	  { "text": "✦ I'll come back later.", "next_id": "end" },
 	]
   },
-
 	"chat3_2": {
 	"type": "line",
 	"text": "You'll know it when you see it.",
 	"next_id": "end"
   },
-
   "quiz_wrong": {
 	"type": "line",
 	"text": "That is incorrect. You may not pass. Feel free to try again.",
 	"next_id": "miss_manager_greet"
   },
-
   "quiz_pass": {
 	"type": "line",
 	"text": "You are very observant indeed. You may pass.",
