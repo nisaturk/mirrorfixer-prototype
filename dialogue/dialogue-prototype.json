@@ -46,10 +46,10 @@
 	"type": "choice",
 	"text": "What do you need?",
 	"options": [
-	  { "text": "Who are you?", "next_id": "chat1" },
-	  { "text": "Where am I?", "next_id": "chat2" },
-	  { "text": "Can I pass through?", "next_id": "chat3" },
-	  { "text": "Nevermind.", "next_id": "end"}
+	  { "text": "✦ Who are you?", "next_id": "chat1" },
+	  { "text": "✦ Where am I?", "next_id": "chat2" },
+	  { "text": "✦ Can I pass through?", "next_id": "chat3" },
+	  { "text": "✦ Nevermind.", "next_id": "end"}
 	]
   },
 
@@ -63,8 +63,8 @@
 	"type": "choice",
 	"text": "Oh, here we go again. Have you been drinking?",
 	"options": [
-	  { "text": "Yes, I think...", "next_id": "chat1_3" },
-	  { "text": "What?? No. I don't drink.", "next_id": "chat1_3" },
+	  { "text": "✦ Yes, I think...", "next_id": "chat1_3" },
+	  { "text": "✦ What?? No. I don't drink.", "next_id": "chat1_3" },
 	]
   },
 
@@ -78,8 +78,8 @@
 	"type": "choice",
 	"text": "And let me guess... You're Miss Aligned?",
 	"options": [
-	  { "text": "Oh, ha ha. You're funny.", "next_id": "miss_manager_greet" },
-	  { "text": "More like Miss Erable...", "next_id": "chat1_5" },
+	  { "text": "✦ Oh, ha ha. You're funny.", "next_id": "miss_manager_greet" },
+	  { "text": "✦ More like Miss Erable...", "next_id": "chat1_5" },
 	]
   },
   "chat1_5": {
@@ -104,8 +104,8 @@
 	"type": "choice",
 	"text": "Not now. You're missing it.",
 	"options": [
-	  { "text": "It? What is 'it'?", "next_id": "chat3_2" },
-	  { "text": "I'll come back later.", "next_id": "end" },
+	  { "text": "✦ It? What is 'it'?", "next_id": "chat3_2" },
+	  { "text": "✦ I'll come back later.", "next_id": "end" },
 	]
   },
 
