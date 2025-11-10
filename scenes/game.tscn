@@ -3603,5 +3603,6 @@ position = Vector2(238, 53)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-30, -54)
 offset = Vector2(0, 22)
+zoom = Vector2(1.5, 1.5)
 
 [connection signal="bell_rung" from="Bell" to="MissManager" method="_on_bell_bell_rung"]

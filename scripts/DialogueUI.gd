@@ -2,7 +2,8 @@ extends CanvasLayer
 
 const portrait_map = { # new portrait library hehe
 	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
-	"MissManager": "res://assets/ui/portraits/missmanager-idle.png"}
+	"MissManager": "res://assets/ui/portraits/missmanager-idle.png",
+	"Maxime": "res://assets/ui/portraits/maxime.png"}
 	
 @onready var portrait_box = $MainLayout/PortraitBox
 @onready var portrait_texture = $MainLayout/PortraitBox/PortraitTexture
@@ -65,6 +66,8 @@ func start_dialogue(start_id: String, caller):
 	current_caller = caller
 	visible = true
 	
+	print("Dialogue caller is: ", caller.name) # debugging purpose
+	
 	if caller and portrait_map.has(caller.name):
 		portrait_texture.texture = load(portrait_map[caller.name])
 		portrait_box.show()
@@ -113,3 +116,9 @@ func handle_action(action_name: String):
 		# check if the caller (mismanager) has "allow_pass"
 		if current_caller.has_method("allow_pass"):
 			current_caller.allow_pass()
+	
+	if action_name == "go_to_floor_2":
+		get_tree().change_scene_to_file("res://scenes/floor.tscn")
+		
+	if action_name == "go_to_flat_1":
+		get_tree().change_scene_to_file("res://scenes/flat.tscn")

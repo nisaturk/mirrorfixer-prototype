@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 [autoload]
 
 DialogueData="*res://scripts/DialogueData.gd"
+DialogueUI="*res://scenes/DialogueUI.tscn"
 
 [dialogic]
 

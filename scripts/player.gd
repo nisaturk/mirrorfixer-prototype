@@ -49,31 +49,19 @@ func _on_detector_area_exited(area):
 	print("Player exited: ", area.name)
 
 func _input(event):
-	var ui = $"/root/Game/GameUI" 
-	var is_ui_visible = ui.visible
+	var is_ui_visible = DialogueUI.visible # dialogueUI is now on autoload
 
 	# check if the list is NOT empty, if interact is pressed, and if UI is hidden
 	if not nearby_interactables.is_empty() and event.is_action_pressed("interact") and not is_ui_visible:
-		# new logic for priority
 		var best_interactable = nearby_interactables[0]
-		# if there's more than one, loop through and find the one with the highest priority
 		if nearby_interactables.size() > 1:
 			for i in range(1, nearby_interactables.size()):
 				if nearby_interactables[i].prioritylevel > best_interactable.prioritylevel:
 					best_interactable = nearby_interactables[i]
 		
-		# use the "best_interactable" found
 		var object_id = best_interactable.dialogue_id
 		var caller = best_interactable.get_parent()
 		
 		if not object_id.is_empty():
-			ui.start_dialogue(object_id, caller)
+			DialogueUI.start_dialogue(object_id, caller)
 			get_viewport().set_input_as_handled()
-
-## just an idea for a future function
-#func allow_pass():
-	#print("Miss Manager lets Miss Erable pass.")
-	#
-	## Disable collision
-	#if collision_shape:
-		#collision_shape.disabled = true

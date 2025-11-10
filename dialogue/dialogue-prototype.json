@@ -131,16 +131,37 @@
 	"action": "allow_pass",
 	"next_id": "end"
   },
-
-  "quiz_wrong": {
+"elevator": {
+  "type": "choice",
+  "text": "Select a floor.",
+  "options": [
+	{ "text": "✦ Go to Floor 2", "next_id": "floor_2" },
+	{ "text": "✦ Stay here", "next_id": "end" }
+  ]
+},
+"floor_2": {
+  "type": "line",
+  "text": "Going up...",
+  "action": "go_to_floor_2",
+  "next_id": "end"
+},
+  "locked": {
 	"type": "line",
-	"text": "That is incorrect. You may not pass. Feel free to try again.",
-	"next_id": "miss_manager_greet"
-  },
-  "quiz_pass": {
-	"type": "line",
-	"text": "You are very observant indeed. You may pass.",
-	"action": "allow_pass",
+	"text": "It's locked.",
 	"next_id": "end"
-  }
+  },
+"unlocked": {
+  "type": "choice",
+  "text": "It's unlocked.",
+  "options": [
+	{ "text": "✦ Go in.", "next_id": "flat1" },
+	{ "text": "✦ Don't go in.", "next_id": "end" }
+  ]
+},
+"flat1": {
+  "type": "line",
+  "text": "Going in...",
+  "action": "go_to_flat_1",
+  "next_id": "end"
+}
 }

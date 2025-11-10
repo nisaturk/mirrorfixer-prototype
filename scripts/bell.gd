@@ -15,8 +15,7 @@ func _input(event):
 	if not player_in_range:
 		return
 
-	var ui = $"/root/Game/GameUI"
-	if ui and ui.visible:
+	if DialogueUI.visible: #autoload change
 		return
 
 	if event.is_action_pressed("interact"):

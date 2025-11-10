@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bglrg2vgdl6e"]
+[gd_scene load_steps=12 format=3 uid="uid://bglrg2vgdl6e"]
 
 [ext_resource type="AudioStream" uid="uid://bm61f4wdyaej8" path="res://assets/audio/elevator-dingwav-14913.mp3" id="1_8lbij"]
 [ext_resource type="Texture2D" uid="uid://dk33c5kyemckx" path="res://assets/sprites/interior/elevator/body.png" id="1_8o2wm"]
+[ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="3_jmdsd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8lbij"]
 atlas = ExtResource("1_8o2wm")
@@ -71,3 +72,8 @@ stream = ExtResource("1_8lbij")
 sprite_frames = SubResource("SpriteFrames_2fcxx")
 animation = &"open"
 frame_progress = 0.19144417
+
+[node name="InteractableObject" parent="." instance=ExtResource("3_jmdsd")]
+position = Vector2(-19.000002, -27)
+scale = Vector2(0.8121012, 1.1838024)
+dialogue_id = "elevator"
