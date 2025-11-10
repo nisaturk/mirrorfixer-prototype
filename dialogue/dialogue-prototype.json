@@ -163,5 +163,53 @@
   "text": "Going in...",
   "action": "go_to_flat_1",
   "next_id": "end"
-}
+},
+  "maxime_greet": {
+	"type": "choice",
+	"text": "Oh you found it huh?",
+	"options": [
+	  { "text": "✦ It? What??", "next_id": "clueless" },
+	  { "text": "✦ Did you leave 'it' there?", "next_id": "notclueless" },
+	  { "text": "✦ Nevermind.", "next_id": "end"}
+	]
+  },
+  "clueless": {
+	"type": "line",
+	"text": "Oh you still don't know...",
+	"next_id": "clueless_1"
+  },
+  "clueless_1": {
+	"type": "line",
+	"text": "I am talking about the mirror shard you got.",
+	"next_id": "maxime_greet"
+  },
+"notclueless": {
+	"type": "choice",
+	"text": "Well, yeah. I wanted you to see yourself.",
+	"options": [
+	  { "text": "✦ But I cannot see myself.", "next_id": "maxime_shard" },
+	  { "text": "✦ Who even are you?", "next_id": "maxime_name" },
+	  { "text": "✦ Nevermind.", "next_id": "end"}
+	]
+  },
+  "maxime_name": {
+	"type": "line",
+	"text": "You don't remember me?",
+	"next_id": "maxime_name_1"
+  },
+  "maxime_name_1": {
+	"type": "line",
+	"text": "Alright... I am Maxime.",
+	"next_id": "notclueless"
+  },
+  "maxime_shard": {
+	"type": "line",
+	"text": "I know that... You need to collect all the shards.",
+	"next_id": "maxime_shard_1"
+  },
+  "maxime_shard_1": {
+	"type": "line",
+	"text": "To find your Self.",
+	"next_id": "notclueless"
+  },
 }

@@ -3918,7 +3918,7 @@ tile_map_data = PackedByteArray("AADy/wEAAAAKAA0AAADy/wIAAAAKAA4AAADz/wAAAAALAAw
 tile_set = SubResource("TileSet_lnu2h")
 
 [node name="furniture" type="TileMapLayer" parent="TileMap"]
-tile_map_data = PackedByteArray("AADq////AAABAAUAAADq/wAAAAABAAYAAADm////AAABAAUAAADm/wAAAAABAAYAAAAJAAAAAQAKAA0AAAAJAAEAAQAKAA4AAAAKAAAAAQALAA0AAAAKAAEAAQALAA4AAAA=")
+tile_map_data = PackedByteArray("AAAJAAAAAQAKAA0AAAAJAAEAAQAKAA4AAAAKAAAAAQALAA0AAAAKAAEAAQALAA4AAADm////AAAFAAUAAADm/wAAAAAFAAYAAADq////AAAFAAUAAADq/wAAAAAFAAYAAAA=")
 tile_set = SubResource("TileSet_vtaks")
 
 [node name="idk" type="TileMapLayer" parent="TileMap"]
