@@ -1,8 +1,37 @@
-[gd_scene load_steps=12 format=3 uid="uid://bglrg2vgdl6e"]
+[gd_scene load_steps=20 format=3 uid="uid://bglrg2vgdl6e"]
 
 [ext_resource type="AudioStream" uid="uid://bm61f4wdyaej8" path="res://assets/audio/elevator-dingwav-14913.mp3" id="1_8lbij"]
 [ext_resource type="Texture2D" uid="uid://dk33c5kyemckx" path="res://assets/sprites/interior/elevator/body.png" id="1_8o2wm"]
+[ext_resource type="Script" uid="uid://cxj0rpmqm1w6t" path="res://scripts/elevator.gd" id="1_gisge"]
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="3_jmdsd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fcxx"]
+atlas = ExtResource("1_8o2wm")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4pep"]
+atlas = ExtResource("1_8o2wm")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lldhi"]
+atlas = ExtResource("1_8o2wm")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkj2p"]
+atlas = ExtResource("1_8o2wm")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qricf"]
+atlas = ExtResource("1_8o2wm")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ja3hn"]
+atlas = ExtResource("1_8o2wm")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uyl0v"]
+atlas = ExtResource("1_8o2wm")
+region = Rect2(0, 0, 32, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8lbij"]
 atlas = ExtResource("1_8o2wm")
@@ -36,6 +65,32 @@ region = Rect2(192, 0, 32, 48)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2fcxx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4pep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lldhi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkj2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qricf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ja3hn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uyl0v")
+}],
+"loop": true,
+"name": &"close",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8lbij")
 }, {
 "duration": 1.0,
@@ -62,6 +117,7 @@ animations = [{
 }]
 
 [node name="Elevator" type="Area2D"]
+script = ExtResource("1_gisge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -71,9 +127,14 @@ stream = ExtResource("1_8lbij")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2fcxx")
 animation = &"open"
-frame_progress = 0.19144417
+frame = 6
+frame_progress = 0.59997624
 
 [node name="InteractableObject" parent="." instance=ExtResource("3_jmdsd")]
-position = Vector2(-19.000002, -27)
+position = Vector2(-19, -33.000004)
 scale = Vector2(0.8121012, 1.1838024)
+priority = 3
 dialogue_id = "elevator"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

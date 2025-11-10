@@ -158,12 +158,46 @@
 	{ "text": "✦ Don't go in.", "next_id": "end" }
   ]
 },
+"out": {
+  "type": "line",
+  "text": "Going out...",
+  "action": "go_out",
+  "next_id": "end"
+},
 "flat1": {
   "type": "line",
   "text": "Going in...",
   "action": "go_to_flat_1",
   "next_id": "end"
 },
+
+  "oven": {
+	"type": "line",
+	"text": "Something delicious is being baked.",
+	"next_id": "oven_2"
+  },
+  "oven_2": {
+	"type": "line",
+	"text": "Is he baking a cake?",
+	"next_id": "end"
+  },
+
+  "bookshelf": {
+	"type": "line",
+	"text": "Look at all these books!",
+	"next_id": "bookshelf_2"
+  },
+  "bookshelf_2": {
+	"type": "line",
+	"text": "There's even Sartre! ",
+	"next_id": "bookshelf_3"
+  },
+  "bookshelf_3": {
+	"type": "line",
+	"text": "He must read a lot.",
+	"next_id": "end"
+  },
+
   "maxime_greet": {
 	"type": "choice",
 	"text": "Oh you found it huh?",

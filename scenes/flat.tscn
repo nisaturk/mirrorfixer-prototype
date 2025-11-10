@@ -4391,8 +4391,17 @@ scale = Vector2(0.8, 0.8)
 position = Vector2(5, -35)
 
 [node name="IA2UnlockedDoor" parent="IAAreas" instance=ExtResource("8_4n7pq")]
-position = Vector2(129, -7)
+position = Vector2(131, -8)
 dialogue_id = "out"
+
+[node name="IOoven" parent="IAAreas" instance=ExtResource("8_4n7pq")]
+position = Vector2(-366, 13)
+dialogue_id = "oven"
+
+[node name="IObookshelf" parent="IAAreas" instance=ExtResource("8_4n7pq")]
+position = Vector2(-168, -2)
+scale = Vector2(3.6142285, 1)
+dialogue_id = "bookshelf"
 
 [node name="Player" parent="." instance=ExtResource("10_rflju")]
 process_mode = 3

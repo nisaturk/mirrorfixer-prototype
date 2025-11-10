@@ -122,3 +122,6 @@ func handle_action(action_name: String):
 		
 	if action_name == "go_to_flat_1":
 		get_tree().change_scene_to_file("res://scenes/flat.tscn")
+		
+	if action_name == "go_out":
+		get_tree().change_scene_to_file("res://scenes/floor.tscn")

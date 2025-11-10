@@ -64,4 +64,4 @@ func _input(event):
 		
 		if not object_id.is_empty():
 			DialogueUI.start_dialogue(object_id, caller)
-			get_viewport().set_input_as_handled()
+			#get_viewport().set_input_as_handled()
