@@ -152,11 +152,12 @@
   "action": "go_to_floor_1",
   "next_id": "end"
 },
-  "locked": {
+"locked": {
 	"type": "line",
 	"text": "It's locked.",
 	"next_id": "end"
   },
+
 "unlocked": {
   "type": "choice",
   "text": "It's unlocked.",

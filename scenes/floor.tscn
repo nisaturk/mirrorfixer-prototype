@@ -3958,7 +3958,7 @@ dialogue_id = "unlocked"
 
 [node name="IALockedDoors" parent="IAAreas" instance=ExtResource("9_ghsyk")]
 position = Vector2(-224, -8)
-dialogue_id = "locked"
+dialogue_id = "locked1"
 
 [node name="IALockedDoors2" parent="IAAreas" instance=ExtResource("9_ghsyk")]
 position = Vector2(-47, -8)

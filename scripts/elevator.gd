@@ -10,15 +10,17 @@ var is_active = true
 func _ready():
 	close_timer.timeout.connect(close_doors)
 	DialogueUI.dialogue_cancelled.connect(_on_dialogue_cancelled)
+	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
 	if DialogueData.just_used_elevator:
-		DialogueData.just_used_elevator = true
+		# handles when the player *arrives* at a new scene via the elevator
+		DialogueData.just_used_elevator = false
 		
 		animated_sprite.play("open")
 		animated_sprite.stop()
 		animated_sprite.frame = animated_sprite.sprite_frames.get_frame_count("open") - 1
 		
-		close_timer.wait_time = 1.0
+		close_timer.wait_time = 5.0
 		close_timer.start()
 	else:
 		animated_sprite.play("close")
@@ -52,6 +54,12 @@ func _play_sound():
 	if audio_player.playing:
 		audio_player.stop()
 	audio_player.play()
+
+func _on_animation_finished():
+	# check if the animation that just finished was the "open" one
+	if animated_sprite.animation == "open":
+		close_timer.wait_time = 5.0
+		close_timer.start()
 
 func _on_dialogue_cancelled(caller_node):
 	if caller_node == self:
