@@ -4403,11 +4403,11 @@ position = Vector2(-168, -2)
 scale = Vector2(3.6142285, 1)
 dialogue_id = "bookshelf"
 
-[node name="Player" parent="." instance=ExtResource("10_rflju")]
+[node name="Player" parent="IAAreas" instance=ExtResource("10_rflju")]
 process_mode = 3
-position = Vector2(156, 47)
+position = Vector2(156, 64)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="IAAreas/Player"]
 position = Vector2(-30, -54)
 offset = Vector2(0, 22)
 zoom = Vector2(1.5, 1.5)

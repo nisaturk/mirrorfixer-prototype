@@ -134,15 +134,22 @@
 "elevator": {
   "type": "choice",
   "text": "Select a floor.",
+  "action": "open_elevator",
   "options": [
-	{ "text": "✦ Go to Floor 2", "next_id": "floor_2" },
-	{ "text": "✦ Stay here", "next_id": "end" }
+	{ "text": "✦ Floor 2", "next_id": "floor_2" },
+	{ "text": "✦ Floor 1", "next_id": "floor_1" }
   ]
 },
 "floor_2": {
   "type": "line",
   "text": "Going up...",
   "action": "go_to_floor_2",
+  "next_id": "end"
+},
+"floor_1": {
+  "type": "line",
+  "text": "Going down...",
+  "action": "go_to_floor_1",
   "next_id": "end"
 },
   "locked": {

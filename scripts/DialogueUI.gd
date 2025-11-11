@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal dialogue_cancelled(caller_node)
+
 const portrait_map = { # new portrait library hehe
 	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
 	"MissManager": "res://assets/ui/portraits/missmanager-idle.png",
@@ -78,6 +80,8 @@ func start_dialogue(start_id: String, caller):
 
 # called when a choice button is pressed
 func _on_choice_made(next_id: String):
+	if next_id == "end":
+		emit_signal("dialogue_cancelled", current_caller)
 	process_node(next_id)
 
 # handles hiding the box
@@ -116,9 +120,15 @@ func handle_action(action_name: String):
 		# check if the caller (mismanager) has "allow_pass"
 		if current_caller.has_method("allow_pass"):
 			current_caller.allow_pass()
+			
+	if action_name == "open_elevator":
+		if current_caller and current_caller.has_method("open_doors"):
+			current_caller.open_doors()
 	
 	if action_name == "go_to_floor_2":
 		get_tree().change_scene_to_file("res://scenes/floor.tscn")
+	if action_name == "go_to_floor_1":
+		get_tree().change_scene_to_file("res://scenes/game.tscn")
 		
 	if action_name == "go_to_flat_1":
 		get_tree().change_scene_to_file("res://scenes/flat.tscn")
