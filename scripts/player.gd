@@ -63,5 +63,5 @@ func _input(event):
 		var caller = best_interactable.get_parent()
 		
 		if not object_id.is_empty():
+			get_viewport().set_input_as_handled()
 			DialogueUI.start_dialogue(object_id, caller)
-			#get_viewport().set_input_as_handled()

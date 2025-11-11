@@ -3947,7 +3947,6 @@ position = Vector2(435, -47)
 shape = SubResource("RectangleShape2D_ir15t")
 
 [node name="GameUI" parent="." instance=ExtResource("8_3pc5w")]
-visible = false
 
 [node name="IAAreas" type="Node2D" parent="."]
 position = Vector2(5, -35)
@@ -3957,16 +3956,20 @@ position = Vector2(129, -7)
 dialogue_id = "unlocked"
 
 [node name="IALockedDoors" parent="IAAreas" instance=ExtResource("9_ghsyk")]
-position = Vector2(-224, -8)
-dialogue_id = "locked1"
+visibility_layer = 9
+position = Vector2(-222, -8)
+scale = Vector2(0.9207, 1.6413387)
+dialogue_id = "lock"
+prioritylevel = 3
 
 [node name="IALockedDoors2" parent="IAAreas" instance=ExtResource("9_ghsyk")]
 position = Vector2(-47, -8)
-dialogue_id = "locked"
+dialogue_id = "lock"
+prioritylevel = 3
 
 [node name="IALockedDoors3" parent="IAAreas" instance=ExtResource("9_ghsyk")]
 position = Vector2(308, -10)
-dialogue_id = "locked"
+dialogue_id = "lock"
 
 [node name="Elevator" parent="IAAreas" instance=ExtResource("13_glw5x")]
 position = Vector2(-381, 17)

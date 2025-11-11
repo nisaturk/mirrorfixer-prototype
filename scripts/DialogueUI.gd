@@ -27,11 +27,13 @@ func process_node(id: String):
 		return
 	
 	var node_data = DialogueData.get_dialogue_node(id)
+	# print("trying to access node: '", id, "' | data: ", node_data)
+	# debug code above sorry
 	
 	if not node_data:
 		hide_box()
 		return
-	
+
 	current_node_id = id
 	
 	if node_data.has("action"):
@@ -68,7 +70,7 @@ func start_dialogue(start_id: String, caller):
 	current_caller = caller
 	visible = true
 	
-	print("Dialogue caller is: ", caller.name) # debugging purpose
+	print("caller is: ", caller.name) # debugging purpose
 	
 	if caller and portrait_map.has(caller.name):
 		portrait_texture.texture = load(portrait_map[caller.name])
@@ -90,6 +92,7 @@ func hide_box():
 	current_caller = ""
 	current_node_id = ""
 	portrait_box.hide() # hide the portraits
+	
 	# clear buttons when hiding
 	for button in choice_container.get_children():
 		button.queue_free()
