@@ -123,18 +123,22 @@ func handle_action(action_name: String):
 		# check if the caller (mismanager) has "allow_pass"
 		if current_caller.has_method("allow_pass"):
 			current_caller.allow_pass()
-			
+	
 	if action_name == "open_elevator":
 		if current_caller and current_caller.has_method("open_doors"):
 			current_caller.open_doors()
 	
 	if action_name == "go_to_floor_2":
+		DialogueData.just_used_elevator = true
 		get_tree().change_scene_to_file("res://scenes/floor.tscn")
 	if action_name == "go_to_floor_1":
+		DialogueData.just_used_elevator = true
 		get_tree().change_scene_to_file("res://scenes/game.tscn")
 		
 	if action_name == "go_to_flat_1":
+		DialogueData.just_used_elevator = true
 		get_tree().change_scene_to_file("res://scenes/flat.tscn")
 		
 	if action_name == "go_out":
+		DialogueData.just_used_elevator = true 
 		get_tree().change_scene_to_file("res://scenes/floor.tscn")

@@ -11,13 +11,10 @@ func _ready():
 
 func _input(event):
 	if not is_active: return
-	
 	if not player_in_range:
 		return
-
 	if DialogueUI.visible: #autoload change
 		return
-
 	if event.is_action_pressed("interact"):
 		ring_bell()
 		get_viewport().set_input_as_handled() # consume input so it wont keep ringin
@@ -32,7 +29,7 @@ func ring_bell():
 		$AudioStreamPlayer2D.stop()
 	$AudioStreamPlayer2D.play()
 
-	#print("Bell rung! Count:", ring_count)
+	#print("BELLO rungO! Count:", ring_count)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.name == "Player":

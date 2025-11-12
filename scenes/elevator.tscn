@@ -87,7 +87,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"close",
-"speed": 5.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -113,7 +113,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 5.0
+"speed": 2.0
 }]
 
 [node name="Elevator" type="Area2D"]
@@ -127,6 +127,8 @@ stream = ExtResource("1_8lbij")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2fcxx")
 animation = &"close"
+frame = 6
+frame_progress = 1.0
 
 [node name="InteractableObject" parent="." instance=ExtResource("3_jmdsd")]
 position = Vector2(-19, -33.000004)

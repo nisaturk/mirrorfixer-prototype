@@ -3947,6 +3947,7 @@ position = Vector2(435, -47)
 shape = SubResource("RectangleShape2D_ir15t")
 
 [node name="GameUI" parent="." instance=ExtResource("8_3pc5w")]
+visible = false
 
 [node name="IAAreas" type="Node2D" parent="."]
 position = Vector2(5, -35)

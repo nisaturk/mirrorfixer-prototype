@@ -137,7 +137,9 @@
   "action": "open_elevator",
   "options": [
 	{ "text": "✦ Floor 2", "next_id": "floor_2" },
-	{ "text": "✦ Floor 1", "next_id": "floor_1" }
+	{ "text": "✦ Floor 1", "next_id": "floor_1" },
+	{ "text": "✦ Stay", "next_id": "end" }
+
   ]
 },
 "floor_2": {
