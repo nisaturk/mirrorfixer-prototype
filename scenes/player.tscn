@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://mu6xyf36gys6"]
+[gd_scene load_steps=30 format=3 uid="uid://mu6xyf36gys6"]
 
 [ext_resource type="Texture2D" uid="uid://diupaqg4doxy1" path="res://assets/sprites/characters/dummy-placeholder.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://cokwegjvju35p" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="3_qhqgy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(36, 46.5)
@@ -210,3 +211,16 @@ position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_f1ej7")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="InteractionHint" type="Label" parent="."]
+visible = false
+offset_left = -10.999999
+offset_top = -51.999996
+offset_right = 120.0
+offset_bottom = -28.999996
+scale = Vector2(0.17500998, 0.17500998)
+theme_override_fonts/font = ExtResource("3_qhqgy")
+theme_override_font_sizes/font_size = 21
+text = "[click to interact]"
+horizontal_alignment = 1
+vertical_alignment = 1

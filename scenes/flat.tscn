@@ -4395,12 +4395,13 @@ position = Vector2(131, -8)
 dialogue_id = "out"
 
 [node name="IOoven" parent="IAAreas" instance=ExtResource("8_4n7pq")]
-position = Vector2(-366, 13)
+position = Vector2(-362.00003, 10.000001)
+scale = Vector2(0.85481346, 0.72616506)
 dialogue_id = "oven"
 
 [node name="IObookshelf" parent="IAAreas" instance=ExtResource("8_4n7pq")]
-position = Vector2(-168, -2)
-scale = Vector2(3.6142285, 1)
+position = Vector2(-152, -2.9999995)
+scale = Vector2(0.80907416, 0.9700258)
 dialogue_id = "bookshelf"
 
 [node name="Player" parent="IAAreas" instance=ExtResource("10_rflju")]

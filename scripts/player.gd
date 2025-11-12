@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
-var nearby_interactables: Array = [] # newly added variable for overlapping zones
+var nearby_interactables: Array = []
+var current_best_interactable = null
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -37,31 +39,54 @@ func _physics_process(delta: float) -> void:
 func _ready():
 	$InteractionDetector.area_entered.connect(_on_detector_area_entered)
 	$InteractionDetector.area_exited.connect(_on_detector_area_exited)
-	
+	DialogueUI.dialogue_cancelled.connect(_on_dialogue_ended)
+
 func _on_detector_area_entered(area):
 	if not nearby_interactables.has(area):
 		nearby_interactables.append(area)
 	print("Player entered: ", area.name)
+	_update_interaction_focus()
 
 func _on_detector_area_exited(area):
 	if nearby_interactables.has(area):
 		nearby_interactables.erase(area)
 	print("Player exited: ", area.name)
+	
+	_update_interaction_focus()
 
-func _input(event):
-	var is_ui_visible = DialogueUI.visible # dialogueUI is now on autoload
-
-	# check if the list is NOT empty, if interact is pressed, and if UI is hidden
-	if not nearby_interactables.is_empty() and event.is_action_pressed("interact") and not is_ui_visible:
-		var best_interactable = nearby_interactables[0]
+# updated the brain-y logic that will decide (lol) which hint to show
+func _update_interaction_focus():
+	var best_interactable = null
+	
+	if not nearby_interactables.is_empty():
+		best_interactable = nearby_interactables[0]
 		if nearby_interactables.size() > 1:
 			for i in range(1, nearby_interactables.size()):
 				if nearby_interactables[i].prioritylevel > best_interactable.prioritylevel:
 					best_interactable = nearby_interactables[i]
+	
+	if best_interactable != current_best_interactable:
+		if current_best_interactable != null:
+			current_best_interactable.hide_hint()
+			
+		current_best_interactable = best_interactable
 		
-		var object_id = best_interactable.dialogue_id
-		var caller = best_interactable.get_parent()
+		if current_best_interactable != null:
+			current_best_interactable.show_hint()
+
+func _input(event):
+	var is_ui_visible = DialogueUI.visible
+
+	if current_best_interactable != null and event.is_action_pressed("interact") and not is_ui_visible:
+		var object_id = current_best_interactable.dialogue_id
+		var caller = current_best_interactable.get_parent()
 		
 		if not object_id.is_empty():
 			get_viewport().set_input_as_handled()
 			DialogueUI.start_dialogue(object_id, caller)
+			
+			# hide the hint, dialogue is starting
+			current_best_interactable.hide_hint()
+
+func _on_dialogue_ended(_caller_node):
+	_update_interaction_focus()

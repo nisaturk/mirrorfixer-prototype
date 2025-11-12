@@ -3953,23 +3953,26 @@ visible = false
 position = Vector2(5, -35)
 
 [node name="IA2UnlockedDoor" parent="IAAreas" instance=ExtResource("9_ghsyk")]
-position = Vector2(129, -7)
+position = Vector2(132, -9)
+scale = Vector2(0.909556, 1)
 dialogue_id = "unlocked"
 
 [node name="IALockedDoors" parent="IAAreas" instance=ExtResource("9_ghsyk")]
 visibility_layer = 9
-position = Vector2(-222, -8)
-scale = Vector2(0.9207, 1.6413387)
+position = Vector2(-218.00002, -9)
+scale = Vector2(0.8575136, 1.0271081)
 dialogue_id = "lock"
 prioritylevel = 3
 
 [node name="IALockedDoors2" parent="IAAreas" instance=ExtResource("9_ghsyk")]
-position = Vector2(-47, -8)
+position = Vector2(-44.000004, -8)
+scale = Vector2(0.89375937, 1)
 dialogue_id = "lock"
 prioritylevel = 3
 
 [node name="IALockedDoors3" parent="IAAreas" instance=ExtResource("9_ghsyk")]
-position = Vector2(308, -10)
+position = Vector2(309, -10)
+scale = Vector2(0.8478695, 0.9816973)
 dialogue_id = "lock"
 
 [node name="Elevator" parent="IAAreas" instance=ExtResource("13_glw5x")]

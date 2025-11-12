@@ -3573,7 +3573,7 @@ position = Vector2(31, -2)
 scale = Vector2(0.57354957, 0.9771711)
 
 [node name="IAsofa" parent="IAAreas" instance=ExtResource("11_kvpfn")]
-position = Vector2(129, 31)
+position = Vector2(118, 51)
 dialogue_id = "sofa"
 
 [node name="IOshard" parent="IAAreas" instance=ExtResource("11_kvpfn")]

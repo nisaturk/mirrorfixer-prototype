@@ -27,9 +27,7 @@ func process_node(id: String):
 		return
 	
 	var node_data = DialogueData.get_dialogue_node(id)
-	# print("trying to access node: '", id, "' | data: ", node_data)
-	# debug code above sorry
-	
+	# print("trying to access node: '", id, "' | data: ", node_data)	
 	if not node_data:
 		hide_box()
 		return
@@ -86,12 +84,11 @@ func _on_choice_made(next_id: String):
 		emit_signal("dialogue_cancelled", current_caller)
 	process_node(next_id)
 
-# handles hiding the box
 func hide_box():
 	visible = false
 	current_caller = ""
 	current_node_id = ""
-	portrait_box.hide() # hide the portraits
+	portrait_box.hide()
 	
 	# clear buttons when hiding
 	for button in choice_container.get_children():
@@ -114,13 +111,13 @@ func _input(event):
 		process_node(next_id)
 
 # handles the "action" tags from the JSON
+# probably isnt good but shh
 func handle_action(action_name: String):
 	if action_name == "take_shard":
 		DialogueData.has_shard = true
 		current_caller.queue_free()
 		
 	if action_name == "allow_pass" and current_caller:
-		# check if the caller (mismanager) has "allow_pass"
 		if current_caller.has_method("allow_pass"):
 			current_caller.allow_pass()
 	

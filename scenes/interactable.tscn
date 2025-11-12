@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbh3286pn2faw"]
+[gd_scene load_steps=5 format=3 uid="uid://bbh3286pn2faw"]
 
 [ext_resource type="Script" uid="uid://bdue3x0scheug" path="res://scripts/interactable.gd" id="1_56v82"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="2_ij5l6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_56v82"]
 size = Vector2(49, 53.5)
@@ -24,6 +25,17 @@ visibility_layer = 2
 position = Vector2(24.375002, 27.09375)
 scale = Vector2(49.249996, 53.8125)
 texture = SubResource("PlaceholderTexture2D_56v82")
+
+[node name="InteractionHint" type="Label" parent="."]
+visible = false
+offset_top = 5.0000005
+offset_right = 99.0
+offset_bottom = 28.0
+scale = Vector2(0.50204676, 0.50204676)
+theme_override_fonts/font = ExtResource("2_ij5l6")
+text = "[interact with me]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

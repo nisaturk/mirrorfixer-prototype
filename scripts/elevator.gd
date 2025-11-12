@@ -13,7 +13,6 @@ func _ready():
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
 	if DialogueData.just_used_elevator:
-		# handles when the player *arrives* at a new scene via the elevator
 		DialogueData.just_used_elevator = false
 		
 		animated_sprite.play("open")
@@ -56,7 +55,6 @@ func _play_sound():
 	audio_player.play()
 
 func _on_animation_finished():
-	# check if the animation that just finished was the "open" one
 	if animated_sprite.animation == "open":
 		close_timer.wait_time = 5.0
 		close_timer.start()
