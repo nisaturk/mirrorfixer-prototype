@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 signal dialogue_cancelled(caller_node)
+signal action_triggered(action_name, caller_node)
 
 const portrait_map = { # new portrait library hehe
 	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
@@ -94,14 +95,13 @@ func hide_box():
 	for button in choice_container.get_children():
 		button.queue_free()
 
-func _input(event):
+func _input(_event):
 	if not visible:
 		return
 		
 	var node_data = DialogueData.get_dialogue_node(current_node_id)
 	if not node_data:
 		return
-
 	# only advance on "interact" if it's a "line" node
 	# choices are handled by the buttons above
 	if node_data["type"] == "line" and Input.is_action_just_pressed("interact"):
@@ -111,31 +111,6 @@ func _input(event):
 		process_node(next_id)
 
 # handles the "action" tags from the JSON
-# probably isnt good but shh
 func handle_action(action_name: String):
-	if action_name == "take_shard":
-		DialogueData.has_shard = true
-		current_caller.queue_free()
-		
-	if action_name == "allow_pass" and current_caller:
-		if current_caller.has_method("allow_pass"):
-			current_caller.allow_pass()
-	
-	if action_name == "open_elevator":
-		if current_caller and current_caller.has_method("open_doors"):
-			current_caller.open_doors()
-	
-	if action_name == "go_to_floor_2":
-		DialogueData.just_used_elevator = true
-		get_tree().change_scene_to_file("res://scenes/floor.tscn")
-	if action_name == "go_to_floor_1":
-		DialogueData.just_used_elevator = true
-		get_tree().change_scene_to_file("res://scenes/game.tscn")
-		
-	if action_name == "go_to_flat_1":
-		DialogueData.just_used_elevator = true
-		get_tree().change_scene_to_file("res://scenes/flat.tscn")
-		
-	if action_name == "go_out":
-		DialogueData.just_used_elevator = true 
-		get_tree().change_scene_to_file("res://scenes/floor.tscn")
+	# updated with a signal instead of the if blocks :')
+	emit_signal("action_triggered", action_name, current_caller)

@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -300.0
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
+signal interacted(interactable)
+
 var nearby_interactables: Array = []
 var current_best_interactable = null
 
@@ -77,16 +79,11 @@ func _update_interaction_focus():
 func _input(event):
 	var is_ui_visible = DialogueUI.visible
 
-	if current_best_interactable != null and event.is_action_pressed("interact") and not is_ui_visible:
-		var object_id = current_best_interactable.dialogue_id
-		var caller = current_best_interactable.get_parent()
-		
-		if not object_id.is_empty():
-			get_viewport().set_input_as_handled()
-			DialogueUI.start_dialogue(object_id, caller)
-			
-			# hide the hint, dialogue is starting
-			current_best_interactable.hide_hint()
+	if current_best_interactable != null and event.is_action_pressed("interact") and not is_ui_visible:		
+		get_viewport().set_input_as_handled()
+		emit_signal("interacted", current_best_interactable)
+		# hide the hint, dialogue is starting
+		current_best_interactable.hide_hint()
 
 func _on_dialogue_ended(_caller_node):
 	_update_interaction_focus()

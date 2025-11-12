@@ -4,6 +4,8 @@ extends CharacterBody2D
 @export var target_pos := Vector2(-118, 16) # where she should stop
 @export var speed := 60.0
 
+signal appeared
+
 var active := false
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -14,16 +16,8 @@ func _ready():
 func appear():
 	visible = true
 	active = true
-	animated_sprite.play("idle") # start in idle animation
-	#print("Miss Manager is coming!")
-	
-	var game_scene = get_parent()
-	if game_scene:
-		var bell_node = game_scene.get_node("Bell")
-		if bell_node:
-			bell_node.deactivate()
-		else:
-			print("ERROR: Miss Manager could not find Bell node.")
+	animated_sprite.play("idle")
+	emit_signal("appeared")
 
 func _physics_process(delta):
 	if active:
@@ -51,3 +45,6 @@ func _on_bell_bell_rung(count: int) -> void:
 		
 func allow_pass():
 	$CollisionShape2D.disabled = true
+
+func _on_appeared() -> void:
+	pass # Replace with function body.

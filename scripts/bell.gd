@@ -13,8 +13,7 @@ func _input(event):
 	if not is_active: return
 	if not player_in_range:
 		return
-	if DialogueUI.visible: #autoload change
-		return
+
 	if event.is_action_pressed("interact"):
 		ring_bell()
 		get_viewport().set_input_as_handled() # consume input so it wont keep ringin

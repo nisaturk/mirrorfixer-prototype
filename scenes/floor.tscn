@@ -1,5 +1,6 @@
-[gd_scene load_steps=30 format=4 uid="uid://cua0db2fo4nst"]
+[gd_scene load_steps=31 format=4 uid="uid://cua0db2fo4nst"]
 
+[ext_resource type="Script" uid="uid://b2vqpvx5tpkmj" path="res://scripts/manager.gd" id="1_a2b8f"]
 [ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/floorswalls_LRK.png" id="1_k67dy"]
 [ext_resource type="Texture2D" uid="uid://df1o10b3id1mf" path="res://assets/sprites/interior/doorswindowsstairs_LRK.png" id="2_12tlq"]
 [ext_resource type="Texture2D" uid="uid://8xtbxeegutou" path="res://assets/sprites/interior/decorations_LRK.png" id="3_3jb3n"]
@@ -3909,6 +3910,7 @@ size = Vector2(71.5, 198.5)
 
 [node name="Floor" type="Node2D"]
 position = Vector2(-1, 0)
+script = ExtResource("1_a2b8f")
 
 [node name="TileMap" type="Node2D" parent="."]
 
