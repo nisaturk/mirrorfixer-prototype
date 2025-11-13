@@ -79,7 +79,7 @@ func _update_interaction_focus():
 func _input(event):
 	var is_ui_visible = DialogueUI.visible
 
-	if current_best_interactable != null and event.is_action_pressed("interact") and not is_ui_visible:		
+	if current_best_interactable != null and event.is_action_pressed("interact") and not is_ui_visible:
 		get_viewport().set_input_as_handled()
 		emit_signal("interacted", current_best_interactable)
 		# hide the hint, dialogue is starting

@@ -3909,7 +3909,6 @@ size = Vector2(70.5, 172)
 size = Vector2(71.5, 198.5)
 
 [node name="Floor" type="Node2D"]
-position = Vector2(-1, 0)
 script = ExtResource("1_a2b8f")
 
 [node name="TileMap" type="Node2D" parent="."]

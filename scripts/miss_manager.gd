@@ -30,13 +30,13 @@ func _physics_process(delta):
 			print("Miss Manager arrived.")
 			return
 		# move toward target
-		var dir = (target_pos - position).normalized()
-		position += dir * speed * delta
+		position = position.move_toward(target_pos, speed * delta)
 		# play the walking animation
 		if animated_sprite.animation != "walk":
 			animated_sprite.play("walk")
 		# flip sprite horizontally based on movement direction
-		animated_sprite.flip_h = dir.x < 0
+		var velocity = (target_pos - position).normalized() * speed
+		animated_sprite.flip_h = velocity.x < 0
 
 # called when bell signal triggers
 func _on_bell_bell_rung(count: int) -> void:
@@ -45,6 +45,3 @@ func _on_bell_bell_rung(count: int) -> void:
 		
 func allow_pass():
 	$CollisionShape2D.disabled = true
-
-func _on_appeared() -> void:
-	pass # Replace with function body.

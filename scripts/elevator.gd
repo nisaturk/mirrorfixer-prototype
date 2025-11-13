@@ -30,8 +30,6 @@ func _input(event):
 	if not is_active: return
 	if not player_in_range: return
 	if DialogueUI.visible: return
-	if event.is_action_pressed("interact"):
-		pass
 
 func open_doors():
 	close_timer.stop()

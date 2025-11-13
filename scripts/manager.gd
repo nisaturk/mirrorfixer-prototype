@@ -2,14 +2,62 @@ extends Node
 # new script who dis?? time to confront miss manager ;D
 @onready var player = $Player 
 
+var action_handler = {} # dictionary for actions
+
 func _ready():
 	#  will listen for signals from other nodes and decide what to do
 	if player:
 		player.interacted.connect(_on_Player_interacted)
 	else:
-		print("Manager ERROR: Cannot find Player node. Make sure it's named 'Player'.")
+		print("Manager failure: Cannot find Player dumbass.")
 
 	DialogueUI.action_triggered.connect(_on_DialogueUI_action_triggered)
+	
+	action_handler = {
+		"take_shard": _action_take_shard,
+		"allow_pass": _action_allow_pass,
+		"open_elevator": _action_open_elevator,
+		
+		"go_to_floor_2": _action_go_to_floor_2,
+		"go_to_floor_1": _action_go_to_floor_1,
+		"go_to_flat_1": _action_go_to_flat_1,
+		"go_out": _action_go_out
+	}
+
+func _on_DialogueUI_action_triggered(action_name: String, caller_node):
+	if action_handler.has(action_name):
+		action_handler[action_name].call(caller_node)
+	else:
+		print("Manager ERROR: Unknown action: ", action_name)
+
+func _action_take_shard(caller_node):
+	DialogueData.has_shard = true
+	if caller_node:
+		caller_node.queue_free() # the shard object disappears
+
+func _action_allow_pass(caller_node):
+	if caller_node and caller_node.has_method("allow_pass"):
+		caller_node.allow_pass()
+
+func _action_open_elevator(caller_node):
+	if caller_node and caller_node.has_method("open_doors"):
+		caller_node.open_doors()
+
+func _action_go_to_floor_2(_caller_node):
+	DialogueData.just_used_elevator = true
+	SceneManager.change_scene("FLOOR_2") 
+
+func _action_go_to_floor_1(_caller_node):
+	DialogueData.just_used_elevator = true
+	SceneManager.change_scene("GAME")
+
+func _action_go_to_flat_1(_caller_node):
+	DialogueData.just_used_elevator = true
+	SceneManager.change_scene("FLAT_1")
+		
+func _action_go_out(_caller_node):
+	DialogueData.just_used_elevator = true 
+	SceneManager.change_scene("FLOOR_2") 
 
 # run when player emits signal interacted
 func _on_Player_interacted(interactable_node):
@@ -18,34 +66,3 @@ func _on_Player_interacted(interactable_node):
 	
 	if not object_id.is_empty():
 		DialogueUI.start_dialogue(object_id, caller)
-
-func _on_DialogueUI_action_triggered(action_name: String, caller_node):
-	# tags from the JSON file
-	if action_name == "take_shard":
-		DialogueData.has_shard = true
-		if caller_node:
-			caller_node.queue_free() # the shard object disappears
-			
-	elif action_name == "allow_pass" and caller_node:
-		if caller_node.has_method("allow_pass"):
-			caller_node.allow_pass()
-	
-	elif action_name == "open_elevator":
-		if caller_node and caller_node.has_method("open_doors"):
-			caller_node.open_doors()
-	
-	elif action_name == "go_to_floor_2":
-		DialogueData.just_used_elevator = true
-		get_tree().change_scene_to_file("res://scenes/floor.tscn")
-	
-	elif action_name == "go_to_floor_1":
-		DialogueData.just_used_elevator = true
-		get_tree().change_scene_to_file("res://scenes/game.tscn")
-		
-	elif action_name == "go_to_flat_1":
-		DialogueData.just_used_elevator = true
-		get_tree().change_scene_to_file("res://scenes/flat.tscn")
-		
-	elif action_name == "go_out":
-		DialogueData.just_used_elevator = true 
-		get_tree().change_scene_to_file("res://scenes/floor.tscn")

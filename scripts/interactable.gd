@@ -2,6 +2,7 @@ extends Area2D
 
 @export var dialogue_id: String = ""
 @export var prioritylevel: int = 0
+@export var portrait_id: String = ""
 @onready var interaction_hint: Label = $InteractionHint
 
 # new functions HELL YEAH
