@@ -270,10 +270,8 @@ shape = SubResource("RectangleShape2D_oprun")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -32)
 sprite_frames = SubResource("SpriteFrames_f1ej7")
-animation = &"getup"
+animation = &"idle"
 autoplay = "idle"
-frame = 7
-frame_progress = 1.0
 
 [node name="InteractionHint" type="Label" parent="."]
 visible = false

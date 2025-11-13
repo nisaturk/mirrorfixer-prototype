@@ -4,42 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dpl3hp1goeo7k" path="res://assets/ui/dialogue_box_texture.tres" id="2_rmr67"]
 [ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="3_7de8d"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmr67"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmr67"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7de8d"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmr67"]
+bg_color = Color(0, 0, 0, 0.4745098)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7de8d"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmr67"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmtye"]
 
@@ -50,27 +20,21 @@ Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
 Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(1, 1, 1, 1)
-Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
 Button/constants/outline_size = 0
 Button/font_sizes/font_size = 12
-Button/styles/disabled = SubResource("StyleBoxFlat_rmr67")
-Button/styles/focus = SubResource("StyleBoxFlat_7de8d")
-Button/styles/hover = SubResource("StyleBoxEmpty_7de8d")
-Button/styles/normal = SubResource("StyleBoxEmpty_rmr67")
+Button/styles/focus = SubResource("StyleBoxEmpty_rmr67")
+Button/styles/hover = SubResource("StyleBoxFlat_rmr67")
+Button/styles/normal = SubResource("StyleBoxEmpty_7de8d")
 Button/styles/pressed = SubResource("StyleBoxEmpty_nmtye")
 
 [sub_resource type="Theme" id="Theme_rc1id"]
+
+[sub_resource type="Theme" id="Theme_7de8d"]
 
 [node name="DialogueUI" type="CanvasLayer"]
 script = ExtResource("1_rc1id")
@@ -80,11 +44,16 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0000005
+offset_top = -77.000015
+offset_right = 4.0
+offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(0.9754084, 0.9754084)
 
 [node name="PortraitBox" type="PanelContainer" parent="MainLayout"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -95,7 +64,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="ContentBox" type="NinePatchRect" parent="MainLayout"]
-custom_minimum_size = Vector2(0, 76)
+custom_minimum_size = Vector2(0, 74)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = ExtResource("2_rmr67")
@@ -142,4 +111,5 @@ autowrap_mode = 3
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_horizontal = 4
+theme = SubResource("Theme_7de8d")
 columns = 2
