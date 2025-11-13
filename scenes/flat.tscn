@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://b7fsav2jcng5w"]
+[gd_scene load_steps=34 format=4 uid="uid://b7fsav2jcng5w"]
 
 [ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/floorswalls_LRK.png" id="1_7j8m3"]
 [ext_resource type="Script" uid="uid://b2vqpvx5tpkmj" path="res://scripts/manager.gd" id="1_dtn5i"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="8_4n7pq"]
 [ext_resource type="PackedScene" uid="uid://de1vvtwklx3x" path="res://scenes/maxime.tscn" id="8_7j8m3"]
 [ext_resource type="PackedScene" uid="uid://mu6xyf36gys6" path="res://scenes/player.tscn" id="10_rflju"]
+[ext_resource type="PackedScene" uid="uid://bc8dgb2pp7mde" path="res://scenes/ninh.tscn" id="12_ehww1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_7j8m3")
@@ -4413,3 +4414,7 @@ position = Vector2(161, 29)
 position = Vector2(-30, -54)
 offset = Vector2(0, 22)
 zoom = Vector2(1.5, 1.5)
+
+[node name="Ninh" parent="." instance=ExtResource("12_ehww1")]
+position = Vector2(-404, 6.9999995)
+scale = Vector2(0.7, 0.7)

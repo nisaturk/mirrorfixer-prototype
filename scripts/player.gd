@@ -8,8 +8,8 @@ const JUMP_VELOCITY = -300.0
 
 signal interacted(interactable)
 
-var nearby_interactables: Array = []
-var current_best_interactable = null
+var nearby_interactables: Array[Area2D] = []
+var current_best_interactable: Area2D = null
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():

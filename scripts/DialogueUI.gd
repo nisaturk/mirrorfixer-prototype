@@ -6,7 +6,8 @@ signal action_triggered(action_name, caller_node)
 const portrait_map = { # new portrait library hehe
 	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
 	"MissManager": "res://assets/ui/portraits/missmanager-idle.png",
-	"Maxime": "res://assets/ui/portraits/maxime.png"}
+	"Maxime": "res://assets/ui/portraits/maxime.png",
+	"Ninh":"res://assets/ui/portraits/ninh.png" }
 	
 @onready var portrait_box = $MainLayout/PortraitBox
 @onready var portrait_texture = $MainLayout/PortraitBox/PortraitTexture
@@ -28,7 +29,6 @@ func process_node(id: String):
 		return
 	
 	var node_data = DialogueData.get_dialogue_node(id)
-	# print("trying to access node: '", id, "' | data: ", node_data)	
 	if not node_data:
 		hide_box()
 		return
@@ -75,7 +75,7 @@ func start_dialogue(start_id: String, caller):
 	current_caller = caller
 	visible = true
 	
-	print("caller is: ", caller.name) # debugging purpose
+	#print("caller is: ", caller.name) # debugging purpose
 	
 	if caller and portrait_map.has(caller.name):
 		portrait_texture.texture = load(portrait_map[caller.name])

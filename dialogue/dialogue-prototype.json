@@ -250,9 +250,14 @@
 	"text": "I know that... You need to collect all the shards.",
 	"next_id": "maxime_shard_1"
   },
-  "maxime_shard_1": {
+  "ninh_greet": {
 	"type": "line",
-	"text": "To find your Self.",
-	"next_id": "notclueless"
+	"text": "Oh hey nOiRe",
+	"next_id": "ninh_greet_2"
   },
+  "ninh_greet_2": {
+	"type": "line",
+	"text": "Are you OK? You look lost a bit...",
+	"next_id": "end"
+  }
 }

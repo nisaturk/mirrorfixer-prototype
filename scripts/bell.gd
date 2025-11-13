@@ -4,7 +4,7 @@ signal bell_rung(count)
 
 var player_in_range: bool = false
 var ring_count: int = 0
-var is_active = true
+var is_active: bool = true
 
 func _ready():
 	$AnimatedSprite2D.frame = 0

@@ -8,7 +8,7 @@ const SCENES = {
 
 func change_scene(scene_key: String):
 	if not SCENES.has(scene_key):
-		print("SceneManager ERROR: Scene key not found: ", scene_key)
+		print("scene manager failed: scene key not found: ", scene_key)
 		return
 		
 	var scene_path = SCENES[scene_key]
@@ -16,6 +16,6 @@ func change_scene(scene_key: String):
 	var error = get_tree().change_scene_to_file(scene_path)
 	
 	if error != OK:
-		print("SceneManager ERROR: Could not change scene to: ", scene_path)
+		print("scene manager failed: could not change scene to: ", scene_path)
 	
 	await SceneTransitioner.fade_out()

@@ -3548,6 +3548,7 @@ tile_map_data = PackedByteArray("AADz/wEAAAADAAcAAADz/wIAAAADAAgAAAA=")
 tile_set = SubResource("TileSet_rysoc")
 
 [node name="MissManager" parent="." instance=ExtResource("7_iulku")]
+visible = false
 position = Vector2(-118, 16)
 
 [node name="Walkline" type="StaticBody2D" parent="."]
@@ -3571,21 +3572,22 @@ visible = false
 position = Vector2(5, -35)
 
 [node name="IAmirror" parent="IAAreas" instance=ExtResource("9_0jb4q")]
-position = Vector2(31, -2)
-scale = Vector2(0.57354957, 0.9771711)
+position = Vector2(30, -2)
+scale = Vector2(0.84466755, 0.9447139)
 
 [node name="IAsofa" parent="IAAreas" instance=ExtResource("9_0jb4q")]
-position = Vector2(118, 51)
+position = Vector2(119, 54)
 dialogue_id = "sofa"
 
 [node name="IOshard" parent="IAAreas" instance=ExtResource("9_0jb4q")]
-position = Vector2(65, 45)
-scale = Vector2(0.35097343, 0.28990862)
+position = Vector2(6, 45)
+scale = Vector2(0.35097343, 0.2840377)
 dialogue_id = "shard"
 prioritylevel = 1
 
 [node name="shard" parent="IAAreas/IOshard" instance=ExtResource("10_vwf6o")]
-position = Vector2(28.492184, 34.49361)
+position = Vector2(25.642967, 28.165277)
+scale = Vector2(0.6845122, 0.70785)
 
 [node name="Bell" parent="." instance=ExtResource("11_iwi7x")]
 position = Vector2(-73, 28)
@@ -3593,7 +3595,7 @@ scale = Vector2(0.5, 0.5)
 
 [node name="Elevator" parent="." instance=ExtResource("12_wjff0")]
 position = Vector2(-376, -18)
-scale = Vector2(1.25, 1.25)
+scale = Vector2(1.3243045, 1.15077)
 
 [node name="Player" parent="." instance=ExtResource("13_h1rib")]
 process_mode = 3

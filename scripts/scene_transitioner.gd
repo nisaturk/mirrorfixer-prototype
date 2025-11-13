@@ -7,7 +7,7 @@ func _ready():
 	pass
 
 func fade_in():
-	animation_player.play("fade_to_black")
+	animation_player.play("fade_to_black") # \m/
 	return animation_player.animation_finished
 
 func fade_out():

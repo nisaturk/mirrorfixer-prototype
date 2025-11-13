@@ -131,8 +131,8 @@ frame = 6
 frame_progress = 1.0
 
 [node name="InteractableObject" parent="." instance=ExtResource("3_jmdsd")]
-position = Vector2(-19, -33.000004)
-scale = Vector2(0.8121012, 1.1838024)
+position = Vector2(-21, -2.0000038)
+scale = Vector2(0.8731885, 1.073056)
 priority = 3
 dialogue_id = "elevator"
 

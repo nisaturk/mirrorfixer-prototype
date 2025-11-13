@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://chqylyxworhr6" path="res://assets/sprites/characters/maxime/Walk.png" id="3_8s0jh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8s0jh"]
-size = Vector2(40, 66)
+size = Vector2(26, 65)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o83ev"]
 atlas = ExtResource("1_jhil2")
@@ -204,12 +204,12 @@ animations = [{
 [node name="Maxime" type="CharacterBody2D"]
 
 [node name="InteractableObject" parent="." instance=ExtResource("1_o83ev")]
-position = Vector2(-33, -7)
-scale = Vector2(1.2667676, 1.2987709)
+position = Vector2(-32, -23)
+scale = Vector2(1.2667676, 1.6269584)
 dialogue_id = "maxime_greet"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 30)
+position = Vector2(1, 32)
 shape = SubResource("RectangleShape2D_8s0jh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

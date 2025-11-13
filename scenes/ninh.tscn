@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://bc8dgb2pp7mde"]
+
+[ext_resource type="Texture2D" uid="uid://crjiehaprveqt" path="res://assets/sprites/characters/ninh/Idle.png" id="1_obpbj"]
+[ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="1_r5kjd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r5kjd"]
+size = Vector2(22, 75)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5kjd"]
+atlas = ExtResource("1_obpbj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0ytr"]
+atlas = ExtResource("1_obpbj")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss7t3"]
+atlas = ExtResource("1_obpbj")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpt2f"]
+atlas = ExtResource("1_obpbj")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exi2r"]
+atlas = ExtResource("1_obpbj")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3u6t0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5kjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e0ytr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss7t3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpt2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exi2r")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="Ninh" type="CharacterBody2D"]
+
+[node name="InteractableObject" parent="." instance=ExtResource("1_r5kjd")]
+position = Vector2(-39.000004, -37)
+scale = Vector2(1.5285492, 1.9154077)
+dialogue_id = "ninh_greet"
+prioritylevel = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 28)
+shape = SubResource("RectangleShape2D_r5kjd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3u6t0")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.42791384
