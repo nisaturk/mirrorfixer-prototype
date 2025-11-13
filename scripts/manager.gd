@@ -28,7 +28,7 @@ func _on_DialogueUI_action_triggered(action_name: String, caller_node):
 	if action_handler.has(action_name):
 		action_handler[action_name].call(caller_node)
 	else:
-		print("Manager ERROR: Unknown action: ", action_name)
+		print("Manager failure: tf you doin buddy?: ", action_name)
 
 func _action_take_shard(caller_node):
 	DialogueData.has_shard = true
@@ -49,7 +49,7 @@ func _action_go_to_floor_2(_caller_node):
 
 func _action_go_to_floor_1(_caller_node):
 	DialogueData.just_used_elevator = true
-	SceneManager.change_scene("GAME")
+	SceneManager.change_scene("LOBBY")
 
 func _action_go_to_flat_1(_caller_node):
 	DialogueData.just_used_elevator = true

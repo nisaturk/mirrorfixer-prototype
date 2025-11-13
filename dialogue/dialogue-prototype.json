@@ -179,6 +179,12 @@
   "action": "go_to_flat_1",
   "next_id": "end"
 },
+"stairs": {
+  "type": "line",
+  "text": "Going up.",
+  "action": "go_to_floor_1",
+  "next_id": "end"
+},
 
   "oven": {
 	"type": "line",
