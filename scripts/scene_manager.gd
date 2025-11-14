@@ -1,6 +1,7 @@
 extends Node
 
 const SCENES = {
+	"BASEMENT": "res://scenes/basement.tscn",
 	"LOBBY": "res://scenes/lobby.tscn",
 	"FLOOR_2": "res://scenes/floor.tscn",
 	"FLAT_1": "res://scenes/flat.tscn"

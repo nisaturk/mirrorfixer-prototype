@@ -1,12 +1,12 @@
 [gd_scene load_steps=35 format=4 uid="uid://lkwtvc1psycb"]
 
-[ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/floorswalls_LRK.png" id="1_dyhay"]
+[ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/furniture/floorswalls_LRK.png" id="1_dyhay"]
 [ext_resource type="Script" uid="uid://b2vqpvx5tpkmj" path="res://scripts/manager.gd" id="1_q6qq2"]
-[ext_resource type="Texture2D" uid="uid://df1o10b3id1mf" path="res://assets/sprites/interior/doorswindowsstairs_LRK.png" id="2_q6qq2"]
-[ext_resource type="Texture2D" uid="uid://8xtbxeegutou" path="res://assets/sprites/interior/decorations_LRK.png" id="3_rgcd7"]
-[ext_resource type="Texture2D" uid="uid://bx66ox4gtm7fv" path="res://assets/sprites/interior/livingroom_LRK.png" id="4_lqo1b"]
-[ext_resource type="Texture2D" uid="uid://m8d8kmuyeppt" path="res://assets/sprites/interior/cabinets_LRK.png" id="5_0gjkf"]
-[ext_resource type="Texture2D" uid="uid://bko6md13s8lt8" path="res://assets/sprites/interior/kitchen_LRK.png" id="6_o2i1r"]
+[ext_resource type="Texture2D" uid="uid://df1o10b3id1mf" path="res://assets/sprites/interior/furniture/doorswindowsstairs_LRK.png" id="2_q6qq2"]
+[ext_resource type="Texture2D" uid="uid://8xtbxeegutou" path="res://assets/sprites/interior/furniture/decorations_LRK.png" id="3_rgcd7"]
+[ext_resource type="Texture2D" uid="uid://bx66ox4gtm7fv" path="res://assets/sprites/interior/furniture/livingroom_LRK.png" id="4_lqo1b"]
+[ext_resource type="Texture2D" uid="uid://m8d8kmuyeppt" path="res://assets/sprites/interior/furniture/cabinets_LRK.png" id="5_0gjkf"]
+[ext_resource type="Texture2D" uid="uid://bko6md13s8lt8" path="res://assets/sprites/interior/furniture/kitchen_LRK.png" id="6_o2i1r"]
 [ext_resource type="PackedScene" uid="uid://8xmdwikm2ght" path="res://scenes/miss_manager.tscn" id="7_iulku"]
 [ext_resource type="PackedScene" uid="uid://dttu5x0kixbi6" path="res://scenes/DialogueUI.tscn" id="8_dfnwm"]
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="9_0jb4q"]
@@ -3577,6 +3577,10 @@ scale = Vector2(0.84466755, 0.9447139)
 [node name="IAsofa" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(119, 54)
 dialogue_id = "sofa"
+
+[node name="IAstairs" parent="IAAreas" instance=ExtResource("9_0jb4q")]
+position = Vector2(345, 30)
+dialogue_id = "lobbystairs"
 
 [node name="IOshard" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(6, 45)

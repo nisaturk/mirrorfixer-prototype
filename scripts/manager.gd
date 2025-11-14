@@ -21,7 +21,9 @@ func _ready():
 		"go_to_floor_2": _action_go_to_floor_2,
 		"go_to_floor_1": _action_go_to_floor_1,
 		"go_to_flat_1": _action_go_to_flat_1,
-		"go_out": _action_go_out
+		"go_out": _action_go_out,
+		"go_upstairs": _action_go_upstairs,
+		"go_downstairs": _action_go_downstairs
 	}
 
 func _on_DialogueUI_action_triggered(action_name: String, caller_node):
@@ -66,3 +68,9 @@ func _on_Player_interacted(interactable_node):
 	
 	if not object_id.is_empty():
 		DialogueUI.start_dialogue(object_id, caller)
+		
+func _action_go_upstairs(_caller_node):
+	SceneManager.change_scene("LOBBY")
+
+func _action_go_downstairs(_caller_node):
+	SceneManager.change_scene("BASEMENT")

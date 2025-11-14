@@ -179,12 +179,35 @@
   "action": "go_to_flat_1",
   "next_id": "end"
 },
-"stairs": {
+  "basementstairs": {
+	"type": "choice",
+	"text": "Do I wanna go upstairs?",
+	"options": [
+	  { "text": "✦ Yeah girl wtf??", "next_id": "go_upstairs" },
+	  { "text": "✦ Nope, rot here.", "next_id": "end" },
+	]
+  },
+"go_upstairs": {
   "type": "line",
-  "text": "Going up.",
-  "action": "go_to_floor_1",
+  "text": "Okay, going up...",
+  "action": "go_upstairs",
   "next_id": "end"
 },
+  "lobbystairs": {
+	"type": "choice",
+	"text": "Do I wanna go downstairs??",
+	"options": [
+	  { "text": "✦ Yeah girl wtf??", "next_id": "go_downstairs" },
+	  { "text": "✦ Nope, stay here.", "next_id": "end" },
+	]
+  },
+"go_downstairs": {
+  "type": "line",
+  "text": "Okay, going doooown...",
+  "action": "go_downstairs",
+  "next_id": "end"
+},
+
 
   "oven": {
 	"type": "line",
