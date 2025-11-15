@@ -1,12 +1,11 @@
 [gd_scene load_steps=35 format=4 uid="uid://lkwtvc1psycb"]
 
-[ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/furniture/floorswalls_LRK.png" id="1_dyhay"]
-[ext_resource type="Script" uid="uid://b2vqpvx5tpkmj" path="res://scripts/manager.gd" id="1_q6qq2"]
-[ext_resource type="Texture2D" uid="uid://df1o10b3id1mf" path="res://assets/sprites/interior/furniture/doorswindowsstairs_LRK.png" id="2_q6qq2"]
-[ext_resource type="Texture2D" uid="uid://8xtbxeegutou" path="res://assets/sprites/interior/furniture/decorations_LRK.png" id="3_rgcd7"]
-[ext_resource type="Texture2D" uid="uid://bx66ox4gtm7fv" path="res://assets/sprites/interior/furniture/livingroom_LRK.png" id="4_lqo1b"]
-[ext_resource type="Texture2D" uid="uid://m8d8kmuyeppt" path="res://assets/sprites/interior/furniture/cabinets_LRK.png" id="5_0gjkf"]
-[ext_resource type="Texture2D" uid="uid://bko6md13s8lt8" path="res://assets/sprites/interior/furniture/kitchen_LRK.png" id="6_o2i1r"]
+[ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/floorswalls_LRK.png" id="1_dyhay"]
+[ext_resource type="Texture2D" uid="uid://df1o10b3id1mf" path="res://assets/sprites/interior/doorswindowsstairs_LRK.png" id="2_q6qq2"]
+[ext_resource type="Texture2D" uid="uid://8xtbxeegutou" path="res://assets/sprites/interior/decorations_LRK.png" id="3_rgcd7"]
+[ext_resource type="Texture2D" uid="uid://bx66ox4gtm7fv" path="res://assets/sprites/interior/livingroom_LRK.png" id="4_lqo1b"]
+[ext_resource type="Texture2D" uid="uid://m8d8kmuyeppt" path="res://assets/sprites/interior/cabinets_LRK.png" id="5_0gjkf"]
+[ext_resource type="Texture2D" uid="uid://bko6md13s8lt8" path="res://assets/sprites/interior/kitchen_LRK.png" id="6_o2i1r"]
 [ext_resource type="PackedScene" uid="uid://8xmdwikm2ght" path="res://scenes/miss_manager.tscn" id="7_iulku"]
 [ext_resource type="PackedScene" uid="uid://dttu5x0kixbi6" path="res://scenes/DialogueUI.tscn" id="8_dfnwm"]
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="9_0jb4q"]
@@ -14,6 +13,85 @@
 [ext_resource type="PackedScene" uid="uid://bq11jmsomieh6" path="res://scenes/bell.tscn" id="11_iwi7x"]
 [ext_resource type="PackedScene" uid="uid://bglrg2vgdl6e" path="res://scenes/elevator.tscn" id="12_wjff0"]
 [ext_resource type="PackedScene" uid="uid://mu6xyf36gys6" path="res://scenes/player.tscn" id="13_h1rib"]
+
+[sub_resource type="GDScript" id="GDScript_2efs0"]
+script/source = "extends Node
+# new script who dis?? time to confront miss manager ;D
+@onready var player = $Player 
+
+var action_handler = {} # dictionary for actions
+
+func _ready():
+	#  will listen for signals from other nodes and decide what to do
+	if player:
+		player.interacted.connect(_on_Player_interacted)
+	else:
+		print(\"Manager failure: Cannot find Player dumbass.\")
+
+	DialogueUI.action_triggered.connect(_on_DialogueUI_action_triggered)
+	
+	action_handler = {
+		\"take_shard\": _action_take_shard,
+		\"allow_pass\": _action_allow_pass,
+		\"open_elevator\": _action_open_elevator,
+		
+		\"go_to_floor_2\": _action_go_to_floor_2,
+		\"go_to_floor_1\": _action_go_to_floor_1,
+		\"go_to_flat_1\": _action_go_to_flat_1,
+		\"go_out\": _action_go_out,
+		\"go_upstairs\": _action_go_upstairs,
+		\"go_downstairs\": _action_go_downstairs
+	}
+
+func _on_DialogueUI_action_triggered(action_name: String, caller_node):
+	if action_handler.has(action_name):
+		action_handler[action_name].call(caller_node)
+	else:
+		print(\"Manager failure: tf you doin buddy?: \", action_name)
+
+func _action_take_shard(caller_node):
+	DialogueData.has_shard = true
+	if caller_node:
+		caller_node.queue_free() # the shard object disappears
+
+func _action_allow_pass(caller_node):
+	if caller_node and caller_node.has_method(\"allow_pass\"):
+		caller_node.allow_pass()
+
+func _action_open_elevator(caller_node):
+	if caller_node and caller_node.has_method(\"open_doors\"):
+		caller_node.open_doors()
+
+func _action_go_to_floor_2(_caller_node):
+	DialogueData.just_used_elevator = true
+	SceneManager.change_scene(\"FLOOR_2\") 
+
+func _action_go_to_floor_1(_caller_node):
+	DialogueData.just_used_elevator = true
+	SceneManager.change_scene(\"LOBBY\")
+
+func _action_go_to_flat_1(_caller_node):
+	DialogueData.just_used_elevator = true
+	SceneManager.change_scene(\"FLAT_1\")
+		
+func _action_go_out(_caller_node):
+	DialogueData.just_used_elevator = true 
+	SceneManager.change_scene(\"FLOOR_2\") 
+
+# run when player emits signal interacted
+func _on_Player_interacted(interactable_node):
+	var object_id = interactable_node.dialogue_id
+	var caller = interactable_node.get_parent()
+	
+	if not object_id.is_empty():
+		DialogueUI.start_dialogue(object_id, caller)
+		
+func _action_go_upstairs(_caller_node):
+	SceneManager.change_scene(\"LOBBY\")
+
+func _action_go_downstairs(_caller_node):
+	SceneManager.change_scene(\"BASEMENT\")
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_dyhay")
@@ -3515,7 +3593,7 @@ size = Vector2(70.5, 172)
 size = Vector2(71.5, 198.5)
 
 [node name="Lobby" type="Node2D"]
-script = ExtResource("1_q6qq2")
+script = SubResource("GDScript_2efs0")
 
 [node name="TileMap" type="Node2D" parent="."]
 

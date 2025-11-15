@@ -39,6 +39,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _ready():
+	ActionManager.register_player(self)
+	
 	$InteractionDetector.area_entered.connect(_on_detector_area_entered)
 	$InteractionDetector.area_exited.connect(_on_detector_area_exited)
 	DialogueUI.dialogue_cancelled.connect(_on_dialogue_ended)

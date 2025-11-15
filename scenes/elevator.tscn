@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bglrg2vgdl6e"]
 
 [ext_resource type="AudioStream" uid="uid://bm61f4wdyaej8" path="res://assets/audio/elevator-dingwav-14913.mp3" id="1_8lbij"]
-[ext_resource type="Texture2D" uid="uid://dk33c5kyemckx" path="res://assets/sprites/interior/elevator/body.png" id="1_8o2wm"]
+[ext_resource type="Texture2D" uid="uid://m62guhsucyct" path="res://assets/sprites/interior/elevator/body.png" id="1_8o2wm"]
 [ext_resource type="Script" uid="uid://cxj0rpmqm1w6t" path="res://scripts/elevator.gd" id="1_gisge"]
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="3_jmdsd"]
 
@@ -131,7 +131,7 @@ frame = 6
 frame_progress = 1.0
 
 [node name="InteractableObject" parent="." instance=ExtResource("3_jmdsd")]
-position = Vector2(-21, -2.0000038)
+position = Vector2(-21, -28)
 scale = Vector2(0.8731885, 1.073056)
 priority = 3
 dialogue_id = "elevator"

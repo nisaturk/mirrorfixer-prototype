@@ -1,15 +1,10 @@
 extends Node
 # new script who dis?? time to confront miss manager ;D
-@onready var player = $Player 
+var player = null # wait for the player to register itself
 var action_handler = {} # dictionary for actions
 
 func _ready():
 	#  will listen for signals from other nodes and decide what to do
-	if player:
-		player.interacted.connect(_on_Player_interacted)
-	else:
-		print("Manager failure: Cannot find Player dumbass.")
-
 	DialogueUI.action_triggered.connect(_on_DialogueUI_action_triggered)
 	
 	action_handler = {
@@ -25,11 +20,19 @@ func _ready():
 		"go_downstairs": _action_go_downstairs
 	}
 
+# player registry for debugging
+func register_player(player_node):
+	if player_node:
+		player = player_node
+		player.interacted.connect(_on_Player_interacted)
+	else:
+		print("manager failure: (oh no!)(player is now null).")
+
 func _on_DialogueUI_action_triggered(action_name: String, caller_node):
 	if action_handler.has(action_name):
 		action_handler[action_name].call(caller_node)
 	else:
-		print("Manager failure: tf you doin buddy?: ", action_name)
+		print("manager failure: tf you doin buddy?: ", action_name)
 
 func _action_take_shard(caller_node):
 	DialogueData.has_shard = true

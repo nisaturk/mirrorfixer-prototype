@@ -35,7 +35,6 @@ func _physics_process(delta):
 		if animated_sprite.animation != "walk":
 			animated_sprite.play("walk")
 		# flip sprite horizontally based on movement direction
-		var velocity = (target_pos - position).normalized() * speed
 		animated_sprite.flip_h = velocity.x < 0
 
 # called when bell signal triggers

@@ -26,7 +26,7 @@ func _ready():
 		animated_sprite.stop()
 		animated_sprite.frame = animated_sprite.sprite_frames.get_frame_count("close") - 1
 
-func _input(event):
+func _input(_event):
 	if not is_active: return
 	if not player_in_range: return
 	if DialogueUI.visible: return

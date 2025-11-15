@@ -18,9 +18,9 @@ config/features=PackedStringArray("4.5", "GL Compatibility")
 
 DialogueData="*res://scripts/DialogueData.gd"
 DialogueUI="*res://scenes/DialogueUI.tscn"
-Manager="*res://scripts/manager.gd"
-SceneManager="*res://scripts/scene_manager.gd"
-SceneTransitioner="*res://scenes/scene_transitioner.tscn"
+ActionManager="*res://scripts/action_manager.gd"
+GlobalState="*res://scripts/global_state.gd"
+SceneManager="*res://scenes/scene_manager.tscn"
 
 [dialogic]
 
