@@ -1,0 +1,175 @@
+[gd_scene load_steps=21 format=3 uid="uid://d33v11fclh5vy"]
+
+[ext_resource type="Script" uid="uid://0gsxspcq2xie" path="res://scripts/main_menu.gd" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://but67maan54hd" path="res://assets/sprites/uistuff/eyeroll.png" id="3_bqqt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekxnf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+bg_color = Color(0.11372549, 0.16078432, 0.25882354, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0.019607844, 0.09019608, 0.23921569, 0.65882355)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0.4509804, 0.09019608, 0.23921569, 1)
+
+[sub_resource type="Theme" id="Theme_bqqt6"]
+default_font = ExtResource("2_ekxnf")
+Button/colors/font_color = Color(0.4509804, 0.09019608, 0.23921569, 1)
+Button/colors/font_focus_color = Color(0.21176471, 0.023529412, 0.09803922, 1)
+Button/colors/font_hover_color = Color(0.31757054, 0.05117183, 0.16143104, 1)
+Button/colors/font_hover_pressed_color = Color(0.21076381, 0.023102554, 0.0993425, 1)
+Button/colors/font_pressed_color = Color(0.019607844, 0.09019608, 0.23921569, 1)
+Button/fonts/font = ExtResource("2_ekxnf")
+Button/styles/focus = SubResource("StyleBoxEmpty_ekxnf")
+Button/styles/hover = SubResource("StyleBoxFlat_bqqt6")
+Button/styles/normal = SubResource("StyleBoxFlat_ekxnf")
+Button/styles/pressed = SubResource("StyleBoxFlat_wu84c")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu84c"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ln24"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtw2f"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1go"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk1qb"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgwnu"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcqid"]
+atlas = ExtResource("3_bqqt6")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ajci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu84c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ln24")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtw2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oa1go")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tbmy8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk1qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dd4i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgwnu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flqon")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcqid")
+}],
+"loop": true,
+"name": &"eyeroll",
+"speed": 11.0
+}]
+
+[sub_resource type="Theme" id="Theme_ekxnf"]
+default_font = ExtResource("2_ekxnf")
+default_font_size = 50
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_l6cm7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(9.640335, 6.983504)
+color = Color(0, 0, 0.14509805, 0.4862745)
+
+[node name="Menu" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 131.0
+offset_top = 158.0
+offset_right = 256.0
+offset_bottom = 259.0
+theme = SubResource("Theme_bqqt6")
+
+[node name="StartButton" type="Button" parent="Menu"]
+layout_mode = 2
+text = "START THIS SHIT"
+
+[node name="CreditsButton" type="Button" parent="Menu"]
+layout_mode = 2
+text = "CREDITS"
+autowrap_mode = 2
+
+[node name="QuitButton" type="Button" parent="Menu"]
+layout_mode = 2
+text = "QUIT THIS SHIT"
+
+[node name="EyeRoll" type="AnimatedSprite2D" parent="."]
+position = Vector2(198, 95)
+scale = Vector2(3.4777603, 3.4777603)
+sprite_frames = SubResource("SpriteFrames_1ajci")
+animation = &"eyeroll"
+autoplay = "eyeroll"
+frame_progress = 0.5290226
+
+[node name="Title" type="Label" parent="."]
+layout_direction = 1
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 74.0
+offset_right = 331.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_ekxnf")
+text = "MIRRORFIXER"
+horizontal_alignment = 1
+vertical_alignment = 1

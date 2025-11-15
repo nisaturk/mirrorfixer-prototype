@@ -2,6 +2,8 @@ extends CanvasLayer
 @onready var animation_player = $AnimationPlayer
 
 const SCENES = {
+	"MAIN_MENU": "res://scenes/main_menu.tscn",
+	"CREDITS": "res://scenes/credits.tscn",
 	"BASEMENT": "res://scenes/basement.tscn",
 	"LOBBY": "res://scenes/lobby.tscn",
 	"FLOOR_2": "res://scenes/floor.tscn",

@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://qamxhkw3yb6l"]
+
+[ext_resource type="Script" uid="uid://bl7evy4a132sr" path="res://scripts/credits.gd" id="1_0bpdh"]
+[ext_resource type="Theme" uid="uid://c65evhko208w4" path="res://assets/ui/themes/main_menu.tres" id="2_0ctdu"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="2_2ckv8"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0bpdh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(9.640335, 6.983504)
+color = Color(0, 0, 0.14509805, 0.4862745)
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 217.0
+offset_right = 248.0
+offset_bottom = 248.0
+theme = ExtResource("2_0ctdu")
+text = "GO BACK TO THE SHIT"
+
+[node name="Credits" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 35.0
+offset_top = 41.0
+offset_right = 522.00494
+offset_bottom = 752.2947
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5811029, 0.1855771)
+theme_override_colors/font_color = Color(0.66034716, 0.29742402, 0.40742055, 1)
+theme_override_fonts/font = ExtResource("2_2ckv8")
+theme_override_font_sizes/font_size = 75
+text = "Thanks to my depression, and my depressed friends (specifically you, Maxime) for making it possible to create this abomination."
+horizontal_alignment = 1
+autowrap_mode = 2
