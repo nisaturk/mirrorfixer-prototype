@@ -63,23 +63,19 @@ func process_node(id: String):
 		else: 
 			process_node(node_data.get("on_false", "end"))
 
-# takes a starting ID and the node that triggered the dialogue.
 func start_dialogue(start_id: String, caller):
-	var portrait_key = caller.get("portrait_id")
-	if portrait_key and portrait_map.has(portrait_key):
-		portrait_texture.texture = load(portrait_map[portrait_key])
-		portrait_box.show()
-	else:
-		portrait_box.hide()
 	if start_id.is_empty():
 		return
 		
 	current_caller = caller
 	visible = true
 	
-	#print("caller is: ", caller.name) # debugging purpose
-	
-	if caller and portrait_map.has(caller.name):
+	var portrait_key = caller.get("portrait_id")
+
+	if portrait_key and portrait_map.has(portrait_key):
+		portrait_texture.texture = load(portrait_map[portrait_key])
+		portrait_box.show()
+	elif caller and portrait_map.has(caller.name):
 		portrait_texture.texture = load(portrait_map[caller.name])
 		portrait_box.show()
 	else:

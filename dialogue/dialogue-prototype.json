@@ -293,7 +293,7 @@
   "maxime_shard": {
 	"type": "line",
 	"text": "I know that... You need to collect all the shards.",
-	"next_id": "maxime_shard_1"
+	"next_id": "notclueless"
   },
   "ninh_greet": {
 	"type": "line",
