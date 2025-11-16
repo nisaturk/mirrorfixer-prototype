@@ -12,6 +12,8 @@ var nearby_interactables: Array[Area2D] = []
 var current_best_interactable: Area2D = null
 
 func _physics_process(delta: float) -> void:
+	if GlobalState.has_played_getup == false:
+		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -44,6 +46,9 @@ func _ready():
 	$InteractionDetector.area_entered.connect(_on_detector_area_entered)
 	$InteractionDetector.area_exited.connect(_on_detector_area_exited)
 	DialogueUI.dialogue_cancelled.connect(_on_dialogue_ended)
+	
+	if GlobalState.has_played_getup == false:
+		_start_wakeup_sequence()
 
 func _on_detector_area_entered(area):
 	if not nearby_interactables.has(area):
@@ -89,3 +94,14 @@ func _input(event):
 
 func _on_dialogue_ended(_caller_node):
 	_update_interaction_focus()
+
+func _start_wakeup_sequence() -> void:
+	set_physics_process(false) # DONT MOVE !!
+	animated_sprite.play("getup") # and get up pls
+	await animated_sprite.animation_finished
+	animated_sprite.play("idle")
+
+	DialogueUI.start_dialogue("wake_up", self)
+	await DialogueUI.dialogue_cancelled
+	GlobalState.has_played_getup = true
+	set_physics_process(true)

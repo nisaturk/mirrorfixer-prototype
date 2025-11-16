@@ -1,4 +1,20 @@
 {
+  "wake_up": {
+	"type": "line",
+	"text": "Ugh... my head. Where am I?",
+	"next_id": "wake_up_2"
+  },
+  "wake_up_2": {
+	"type": "line",
+	"text": "It's... smells like mildew.",
+	"next_id": "wake_up_3"
+  },
+  "wake_up_3": {
+	"type": "line",
+	"text": "Don't tell me I ended up in KY Sowling's house.",
+	"next_id": "end"
+  },
+
   "mirror": {
 	"type": "line",
 	"text": "Ah, what a nice mirror.",

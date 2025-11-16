@@ -4,6 +4,7 @@ signal dialogue_cancelled(caller_node)
 signal action_triggered(action_name, caller_node)
 
 const portrait_map = { # new portrait library hehe
+	"Player": "res://assets/ui/portraits/thep-idle.png",
 	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
 	"MissManager": "res://assets/ui/portraits/missmanager-idle.png",
 	"Maxime": "res://assets/ui/portraits/maxime.png",
@@ -25,6 +26,7 @@ func process_node(id: String):
 		button.queue_free()
 	
 	if id == "end":
+		emit_signal("dialogue_cancelled", current_caller)
 		hide_box()
 		return
 	

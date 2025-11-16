@@ -23,12 +23,13 @@ color = Color(0, 0, 0.14509805, 0.4862745)
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 142.0
-offset_top = 217.0
-offset_right = 248.0
-offset_bottom = 248.0
+offset_left = 122.0
+offset_top = 212.0
+offset_right = 275.0
+offset_bottom = 243.0
 theme = ExtResource("2_0ctdu")
 text = "GO BACK TO THE SHIT"
+autowrap_mode = 2
 
 [node name="Credits" type="Label" parent="."]
 custom_minimum_size = Vector2(100, 50)
