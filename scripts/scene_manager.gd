@@ -18,15 +18,17 @@ func fade_out():
 	animation_player.play("fade_from_black")
 	await animation_player.animation_finished
 
-func change_scene(scene_key: String):
+func change_scene(scene_key: String, spawn_point: String = ""):
 	if not SCENES.has(scene_key):
 		print("scene key not found: ", scene_key)
 		return
 		
-	var scene_path = SCENES[scene_key]
-	await fade_in() 
-	var error = get_tree().change_scene_to_file(scene_path)
+	GlobalState.next_spawn_point = spawn_point # set the spawn point
 	
+	var scene_path = SCENES[scene_key]
+	await fade_in()
+	
+	var error = get_tree().change_scene_to_file(scene_path)
 	if error != OK:
 		print("could not change scene to: ", scene_path)
 	await fade_out()

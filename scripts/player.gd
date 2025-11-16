@@ -40,7 +40,16 @@ func _physics_process(delta: float) -> void:
 
 func _ready():
 	ActionManager.register_player(self)
+	#await get_tree().process_frame
 	
+	if GlobalState.next_spawn_point != "":
+		var spawn_node = get_owner().find_child(GlobalState.next_spawn_point, true, false)
+		if spawn_node:
+			self.global_position = spawn_node.global_position
+		else:
+			print("couldnt find spawn point", GlobalState.next_spawn_point, "'")
+		GlobalState.next_spawn_point = ""
+		
 	$InteractionDetector.area_entered.connect(_on_detector_area_entered)
 	$InteractionDetector.area_exited.connect(_on_detector_area_exited)
 	DialogueUI.dialogue_cancelled.connect(_on_dialogue_ended)

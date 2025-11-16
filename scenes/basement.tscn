@@ -4172,9 +4172,12 @@ dialogue_id = "basementstairs"
 
 [node name="Player" parent="." instance=ExtResource("11_6lwow")]
 process_mode = 3
-position = Vector2(-374, 54)
+position = Vector2(206, 54)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-30, -54)
 offset = Vector2(0, 22)
 zoom = Vector2(1.5, 1.5)
+
+[node name="StairsSpawn" type="Marker2D" parent="."]
+position = Vector2(313, 21)

@@ -3546,6 +3546,14 @@ z_index = 6
 tile_map_data = PackedByteArray("AADz/wEAAAADAAcAAADz/wIAAAADAAgAAAA=")
 tile_set = SubResource("TileSet_rysoc")
 
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="ElevatorSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-379, 35)
+
+[node name="LobbyStairs" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(346, 29)
+
 [node name="MissManager" parent="." instance=ExtResource("7_iulku")]
 visible = false
 position = Vector2(-118, 16)
@@ -3579,7 +3587,7 @@ position = Vector2(119, 54)
 dialogue_id = "sofa"
 
 [node name="IAstairs" parent="IAAreas" instance=ExtResource("9_0jb4q")]
-position = Vector2(345, 30)
+position = Vector2(372, 37)
 dialogue_id = "lobbystairs"
 
 [node name="IOshard" parent="IAAreas" instance=ExtResource("9_0jb4q")]
@@ -3602,7 +3610,7 @@ scale = Vector2(1.3243045, 1.15077)
 
 [node name="Player" parent="." instance=ExtResource("13_h1rib")]
 process_mode = 3
-position = Vector2(238, 53)
+position = Vector2(120, 52)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-30, -54)

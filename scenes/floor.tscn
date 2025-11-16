@@ -3988,3 +3988,11 @@ position = Vector2(-374, 54)
 position = Vector2(-30, -54)
 offset = Vector2(0, 22)
 zoom = Vector2(1.5, 1.5)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="ElevatorSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-376, 39)
+
+[node name="FlatSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(160, 40)

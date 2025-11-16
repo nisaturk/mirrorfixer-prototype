@@ -4418,3 +4418,6 @@ zoom = Vector2(1.5, 1.5)
 [node name="Ninh" parent="." instance=ExtResource("12_ehww1")]
 position = Vector2(-404, 6.9999995)
 scale = Vector2(0.7, 0.7)
+
+[node name="FlatSpawn" type="Marker2D" parent="."]
+position = Vector2(160, 38)
