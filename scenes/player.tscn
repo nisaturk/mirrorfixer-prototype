@@ -250,7 +250,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 
 [node name="InteractionDetector" type="Area2D" parent="."]
@@ -285,3 +285,7 @@ theme_override_font_sizes/font_size = 21
 text = "[click to interact]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -41)
+zoom = Vector2(1.5, 1.5)

@@ -3517,6 +3517,12 @@ size = Vector2(71.5, 198.5)
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_q6qq2")
 
+[node name="ElevatorSpawn" type="Marker2D" parent="."]
+position = Vector2(-375, 20)
+
+[node name="StairsSpawn" type="Marker2D" parent="."]
+position = Vector2(-375, 20)
+
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="floorwall" type="TileMapLayer" parent="TileMap"]
@@ -3545,14 +3551,6 @@ y_sort_origin = 5
 z_index = 6
 tile_map_data = PackedByteArray("AADz/wEAAAADAAcAAADz/wIAAAADAAgAAAA=")
 tile_set = SubResource("TileSet_rysoc")
-
-[node name="SpawnPoints" type="Node" parent="."]
-
-[node name="ElevatorSpawn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-379, 35)
-
-[node name="LobbyStairs" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(346, 29)
 
 [node name="MissManager" parent="." instance=ExtResource("7_iulku")]
 visible = false
@@ -3609,13 +3607,7 @@ position = Vector2(-376, -18)
 scale = Vector2(1.3243045, 1.15077)
 
 [node name="Player" parent="." instance=ExtResource("13_h1rib")]
-process_mode = 3
-position = Vector2(120, 52)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-30, -54)
-offset = Vector2(0, 22)
-zoom = Vector2(1.5, 1.5)
+position = Vector2(317, 58)
 
 [connection signal="appeared" from="MissManager" to="Bell" method="deactivate"]
 [connection signal="bell_rung" from="Bell" to="MissManager" method="_on_bell_bell_rung"]

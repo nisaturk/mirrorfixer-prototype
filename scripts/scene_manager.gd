@@ -1,5 +1,8 @@
 extends CanvasLayer
+
 @onready var animation_player = $AnimationPlayer
+
+signal scene_ready
 
 const SCENES = {
 	"MAIN_MENU": "res://scenes/main_menu.tscn",
@@ -32,3 +35,5 @@ func change_scene(scene_key: String, spawn_point: String = ""):
 	if error != OK:
 		print("could not change scene to: ", scene_path)
 	await fade_out()
+	
+	emit_signal("scene_ready")

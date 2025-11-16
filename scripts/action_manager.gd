@@ -56,18 +56,20 @@ func _action_go_to_floor_1(_caller_node):
 	SceneManager.change_scene("LOBBY", "ElevatorSpawn")
 
 func _action_go_to_flat_1(_caller_node):
-	DialogueData.just_used_elevator = true
+	DialogueData.just_used_elevator = false
 	SceneManager.change_scene("FLAT_1", "FlatSpawn")
 		
 func _action_go_out(_caller_node):
-	DialogueData.just_used_elevator = true 
+	DialogueData.just_used_elevator = false 
 	SceneManager.change_scene("FLOOR_2", "FlatSpawn")
 
 func _action_go_upstairs(_caller_node):
-	print("go upstairs action was called?")
-	SceneManager.change_scene("LOBBY", "LobbyStairs")
+	#print("go upstairs action was called?")
+	DialogueData.just_used_elevator = false
+	SceneManager.change_scene("LOBBY", "StairsSpawn")
 
 func _action_go_downstairs(_caller_node):
+	DialogueData.just_used_elevator = false
 	SceneManager.change_scene("BASEMENT", "StairsSpawn")
 	
 # run when player emits signal interacted

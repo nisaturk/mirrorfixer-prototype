@@ -4116,6 +4116,9 @@ size = Vector2(71.5, 198.5)
 [node name="Basement" type="Node2D"]
 script = SubResource("GDScript_2efs0")
 
+[node name="StairsSpawn" type="Marker2D" parent="."]
+position = Vector2(313, 21)
+
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="floorwall" type="TileMapLayer" parent="TileMap"]
@@ -4178,6 +4181,3 @@ position = Vector2(206, 54)
 position = Vector2(-30, -54)
 offset = Vector2(0, 22)
 zoom = Vector2(1.5, 1.5)
-
-[node name="StairsSpawn" type="Marker2D" parent="."]
-position = Vector2(313, 21)

@@ -40,10 +40,17 @@ func _physics_process(delta: float) -> void:
 
 func _ready():
 	ActionManager.register_player(self)
+	
+	SceneManager.scene_ready.connect(_on_scene_ready)
 	#await get_tree().process_frame
+	#await get_tree().process_frame I HATE IT
+	#await get_tree().process_frame I HATE ITTT
+	#await get_tree().process_frame
+	#await get_tree().process_frame AAAAAAAAAAAAAAAAAA
 	
 	if GlobalState.next_spawn_point != "":
-		var spawn_node = get_owner().find_child(GlobalState.next_spawn_point, true, false)
+		var current_scene = get_tree().current_scene
+		var spawn_node = current_scene.find_child(GlobalState.next_spawn_point, true, false)
 		if spawn_node:
 			self.global_position = spawn_node.global_position
 		else:
@@ -97,3 +104,17 @@ func _input(event):
 
 func _on_dialogue_ended(_caller_node):
 	_update_interaction_focus()
+
+func _on_scene_ready():
+	if GlobalState.next_spawn_point == "":
+		return
+
+	var scene = get_tree().current_scene
+	var spawn = scene.find_node(GlobalState.next_spawn_point, true, false)
+
+	if spawn:
+		global_position = spawn.global_position
+	else:
+		print("Spawn not found:", GlobalState.next_spawn_point)
+
+	GlobalState.next_spawn_point = ""
