@@ -113,6 +113,7 @@ position = Vector2(-24, -22)
 scale = Vector2(1.0036105, 1.0074025)
 dialogue_id = "miss_manager_greet"
 prioritylevel = 3
+hint_text = "talk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 12)

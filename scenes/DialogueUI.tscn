@@ -37,6 +37,7 @@ Button/styles/pressed = SubResource("StyleBoxEmpty_nmtye")
 [sub_resource type="Theme" id="Theme_7de8d"]
 
 [node name="DialogueUI" type="CanvasLayer"]
+process_mode = 1
 script = ExtResource("1_rc1id")
 
 [node name="MainLayout" type="HBoxContainer" parent="."]

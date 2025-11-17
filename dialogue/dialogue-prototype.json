@@ -1,17 +1,49 @@
 {
-  "wake_up": {
+  "IMbasement1_1": {
 	"type": "line",
-	"text": "Ugh... my head. Where am I?",
-	"next_id": "wake_up_2"
+	"text": "eUGH... my head. Where am I?",
+	"next_id": "IMbasement1_1_2"
   },
-  "wake_up_2": {
+  "IMbasement1_1_2": {
 	"type": "line",
-	"text": "It's... smells like mildew.",
-	"next_id": "wake_up_3"
+	"text": "Oh DON'T tell me i am a video game character.",
+	"next_id": "IMbasement1_1_3"
   },
-  "wake_up_3": {
+  "IMbasement1_1_3": {
 	"type": "line",
-	"text": "Don't tell me I ended up in KY Sowling's house.",
+	"text": "now i will be internalized by whoever is playing me.",
+	"next_id": "IMbasement1_1_4"
+  },
+  "IMbasement1_1_4": {
+	"type": "line",
+	"text": "great. awesome.",
+	"next_id": "end"
+  },
+
+  "IMbasement1_2": {
+	"type": "line",
+	"text": "why can't i remember anything?",
+	"next_id": "IMbasement1_2_2"
+  },
+  "IMbasement1_2_2": {
+	"type": "line",
+	"text": "this isnt THE disco is it? am i... him?",
+	"next_id": "IMbasement1_2_3"
+  },
+  "IMbasement1_2_3": {
+	"type": "line",
+	"text": "i need to look into the mirror. i hope i dont see the expression.",
+	"next_id": "end"
+  },
+
+  "IMbasement1_3": {
+	"type": "line",
+	"text": "it kinda smells like mildrew",
+	"next_id": "IMbasement1_3_2"
+  },
+  "IMbasement1_3_2": {
+	"type": "line",
+	"text": "don't tell me I ended up in KY Sowling's house.",
 	"next_id": "end"
   },
 
@@ -303,6 +335,11 @@
   "ninh_greet_2": {
 	"type": "line",
 	"text": "Are you OK? You look lost a bit...",
+	"next_id": "end"
+  },
+  "janitor": {
+	"type": "line",
+	"text": "stop bothering me",
 	"next_id": "end"
   }
 }

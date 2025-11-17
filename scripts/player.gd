@@ -118,3 +118,10 @@ func _on_scene_ready():
 		print("Spawn not found:", GlobalState.next_spawn_point)
 
 	GlobalState.next_spawn_point = ""
+
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		if get_tree().paused:
+			PauseMenu._on_continue_button_pressed()
+		else:
+			PauseMenu.show_menu()

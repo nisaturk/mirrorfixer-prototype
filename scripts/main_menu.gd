@@ -5,15 +5,18 @@ extends Control
 @onready var quit_button = $Menu/QuitButton
 
 func _ready():
-	start_button.pressed.connect(_on_start_pressed)
-	credits_button.pressed.connect(_on_credits_pressed)
-	quit_button.pressed.connect(_on_quit_pressed)
+	start_button.pressed.connect(_on_start_button_pressed)
+	credits_button.pressed.connect(_on_credits_button_pressed)
+	quit_button.pressed.connect(_on_quit_button_pressed)
 
-func _on_start_pressed():
+func _on_continue_button_pressed() -> void:
+	print("no load yet")
+
+func _on_start_button_pressed() -> void:
 	SceneManager.change_scene("BASEMENT")
 
-func _on_credits_pressed():
+func _on_credits_button_pressed() -> void:
 	SceneManager.change_scene("CREDITS")
 
-func _on_quit_pressed():
+func _on_quit_button_pressed() -> void:
 	get_tree().quit()

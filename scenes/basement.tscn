@@ -4158,6 +4158,7 @@ position = Vector2(435, -47)
 shape = SubResource("RectangleShape2D_ir15t")
 
 [node name="GameUI" parent="." instance=ExtResource("8_nvrgk")]
+visible = false
 
 [node name="IAAreas" type="Node2D" parent="."]
 position = Vector2(5, -35)
@@ -4167,17 +4168,36 @@ position = Vector2(-346, -14)
 scale = Vector2(0.83747596, 0.9925391)
 dialogue_id = "lock"
 prioritylevel = 1
+hint_text = "open"
 
 [node name="IAstairs" parent="IAAreas" instance=ExtResource("9_5j8jl")]
 position = Vector2(318, 33)
 scale = Vector2(0.83747596, 0.9925391)
 dialogue_id = "basementstairs"
+hint_text = "go"
 
 [node name="Player" parent="." instance=ExtResource("11_6lwow")]
 process_mode = 3
-position = Vector2(206, 54)
+position = Vector2(-371, 45)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(-30, -54)
+position = Vector2(-8, -49)
 offset = Vector2(0, 22)
 zoom = Vector2(1.5, 1.5)
+
+[node name="InnerMonologues" type="Node" parent="."]
+
+[node name="InteractableObject" parent="InnerMonologues" instance=ExtResource("9_5j8jl")]
+position = Vector2(-265, 4)
+dialogue_id = "IMbasement1_1"
+hint_text = "think"
+
+[node name="InteractableObject2" parent="InnerMonologues" instance=ExtResource("9_5j8jl")]
+position = Vector2(-154, -29)
+dialogue_id = "IMbasement1_2"
+hint_text = "tHiNk"
+
+[node name="InteractableObject3" parent="InnerMonologues" instance=ExtResource("9_5j8jl")]
+position = Vector2(-55, 14)
+dialogue_id = "IMbasement1_3"
+hint_text = "THINK"

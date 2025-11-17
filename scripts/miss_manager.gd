@@ -44,3 +44,4 @@ func _on_bell_bell_rung(count: int) -> void:
 		
 func allow_pass():
 	$CollisionShape2D.disabled = true
+	GlobalState.spoke_to_miss_manager = true

@@ -1,0 +1,103 @@
+[gd_scene load_steps=15 format=3 uid="uid://cloj7ddvh6yqt"]
+
+[ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="1_0l40l"]
+[ext_resource type="Texture2D" uid="uid://c0hm8d43f7t2a" path="res://assets/sprites/characters/_AttackCombo.png" id="3_bkojd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0l40l"]
+size = Vector2(49, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wvpv"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(0, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l40l"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(120, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rcxs"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(240, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkojd"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(360, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f27pe"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(480, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f3df"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(600, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ua0x"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(720, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyhea"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(840, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gbpie"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(960, 0, 120, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bpo12"]
+atlas = ExtResource("3_bkojd")
+region = Rect2(1080, 0, 120, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n4ems"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wvpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l40l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rcxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkojd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f27pe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f3df")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ua0x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyhea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gbpie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bpo12")
+}],
+"loop": true,
+"name": &"sweep",
+"speed": 5.0
+}]
+
+[node name="Janitor" type="CharacterBody2D"]
+
+[node name="InteractableObject" parent="." instance=ExtResource("1_0l40l")]
+position = Vector2(-22, -13)
+dialogue_id = "janitor"
+prioritylevel = 4
+hint_text = "talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 14)
+shape = SubResource("RectangleShape2D_0l40l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_n4ems")
+animation = &"sweep"
+autoplay = "sweep"
+frame_progress = 0.1561105

@@ -3517,12 +3517,6 @@ size = Vector2(71.5, 198.5)
 [node name="Lobby" type="Node2D"]
 script = ExtResource("1_q6qq2")
 
-[node name="ElevatorSpawn" type="Marker2D" parent="."]
-position = Vector2(-375, 20)
-
-[node name="StairsSpawn" type="Marker2D" parent="."]
-position = Vector2(-375, 20)
-
 [node name="TileMap" type="Node2D" parent="."]
 
 [node name="floorwall" type="TileMapLayer" parent="TileMap"]
@@ -3579,20 +3573,24 @@ position = Vector2(5, -35)
 [node name="IAmirror" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(30, -2)
 scale = Vector2(0.84466755, 0.9447139)
+hint_text = "look"
 
 [node name="IAsofa" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(119, 54)
 dialogue_id = "sofa"
+hint_text = "touch"
 
 [node name="IAstairs" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(372, 37)
 dialogue_id = "lobbystairs"
+hint_text = "go"
 
 [node name="IOshard" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(6, 45)
 scale = Vector2(0.35097343, 0.2840377)
 dialogue_id = "shard"
 prioritylevel = 1
+hint_text = "take"
 
 [node name="shard" parent="IAAreas/IOshard" instance=ExtResource("10_vwf6o")]
 position = Vector2(25.642967, 28.165277)
@@ -3608,6 +3606,18 @@ scale = Vector2(1.3243045, 1.15077)
 
 [node name="Player" parent="." instance=ExtResource("13_h1rib")]
 position = Vector2(317, 58)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-17, -54)
+zoom = Vector2(1.5, 1.5)
+
+[node name="SpawnPoints" type="Node" parent="."]
+
+[node name="ElevatorSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-375, 20)
+
+[node name="StairsSpawn" type="Marker2D" parent="SpawnPoints"]
+position = Vector2(-375, 20)
 
 [connection signal="appeared" from="MissManager" to="Bell" method="deactivate"]
 [connection signal="bell_rung" from="Bell" to="MissManager" method="_on_bell_bell_rung"]

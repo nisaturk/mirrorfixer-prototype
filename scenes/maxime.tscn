@@ -207,6 +207,7 @@ animations = [{
 position = Vector2(-32, -23)
 scale = Vector2(1.2667676, 1.6269584)
 dialogue_id = "maxime_greet"
+hint_text = "talk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 32)

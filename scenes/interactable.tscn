@@ -26,14 +26,13 @@ position = Vector2(24.375002, 27.09375)
 scale = Vector2(49.249996, 53.8125)
 texture = SubResource("PlaceholderTexture2D_56v82")
 
-[node name="InteractionHint" type="Label" parent="."]
+[node name="HintLabel" type="Label" parent="."]
 visible = false
 offset_top = 5.0000005
 offset_right = 99.0
 offset_bottom = 28.0
 scale = Vector2(0.50204676, 0.50204676)
 theme_override_fonts/font = ExtResource("2_ij5l6")
-text = "[interact]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

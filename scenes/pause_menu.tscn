@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=3 uid="uid://d33v11fclh5vy"]
+[gd_scene load_steps=21 format=3 uid="uid://pig40lyx14xc"]
 
-[ext_resource type="Script" uid="uid://0gsxspcq2xie" path="res://scripts/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="2_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://but67maan54hd" path="res://assets/sprites/uistuff/eyeroll.png" id="3_bqqt6"]
+[ext_resource type="Script" uid="uid://dgrdn4vjtuxa2" path="res://scripts/pause_menu.gd" id="1_kukqi"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="2_5d2l8"]
+[ext_resource type="Texture2D" uid="uid://but67maan54hd" path="res://assets/sprites/uistuff/eyeroll.png" id="3_7l7mv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ekxnf"]
 
@@ -16,7 +16,7 @@ bg_color = Color(0.019607844, 0.09019608, 0.23921569, 0.65882355)
 bg_color = Color(0.4509804, 0.09019608, 0.23921569, 1)
 
 [sub_resource type="Theme" id="Theme_bqqt6"]
-default_font = ExtResource("2_ekxnf")
+default_font = ExtResource("2_5d2l8")
 Button/colors/font_color = Color(0.4509804, 0.09019608, 0.23921569, 1)
 Button/colors/font_focus_color = Color(0.21176471, 0.023529412, 0.09803922, 1)
 Button/colors/font_hover_color = Color(0.31757054, 0.05117183, 0.16143104, 1)
@@ -25,50 +25,50 @@ Button/colors/font_outline_color = Color(0.49439967, 0.46934187, 0.44034812, 1)
 Button/colors/font_pressed_color = Color(0.019607844, 0.09019608, 0.23921569, 1)
 Button/constants/align_to_largest_stylebox = 1
 Button/constants/outline_size = 1
-Button/fonts/font = ExtResource("2_ekxnf")
+Button/fonts/font = ExtResource("2_5d2l8")
 Button/styles/focus = SubResource("StyleBoxEmpty_ekxnf")
 Button/styles/hover = SubResource("StyleBoxFlat_bqqt6")
 Button/styles/normal = SubResource("StyleBoxFlat_ekxnf")
 Button/styles/pressed = SubResource("StyleBoxFlat_wu84c")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wu84c"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ln24"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtw2f"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oa1go"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(256, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jk1qb"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(384, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lgwnu"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(512, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcqid"]
-atlas = ExtResource("3_bqqt6")
+atlas = ExtResource("3_7l7mv")
 region = Rect2(576, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1ajci"]
@@ -110,28 +110,26 @@ animations = [{
 }]
 
 [sub_resource type="Theme" id="Theme_ekxnf"]
-default_font = ExtResource("2_ekxnf")
+default_font = ExtResource("2_5d2l8")
 default_font_size = 50
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("1_l6cm7")
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_kukqi")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
+[node name="ColorRect" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -27.000002
+offset_right = -22.0
+offset_bottom = -27.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(9.640335, 6.983504)
-color = Color(0, 0, 0.14509805, 0.4862745)
+scale = Vector2(1.200476, 1.2396872)
 
 [node name="Menu" type="VBoxContainer" parent="."]
-layout_mode = 1
 offset_left = 131.0
 offset_top = 158.0
 offset_right = 256.0
@@ -142,14 +140,9 @@ theme = SubResource("Theme_bqqt6")
 layout_mode = 2
 text = "CONTINUE THIS SHIT"
 
-[node name="StartButton" type="Button" parent="Menu"]
+[node name="SaveButton" type="Button" parent="Menu"]
 layout_mode = 2
-text = "START THIS SHIT"
-
-[node name="CreditsButton" type="Button" parent="Menu"]
-layout_mode = 2
-text = "CREDITS"
-autowrap_mode = 2
+text = "SAVE THIS SHIT"
 
 [node name="QuitButton" type="Button" parent="Menu"]
 layout_mode = 2
@@ -165,15 +158,14 @@ frame_progress = 0.5290226
 
 [node name="Title" type="Label" parent="."]
 layout_direction = 1
-layout_mode = 1
 anchors_preset = 13
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 31.0
-offset_top = 74.0
-offset_right = 331.0
-offset_bottom = 79.0
+offset_left = -139.0
+offset_top = -39.0
+offset_right = 161.0
+offset_bottom = -34.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_ekxnf")
@@ -188,6 +180,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="pressed" from="Menu/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="Menu/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="Menu/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Menu/SaveButton" to="." method="_on_save_button_pressed"]
 [connection signal="pressed" from="Menu/QuitButton" to="." method="_on_quit_button_pressed"]

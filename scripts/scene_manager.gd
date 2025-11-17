@@ -26,7 +26,13 @@ func change_scene(scene_key: String, spawn_point: String = ""):
 		print("scene key not found: ", scene_key)
 		return
 		
-	GlobalState.next_spawn_point = spawn_point # set the spawn point
+	get_tree().paused = false
+	if get_tree().root.has_node("DialogueUI"):
+		DialogueUI.hide()
+	if get_tree().root.has_node("PauseMenu"):
+		PauseMenu.hide()
+	
+	GlobalState.next_spawn_point = spawn_point
 	
 	var scene_path = SCENES[scene_key]
 	await fade_in()
