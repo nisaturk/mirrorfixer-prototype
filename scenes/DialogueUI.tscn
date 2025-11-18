@@ -1,8 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://dttu5x0kixbi6"]
+[gd_scene load_steps=12 format=3 uid="uid://dttu5x0kixbi6"]
 
 [ext_resource type="Script" uid="uid://b2htyd0eu21ua" path="res://scripts/DialogueUI.gd" id="1_rc1id"]
-[ext_resource type="Texture2D" uid="uid://dpl3hp1goeo7k" path="res://assets/ui/dialogue_box_texture.tres" id="2_rmr67"]
+[ext_resource type="Texture2D" uid="uid://c5a257cnpafd8" path="res://assets/ui/Border Collection 1.png" id="2_rmr67"]
 [ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="3_7de8d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmr67"]
+atlas = ExtResource("2_rmr67")
+region = Rect2(224, 64, 32, 32)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmr67"]
 
@@ -68,7 +72,8 @@ stretch_mode = 5
 custom_minimum_size = Vector2(0, 74)
 layout_mode = 2
 size_flags_horizontal = 3
-texture = ExtResource("2_rmr67")
+texture = SubResource("AtlasTexture_rmr67")
+region_rect = Rect2(0, 0, 32, 32)
 patch_margin_left = 4
 patch_margin_top = 5
 patch_margin_right = 12

@@ -1,5 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://de1vvtwklx3x"]
+[gd_scene load_steps=33 format=3 uid="uid://de1vvtwklx3x"]
 
+[ext_resource type="Script" uid="uid://c30imjqdhfria" path="res://scripts/maxime.gd" id="1_7ki3r"]
 [ext_resource type="Texture2D" uid="uid://btg03daxhox5r" path="res://assets/sprites/characters/maxime/Idle_2.png" id="1_jhil2"]
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="1_o83ev"]
 [ext_resource type="Texture2D" uid="uid://dff451aihkjge" path="res://assets/sprites/characters/maxime/Idle.png" id="2_8s0jh"]
@@ -202,6 +203,7 @@ animations = [{
 }]
 
 [node name="Maxime" type="CharacterBody2D"]
+script = ExtResource("1_7ki3r")
 
 [node name="InteractableObject" parent="." instance=ExtResource("1_o83ev")]
 position = Vector2(-32, -23)
@@ -217,4 +219,5 @@ shape = SubResource("RectangleShape2D_8s0jh")
 sprite_frames = SubResource("SpriteFrames_wy5c7")
 animation = &"drink"
 autoplay = "idle"
+frame_progress = 0.08327072
 flip_h = true

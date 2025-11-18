@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var start_pos := Vector2(-300, 0) # where she starts (offscreen)
 @export var target_pos := Vector2(-118, 16) # where she should stop
 @export var speed := 60.0
+@onready var interactable: Area2D = $Interactable # fixing the invisible talker bug with this
 
 signal appeared
 
@@ -12,10 +13,14 @@ var active := false
 func _ready():
 	position = start_pos
 	visible = false
+	if interactable:
+		interactable.monitorable = false
 
 func appear():
 	visible = true
 	active = true
+	if interactable:
+		interactable.monitorable = true
 	animated_sprite.play("idle")
 	emit_signal("appeared")
 
