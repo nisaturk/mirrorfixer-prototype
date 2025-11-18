@@ -5,9 +5,7 @@ extends Control
 @onready var quit_button = $Menu/QuitButton
 
 func _ready():
-	start_button.pressed.connect(_on_start_button_pressed)
-	credits_button.pressed.connect(_on_credits_button_pressed)
-	quit_button.pressed.connect(_on_quit_button_pressed)
+	pass
 
 func _on_continue_button_pressed() -> void:
 	print("no load yet")
