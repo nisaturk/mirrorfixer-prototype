@@ -64,7 +64,6 @@ func _action_go_out(_caller_node):
 	SceneManager.change_scene("FLOOR_2", "FlatSpawn")
 
 func _action_go_upstairs(_caller_node):
-	#print("go upstairs action was called?")
 	DialogueData.just_used_elevator = false
 	SceneManager.change_scene("LOBBY", "StairsSpawn")
 

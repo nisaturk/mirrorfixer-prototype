@@ -40,13 +40,8 @@ func _physics_process(delta: float) -> void:
 
 func _ready():
 	ActionManager.register_player(self)
-	
+	# instead of await, we wait till it's fully ready
 	SceneManager.scene_ready.connect(_on_scene_ready)
-	#await get_tree().process_frame
-	#await get_tree().process_frame I HATE IT
-	#await get_tree().process_frame I HATE ITTT
-	#await get_tree().process_frame
-	#await get_tree().process_frame AAAAAAAAAAAAAAAAAA
 	
 	if GlobalState.next_spawn_point != "":
 		var current_scene = get_tree().current_scene
@@ -76,13 +71,21 @@ func _on_detector_area_exited(area):
 # updated the brain-y logic that will decide (lol) which hint to show
 func _update_interaction_focus():
 	var best_interactable = null
+	var valid_interactables = []
 	
-	if not nearby_interactables.is_empty():
-		best_interactable = nearby_interactables[0]
-		if nearby_interactables.size() > 1:
-			for i in range(1, nearby_interactables.size()):
-				if nearby_interactables[i].prioritylevel > best_interactable.prioritylevel:
-					best_interactable = nearby_interactables[i]
+	for area in nearby_interactables:
+		if area.has_method("can_interact"):
+			if area.can_interact():
+				valid_interactables.append(area)
+		else:
+			valid_interactables.append(area)
+	
+	if not valid_interactables.is_empty():
+		best_interactable = valid_interactables[0]
+		if valid_interactables.size() > 1:
+			for i in range(1, valid_interactables.size()):
+				if valid_interactables[i].prioritylevel > best_interactable.prioritylevel:
+					best_interactable = valid_interactables[i]
 	
 	if best_interactable != current_best_interactable:
 		if current_best_interactable != null:
@@ -93,13 +96,22 @@ func _update_interaction_focus():
 		if current_best_interactable != null:
 			current_best_interactable.show_hint()
 
-func _input(event):
-	var is_ui_visible = DialogueUI.visible
+# merged input + unhandled input into one
+func _unhandled_input(event):
+	if event.is_action_pressed("pause"):
+		if get_tree().paused:
+			PauseMenu._on_continue_button_pressed()
+		else:
+			PauseMenu.show_menu()
+		return
 
+	if get_tree().paused:
+		return
+
+	var is_ui_visible = DialogueUI.visible
 	if current_best_interactable != null and event.is_action_pressed("interact") and not is_ui_visible:
 		get_viewport().set_input_as_handled()
 		emit_signal("interacted", current_best_interactable)
-		# hide the hint, dialogue is starting
 		current_best_interactable.hide_hint()
 
 func _on_dialogue_ended(_caller_node):
@@ -115,13 +127,6 @@ func _on_scene_ready():
 	if spawn:
 		global_position = spawn.global_position
 	else:
-		print("Spawn not found:", GlobalState.next_spawn_point)
+		print("spawn point not found:", GlobalState.next_spawn_point)
 
 	GlobalState.next_spawn_point = ""
-
-func _unhandled_input(event):
-	if event.is_action_pressed("pause"):
-		if get_tree().paused:
-			PauseMenu._on_continue_button_pressed()
-		else:
-			PauseMenu.show_menu()

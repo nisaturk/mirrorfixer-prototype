@@ -27,7 +27,6 @@ func ring_bell():
 	if $AudioStreamPlayer2D.playing: # so the bell sounds wont overlap
 		$AudioStreamPlayer2D.stop()
 	$AudioStreamPlayer2D.play()
-
 	#print("BELLO rungO! Count:", ring_count)
 
 func _on_body_entered(body: Node2D) -> void:

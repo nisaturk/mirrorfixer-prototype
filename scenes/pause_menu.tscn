@@ -114,7 +114,7 @@ default_font = ExtResource("2_5d2l8")
 default_font_size = 50
 
 [node name="PauseMenu" type="CanvasLayer"]
-layer = 10
+layer = 14
 script = ExtResource("1_kukqi")
 
 [node name="ColorRect" type="Panel" parent="."]

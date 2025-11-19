@@ -5,6 +5,7 @@ signal action_triggered(action_name, caller_node)
 
 const portrait_map = { # new portrait library hehe
 	"Player": "res://assets/ui/portraits/thep-idle.png",
+	"InnerMonologues":"res://assets/ui/portraits/thep-idle.png",
 	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
 	"MissManager": "res://assets/ui/portraits/missmanager-idle.png",
 	"Maxime": "res://assets/ui/portraits/maxime.png",
@@ -17,6 +18,7 @@ const portrait_map = { # new portrait library hehe
 
 var current_caller = null
 var current_node_id: String = ""
+var current_start_id: String = ""
 
 func _ready():
 	hide_box()
@@ -26,6 +28,9 @@ func process_node(id: String):
 		button.queue_free()
 	
 	if id == "end":
+		if not GlobalState.finished_dialogues.has(current_start_id):
+			GlobalState.finished_dialogues.append(current_start_id)
+			print("dialogue is dooone: ", current_start_id)
 		emit_signal("dialogue_cancelled", current_caller)
 		hide_box()
 		return
@@ -66,12 +71,12 @@ func process_node(id: String):
 func start_dialogue(start_id: String, caller):
 	if start_id.is_empty():
 		return
-		
+	
+	current_start_id = start_id
 	current_caller = caller
 	visible = true
 	
 	var portrait_key = caller.get("portrait_id")
-
 	if portrait_key and portrait_map.has(portrait_key):
 		portrait_texture.texture = load(portrait_map[portrait_key])
 		portrait_box.show()

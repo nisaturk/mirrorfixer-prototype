@@ -4261,13 +4261,16 @@ zoom = Vector2(1.5, 1.5)
 position = Vector2(-265, 4)
 dialogue_id = "IMbasement1_1"
 hint_text = "think"
+single_use = true
 
 [node name="InteractableObject2" parent="InnerMonologues" instance=ExtResource("9_5j8jl")]
 position = Vector2(-154, -29)
 dialogue_id = "IMbasement1_2"
 hint_text = "tHiNk"
+single_use = true
 
 [node name="InteractableObject3" parent="InnerMonologues" instance=ExtResource("9_5j8jl")]
 position = Vector2(-55, 14)
 dialogue_id = "IMbasement1_3"
 hint_text = "THINK"
+single_use = true

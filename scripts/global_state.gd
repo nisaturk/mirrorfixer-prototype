@@ -5,6 +5,7 @@ var collected_shards: int = 0
 var spoke_to_miss_manager: bool = false
 var unlocked_floors: Array[String] = ["BASEMENT", "LOBBY"]
 var flat_1_puzzle_solved: bool = false
+var finished_dialogues: Array = []
 
 const SAVE_PATH = "user://savegame.json"
 
@@ -15,6 +16,7 @@ func save_game():
 		"collected_shards": collected_shards,
 		"unlocked_floors": unlocked_floors,
 		"flat_1_puzzle_solved": flat_1_puzzle_solved,
+		"finished_dialogues": finished_dialogues
 	}
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
