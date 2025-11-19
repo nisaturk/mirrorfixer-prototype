@@ -1,7 +1,6 @@
 extends Node
 
 var dialogue_data: Dictionary = {}
-var has_shard: bool = false
 var just_used_elevator: bool = false
 
 func _ready():
@@ -18,7 +17,6 @@ func _ready():
 	else:
 		print("ERROR: Could not parse dialogue.json")
 
-# function to get a dialogue node (object) for an ID
 func get_dialogue_node(id: String):
 	if dialogue_data.has(id):
 		return dialogue_data[id]

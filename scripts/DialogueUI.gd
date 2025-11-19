@@ -82,7 +82,6 @@ func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 	# failsafe for backwards compatibility
 	if (key_to_use == null or key_to_use == "") and caller.has_node("Interactable"):
 		key_to_use = caller.get_node("Interactable").portrait_id
-
 	if key_to_use and portrait_map.has(key_to_use):
 		portrait_texture.texture = load(portrait_map[key_to_use])
 		portrait_box.show()
@@ -91,7 +90,6 @@ func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 		portrait_box.show()
 	else:
 		portrait_box.hide()
-	
 	process_node(start_id)
 
 # called when a choice button is pressed
@@ -121,7 +119,6 @@ func _input(_event):
 	# choices are handled by the buttons above
 	if node_data["type"] == "line" and Input.is_action_just_pressed("interact"):
 		get_viewport().set_input_as_handled()
-		# get the next ID and process it
 		var next_id = node_data.get("next_id", "end")
 		process_node(next_id)
 

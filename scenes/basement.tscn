@@ -80,9 +80,10 @@ func _action_go_out(_caller_node):
 func _on_Player_interacted(interactable_node):
 	var object_id = interactable_node.dialogue_id
 	var caller = interactable_node.get_parent()
+	var portrait = interactable_node.portrait_id 
 	
 	if not object_id.is_empty():
-		DialogueUI.start_dialogue(object_id, caller)
+		DialogueUI.start_dialogue(object_id, caller, portrait)
 		
 func _action_go_upstairs(_caller_node):
 	SceneManager.change_scene(\"LOBBY\")

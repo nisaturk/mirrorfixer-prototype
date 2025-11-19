@@ -23,9 +23,9 @@ func save_game():
 	if file:
 		file.store_string(JSON.stringify(save_data))
 		file.close()
-		print("this shits saved!")
+		print("Game saved successfully.")
 	else:
-		print("ERROR: could not save this shit.")
+		print("ERROR: Could not save game.")
 
 func load_game():
 	if not FileAccess.file_exists(SAVE_PATH):
@@ -42,16 +42,18 @@ func load_game():
 		if data:
 			spoke_to_miss_manager = data.get("spoke_to_miss_manager", false)
 			next_spawn_point = data.get("next_spawn_point", "LOBBY")
-			#collected_shards = data.get("collected_shards", 0)
-			#unlocked_floors = data.get("unlocked_floors", ["BASEMENT", "LOBBY"])
-			# flat_1_puzzle_solved = data.get("flat_1_puzzle_solved", false)
-			print("shits loaded!")
+			collected_shards = data.get("collected_shards", 0)
+			unlocked_floors = data.get("unlocked_floors", ["BASEMENT", "LOBBY"])
+			flat_1_puzzle_solved = data.get("flat_1_puzzle_solved", false)
+			finished_dialogues = data.get("finished_dialogues", [])
+			
+			print("Game loaded successfully.")
 			return true
 		else:
-			print("ERROR: Could not parse the save shit.")
+			print("ERROR: Could not parse save data.")
 			return false
 	else:
-		print("ERROR: Could not open the saved shit..")
+		print("ERROR: Could not open save file.")
 		return false
 
 func save_file_exists():

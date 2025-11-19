@@ -40,16 +40,16 @@ func _physics_process(delta: float) -> void:
 
 func _ready():
 	ActionManager.register_player(self)
-	# instead of await, we wait till it's fully ready
-	SceneManager.scene_ready.connect(_on_scene_ready)
 	
+	# Logic kept here to ensure player is positioned while screen is black
 	if GlobalState.next_spawn_point != "":
 		var current_scene = get_tree().current_scene
+		# Note: Using find_child is preferred over the deprecated find_node
 		var spawn_node = current_scene.find_child(GlobalState.next_spawn_point, true, false)
 		if spawn_node:
 			self.global_position = spawn_node.global_position
 		else:
-			print("couldnt find spawn point", GlobalState.next_spawn_point, "'")
+			print("couldnt find spawn point '", GlobalState.next_spawn_point, "'")
 		GlobalState.next_spawn_point = ""
 		
 	$InteractionDetector.area_entered.connect(_on_detector_area_entered)
@@ -68,7 +68,6 @@ func _on_detector_area_exited(area):
 	print("Player exited: ", area.name)
 	_update_interaction_focus()
 
-# updated the brain-y logic that will decide (lol) which hint to show
 func _update_interaction_focus():
 	var best_interactable = null
 	var valid_interactables = []
@@ -96,7 +95,6 @@ func _update_interaction_focus():
 		if current_best_interactable != null:
 			current_best_interactable.show_hint()
 
-# merged input + unhandled input into one
 func _unhandled_input(event):
 	if event.is_action_pressed("pause"):
 		if get_tree().paused:
@@ -116,17 +114,3 @@ func _unhandled_input(event):
 
 func _on_dialogue_ended(_caller_node):
 	_update_interaction_focus()
-
-func _on_scene_ready():
-	if GlobalState.next_spawn_point == "":
-		return
-
-	var scene = get_tree().current_scene
-	var spawn = scene.find_node(GlobalState.next_spawn_point, true, false)
-
-	if spawn:
-		global_position = spawn.global_position
-	else:
-		print("spawn point not found:", GlobalState.next_spawn_point)
-
-	GlobalState.next_spawn_point = ""
