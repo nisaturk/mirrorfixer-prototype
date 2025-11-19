@@ -56,6 +56,7 @@ position = Vector2(-39.000004, -37)
 scale = Vector2(1.5285492, 1.9154077)
 dialogue_id = "ninh_greet"
 prioritylevel = 3
+portrait_id = "ninh_default"
 hint_text = "talk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -3966,6 +3966,7 @@ position = Vector2(5, -35)
 position = Vector2(132, -9)
 scale = Vector2(0.909556, 1)
 dialogue_id = "unlocked"
+portrait_id = "player_default"
 hint_text = "go"
 
 [node name="IALockedDoors" parent="IAAreas" instance=ExtResource("9_ghsyk")]
@@ -3974,6 +3975,7 @@ position = Vector2(-218.00002, -9)
 scale = Vector2(0.8575136, 1.0271081)
 dialogue_id = "lock"
 prioritylevel = 3
+portrait_id = "player_default"
 hint_text = "open"
 
 [node name="IALockedDoors2" parent="IAAreas" instance=ExtResource("9_ghsyk")]
@@ -3981,12 +3983,14 @@ position = Vector2(-44.000004, -8)
 scale = Vector2(0.89375937, 1)
 dialogue_id = "lock"
 prioritylevel = 3
+portrait_id = "player_default"
 hint_text = "open"
 
 [node name="IALockedDoors3" parent="IAAreas" instance=ExtResource("9_ghsyk")]
 position = Vector2(309, -10)
 scale = Vector2(0.8478695, 0.9816973)
 dialogue_id = "lock"
+portrait_id = "player_default"
 hint_text = "open"
 
 [node name="Elevator" parent="IAAreas" instance=ExtResource("13_glw5x")]

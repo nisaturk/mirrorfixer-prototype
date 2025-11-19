@@ -209,6 +209,7 @@ script = ExtResource("1_7ki3r")
 position = Vector2(-32, -23)
 scale = Vector2(1.2667676, 1.6269584)
 dialogue_id = "maxime_greet"
+portrait_id = "maxime_default"
 hint_text = "talk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

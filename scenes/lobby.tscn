@@ -3573,16 +3573,19 @@ position = Vector2(5, -35)
 [node name="IAmirror" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(30, -2)
 scale = Vector2(0.84466755, 0.9447139)
+portrait_id = "player_default"
 hint_text = "look"
 
 [node name="IAsofa" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(119, 54)
 dialogue_id = "sofa"
+portrait_id = "player_default"
 hint_text = "touch"
 
 [node name="IAstairs" parent="IAAreas" instance=ExtResource("9_0jb4q")]
 position = Vector2(372, 37)
 dialogue_id = "lobbystairs"
+portrait_id = "player_default"
 hint_text = "go"
 
 [node name="IOshard" parent="IAAreas" instance=ExtResource("9_0jb4q")]
@@ -3590,6 +3593,7 @@ position = Vector2(6, 45)
 scale = Vector2(0.35097343, 0.2840377)
 dialogue_id = "shard"
 prioritylevel = 1
+portrait_id = "player_default"
 hint_text = "take"
 
 [node name="shard" parent="IAAreas/IOshard" instance=ExtResource("10_vwf6o")]

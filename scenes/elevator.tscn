@@ -135,6 +135,7 @@ position = Vector2(-21, -28)
 scale = Vector2(0.8731885, 1.073056)
 priority = 3
 dialogue_id = "elevator"
+portrait_id = "player_default"
 hint_text = "openit??"
 
 [node name="CloseTimer" type="Timer" parent="."]

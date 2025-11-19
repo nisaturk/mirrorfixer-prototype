@@ -1,4 +1,5 @@
 extends Node
+
 # new script who dis?? time to confront miss manager ;D
 var player = null # wait for the player to register itself
 var action_handler = {} # dictionary for actions
@@ -24,7 +25,8 @@ func _ready():
 func register_player(player_node):
 	if player_node:
 		player = player_node
-		player.interacted.connect(_on_Player_interacted)
+		if not player.interacted.is_connected(_on_Player_interacted):
+			player.interacted.connect(_on_Player_interacted)
 	else:
 		print("manager failure: (oh no!)(player is now null).")
 
@@ -34,6 +36,12 @@ func _on_DialogueUI_action_triggered(action_name: String, caller_node):
 	else:
 		print("manager failure: tf you doin buddy?: ", action_name)
 
+# new function to be more efficient
+func _change_location(scene_name: String, spawn_point: String, used_elevator: bool):
+	DialogueData.just_used_elevator = used_elevator
+	SceneManager.change_scene(scene_name, spawn_point)
+
+# action handlers are the same (may change)
 func _action_take_shard(caller_node):
 	DialogueData.has_shard = true
 	if caller_node:
@@ -47,34 +55,30 @@ func _action_open_elevator(caller_node):
 	if caller_node and caller_node.has_method("open_doors"):
 		caller_node.open_doors()
 
+# re-imagined transition actions using the helper function
 func _action_go_to_floor_2(_caller_node):
-	DialogueData.just_used_elevator = true
-	SceneManager.change_scene("FLOOR_2", "ElevatorSpawn")
+	_change_location("FLOOR_2", "ElevatorSpawn", true)
 
 func _action_go_to_floor_1(_caller_node):
-	DialogueData.just_used_elevator = true
-	SceneManager.change_scene("LOBBY", "ElevatorSpawn")
+	_change_location("LOBBY", "ElevatorSpawn", true)
 
 func _action_go_to_flat_1(_caller_node):
-	DialogueData.just_used_elevator = false
-	SceneManager.change_scene("FLAT_1", "FlatSpawn")
+	_change_location("FLAT_1", "FlatSpawn", false)
 		
 func _action_go_out(_caller_node):
-	DialogueData.just_used_elevator = false 
-	SceneManager.change_scene("FLOOR_2", "FlatSpawn")
+	_change_location("FLOOR_2", "FlatSpawn", false)
 
 func _action_go_upstairs(_caller_node):
-	DialogueData.just_used_elevator = false
-	SceneManager.change_scene("LOBBY", "StairsSpawn")
+	_change_location("LOBBY", "StairsSpawn", false)
 
 func _action_go_downstairs(_caller_node):
-	DialogueData.just_used_elevator = false
-	SceneManager.change_scene("BASEMENT", "StairsSpawn")
+	_change_location("BASEMENT", "StairsSpawn", false)
 	
-# run when player emits signal interacted
+# runs when player emits signal interacted
 func _on_Player_interacted(interactable_node):
 	var object_id = interactable_node.dialogue_id
 	var caller = interactable_node.get_parent()
 	
+	var pee_id = interactable_node.portrait_id 
 	if not object_id.is_empty():
-		DialogueUI.start_dialogue(object_id, caller)
+		DialogueUI.start_dialogue(object_id, caller, pee_id)

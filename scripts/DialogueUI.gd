@@ -4,12 +4,10 @@ signal dialogue_cancelled(caller_node)
 signal action_triggered(action_name, caller_node)
 
 const portrait_map = { # new portrait library hehe
-	"Player": "res://assets/ui/portraits/thep-idle.png",
-	"InnerMonologues":"res://assets/ui/portraits/thep-idle.png",
-	"IAAreas": "res://assets/ui/portraits/thep-idle.png",
-	"MissManager": "res://assets/ui/portraits/missmanager-idle.png",
-	"Maxime": "res://assets/ui/portraits/maxime.png",
-	"Ninh":"res://assets/ui/portraits/ninh.png" }
+	"player_default": "res://assets/ui/portraits/thep-idle.png",
+	"missmanager_default": "res://assets/ui/portraits/missmanager-idle.png",
+	"maxime_default": "res://assets/ui/portraits/maxime.png",
+	"ninh_default":"res://assets/ui/portraits/ninh.png" }
 	
 @onready var portrait_box = $MainLayout/PortraitBox
 @onready var portrait_texture = $MainLayout/PortraitBox/PortraitTexture
@@ -68,7 +66,8 @@ func process_node(id: String):
 		else: 
 			process_node(node_data.get("on_false", "end"))
 
-func start_dialogue(start_id: String, caller):
+# extra_portrait_id parameter added (for parented objs)
+func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 	if start_id.is_empty():
 		return
 	
@@ -76,9 +75,16 @@ func start_dialogue(start_id: String, caller):
 	current_caller = caller
 	visible = true
 	
-	var portrait_key = caller.get("portrait_id")
-	if portrait_key and portrait_map.has(portrait_key):
-		portrait_texture.texture = load(portrait_map[portrait_key])
+	var key_to_use = extra_portrait_id
+	if key_to_use == "":
+		key_to_use = caller.get("portrait_id")
+
+	# failsafe for backwards compatibility
+	if (key_to_use == null or key_to_use == "") and caller.has_node("Interactable"):
+		key_to_use = caller.get_node("Interactable").portrait_id
+
+	if key_to_use and portrait_map.has(key_to_use):
+		portrait_texture.texture = load(portrait_map[key_to_use])
 		portrait_box.show()
 	elif caller and portrait_map.has(caller.name):
 		portrait_texture.texture = load(portrait_map[caller.name])
