@@ -12,12 +12,13 @@ var nearby_interactables: Array[Area2D] = []
 var current_best_interactable: Area2D = null
 
 func _physics_process(delta: float) -> void:
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
 	var direction := Input.get_axis("move_left", "move_right")
-
 	if direction > 0:
 		animated_sprite.flip_h = false
 	elif direction < 0:
@@ -40,11 +41,8 @@ func _physics_process(delta: float) -> void:
 
 func _ready():
 	ActionManager.register_player(self)
-	
-	# Logic kept here to ensure player is positioned while screen is black
 	if GlobalState.next_spawn_point != "":
 		var current_scene = get_tree().current_scene
-		# Note: Using find_child is preferred over the deprecated find_node
 		var spawn_node = current_scene.find_child(GlobalState.next_spawn_point, true, false)
 		if spawn_node:
 			self.global_position = spawn_node.global_position

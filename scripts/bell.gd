@@ -2,21 +2,18 @@ extends Area2D
 
 signal bell_rung(count)
 
-var player_in_range: bool = false
 var ring_count: int = 0
-var is_active: bool = true
+# trying to unify the interactables so added some new variables
+var dialogue_id: String = ""
+var prioritylevel: int = 0
+var portrait_id: String = ""
 
 func _ready():
 	$AnimatedSprite2D.frame = 0
 
-func _input(event):
-	if not is_active: return
-	if not player_in_range:
-		return
-
-	if event.is_action_pressed("interact"):
-		ring_bell()
-		get_viewport().set_input_as_handled() # consume input so it wont keep ringin
+# removed the input stuff, moved it to player, now there's just interact()
+func interact():
+	ring_bell()
 
 func ring_bell():
 	ring_count += 1
@@ -24,19 +21,16 @@ func ring_bell():
 	$AnimatedSprite2D.frame = 0
 	$AnimatedSprite2D.play("ring")
 
-	if $AudioStreamPlayer2D.playing: # so the bell sounds wont overlap
+	if $AudioStreamPlayer2D.playing:
 		$AudioStreamPlayer2D.stop()
 	$AudioStreamPlayer2D.play()
-	#print("BELLO rungO! Count:", ring_count)
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.name == "Player":
-		player_in_range = true
+func show_hint():
+	# maybe i will add a hint because the bell is somewhat important
+	pass 
 
-func _on_body_exited(body: Node2D) -> void:
-	if body.name == "Player":
-		player_in_range = false
+func hide_hint():
+	pass
 
-func deactivate():
-	is_active = false
-	print("Bell has been deactivated.")
+func can_interact() -> bool:
+	return true

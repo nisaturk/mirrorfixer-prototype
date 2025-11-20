@@ -43,12 +43,12 @@ func _on_DialogueUI_action_triggered(action_name: String, caller_node):
 		print("Action not found: ", action_name)
 
 func _change_location(scene_name: String, spawn_point: String, used_elevator: bool):
-	DialogueData.just_used_elevator = used_elevator
+	GlobalState.just_used_elevator = used_elevator
 	SceneManager.change_scene(scene_name, spawn_point)
 
 func _action_take_shard(caller_node):
-	# DialogueData.has_shard = true # old
-	GlobalState.collected_shards += 1 # new
+	# DialogueData.has_shard = true is now deprecated bc all data is in GlobalState 
+	GlobalState.collected_shards += 1
 	
 	print("shard collected: ", GlobalState.collected_shards)
 	if caller_node:
@@ -63,9 +63,14 @@ func _action_open_elevator(caller_node):
 		caller_node.open_doors()
 
 func _on_Player_interacted(interactable_node):
-	var object_id = interactable_node.dialogue_id
+	# get variables JUST in case the object is a simple Area2D node
+	var object_id = interactable_node.get("dialogue_id")
+	var portrait_id = interactable_node.get("portrait_id")
+	# if it's a child node (like Miss Manager's interactable), the caller is the parent
+	# if it's the object itself (like the Bell), the caller is the bell itself so
 	var caller = interactable_node.get_parent()
-	var portrait_id = interactable_node.portrait_id 
 	
-	if not object_id.is_empty():
+	if object_id and not object_id.is_empty():
 		DialogueUI.start_dialogue(object_id, caller, portrait_id)
+	elif interactable_node.has_method("interact"):
+		interactable_node.interact()

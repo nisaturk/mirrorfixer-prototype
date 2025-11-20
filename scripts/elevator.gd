@@ -1,7 +1,10 @@
 extends Area2D
 
-var player_in_range: bool = false
 var is_active = true
+# trying to unify the interactables so added some new variables
+var dialogue_id: String = "elevator" # match the json entry
+var prioritylevel: int = 0
+var portrait_id: String = ""
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var close_timer: Timer = $CloseTimer
@@ -12,8 +15,8 @@ func _ready():
 	DialogueUI.dialogue_cancelled.connect(_on_dialogue_cancelled)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
-	if DialogueData.just_used_elevator:
-		DialogueData.just_used_elevator = false
+	if GlobalState.just_used_elevator:
+		GlobalState.just_used_elevator = false
 		
 		animated_sprite.play("open")
 		animated_sprite.stop()
@@ -26,10 +29,7 @@ func _ready():
 		animated_sprite.stop()
 		animated_sprite.frame = animated_sprite.sprite_frames.get_frame_count("close") - 1
 
-func _input(_event):
-	if not is_active: return
-	if not player_in_range: return
-	if DialogueUI.visible: return
+# removed the input and interaction stuff
 
 func open_doors():
 	close_timer.stop()
@@ -62,10 +62,11 @@ func _on_dialogue_cancelled(caller_node):
 		close_timer.wait_time = 5.0
 		close_timer.start()
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_range = true
+func show_hint():
+	pass
 
-func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		player_in_range = false
+func hide_hint():
+	pass
+
+func can_interact() -> bool:
+	return is_active

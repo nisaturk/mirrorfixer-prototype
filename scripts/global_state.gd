@@ -1,11 +1,14 @@
 extends Node
 
 var next_spawn_point: String = ""
+var has_shard: bool:
+	get:
+		return collected_shards > 0
 var collected_shards: int = 0
 var spoke_to_miss_manager: bool = false
 var unlocked_floors: Array[String] = ["BASEMENT", "LOBBY"]
-var flat_1_puzzle_solved: bool = false
 var finished_dialogues: Array = []
+var just_used_elevator: bool = false
 
 const SAVE_PATH = "user://savegame.json"
 
@@ -15,7 +18,6 @@ func save_game():
 		"next_spawn_point": next_spawn_point,
 		"collected_shards": collected_shards,
 		"unlocked_floors": unlocked_floors,
-		"flat_1_puzzle_solved": flat_1_puzzle_solved,
 		"finished_dialogues": finished_dialogues
 	}
 
@@ -44,7 +46,6 @@ func load_game():
 			next_spawn_point = data.get("next_spawn_point", "LOBBY")
 			collected_shards = data.get("collected_shards", 0)
 			unlocked_floors = data.get("unlocked_floors", ["BASEMENT", "LOBBY"])
-			flat_1_puzzle_solved = data.get("flat_1_puzzle_solved", false)
 			finished_dialogues = data.get("finished_dialogues", [])
 			
 			print("Game loaded successfully.")

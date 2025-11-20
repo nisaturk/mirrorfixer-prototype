@@ -1,7 +1,6 @@
 extends Node
 
 var dialogue_data: Dictionary = {}
-var just_used_elevator: bool = false
 
 func _ready():
 	var file = FileAccess.open("res://dialogue/dialogue-prototype.json", FileAccess.READ)

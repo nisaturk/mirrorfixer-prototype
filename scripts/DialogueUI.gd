@@ -59,9 +59,15 @@ func process_node(id: String):
 			button.text = option_data.get("text", "...")
 			button.pressed.connect(self._on_choice_made.bind(option_data.get("next_id", "end")))
 			choice_container.add_child(button)
-	
+
 	elif node_data["type"] == "conditional":
-		if DialogueData.has_shard == true: 
+		var variable_name = node_data.get("variable", "")
+		var is_condition_met = false
+		
+		if variable_name != "" and GlobalState.get(variable_name):
+			is_condition_met = true
+			
+		if is_condition_met: 
 			process_node(node_data.get("on_true", "end")) 
 		else: 
 			process_node(node_data.get("on_false", "end"))
@@ -76,12 +82,7 @@ func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 	visible = true
 	
 	var key_to_use = extra_portrait_id
-	if key_to_use == "":
-		key_to_use = caller.get("portrait_id")
-
-	# failsafe for backwards compatibility
-	if (key_to_use == null or key_to_use == "") and caller.has_node("Interactable"):
-		key_to_use = caller.get_node("Interactable").portrait_id
+	
 	if key_to_use and portrait_map.has(key_to_use):
 		portrait_texture.texture = load(portrait_map[key_to_use])
 		portrait_box.show()
@@ -90,6 +91,7 @@ func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 		portrait_box.show()
 	else:
 		portrait_box.hide()
+	
 	process_node(start_id)
 
 # called when a choice button is pressed
