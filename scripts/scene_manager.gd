@@ -1,8 +1,15 @@
 extends CanvasLayer
 
+signal scene_ready
+
 @onready var animation_player = $AnimationPlayer
 
-signal scene_ready
+const MAIN_MENU = "MAIN_MENU"
+const CREDITS = "CREDITS"
+const BASEMENT = "BASEMENT"
+const LOBBY = "LOBBY"
+const FLOOR_2 = "FLOOR_2"
+const FLAT_1 = "FLAT_1"
 
 const SCENES = {
 	"MAIN_MENU": "res://scenes/main_menu.tscn",

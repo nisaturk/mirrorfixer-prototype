@@ -1,10 +1,6 @@
-extends Area2D
+extends Interactable
 
 var is_active = true
-# trying to unify the interactables so added some new variables
-var dialogue_id: String = "elevator" # match the json entry
-var prioritylevel: int = 0
-var portrait_id: String = ""
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var close_timer: Timer = $CloseTimer
@@ -61,12 +57,3 @@ func _on_dialogue_cancelled(caller_node):
 	if caller_node == self:
 		close_timer.wait_time = 5.0
 		close_timer.start()
-
-func show_hint():
-	pass
-
-func hide_hint():
-	pass
-
-func can_interact() -> bool:
-	return is_active

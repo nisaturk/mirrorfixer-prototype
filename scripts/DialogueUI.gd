@@ -94,10 +94,7 @@ func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 	
 	process_node(start_id)
 
-# called when a choice button is pressed
 func _on_choice_made(next_id: String):
-	if next_id == "end":
-		emit_signal("dialogue_cancelled", current_caller)
 	process_node(next_id)
 
 func hide_box():
@@ -110,16 +107,16 @@ func hide_box():
 	for button in choice_container.get_children():
 		button.queue_free()
 
-func _input(_event):
+# replaced _input with this
+func _unhandled_input(event):
 	if not visible:
 		return
 		
 	var node_data = DialogueData.get_dialogue_node(current_node_id)
 	if not node_data:
 		return
-	# only advance on "interact" if it's a "line" node
-	# choices are handled by the buttons above
-	if node_data["type"] == "line" and Input.is_action_just_pressed("interact"):
+
+	if node_data["type"] == "line" and event.is_action_pressed("interact"):
 		get_viewport().set_input_as_handled()
 		var next_id = node_data.get("next_id", "end")
 		process_node(next_id)

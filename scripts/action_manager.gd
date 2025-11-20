@@ -2,14 +2,13 @@ extends Node
 
 var player = null 
 var action_handler = {}
-
-const TRANSITION_DATA = {
-	"go_to_floor_2":   {"scene": "FLOOR_2",  "spawn": "ElevatorSpawn", "elevator": true},
-	"go_to_floor_1":   {"scene": "LOBBY",    "spawn": "ElevatorSpawn", "elevator": true},
-	"go_to_flat_1":    {"scene": "FLAT_1",   "spawn": "FlatSpawn",     "elevator": false},
-	"go_out":          {"scene": "FLOOR_2",  "spawn": "FlatSpawn",     "elevator": false},
-	"go_upstairs":     {"scene": "LOBBY",    "spawn": "StairsSpawn",   "elevator": false},
-	"go_downstairs":   {"scene": "BASEMENT", "spawn": "StairsSpawn",   "elevator": false}
+var TRANSITION_DATA = {
+	"go_to_floor_2":   {"scene": SceneManager.FLOOR_2,  "spawn": "ElevatorSpawn", "elevator": true},
+	"go_to_floor_1":   {"scene": SceneManager.LOBBY,    "spawn": "ElevatorSpawn", "elevator": true},
+	"go_to_flat_1":    {"scene": SceneManager.FLAT_1,   "spawn": "FlatSpawn",     "elevator": false},
+	"go_out":          {"scene": SceneManager.FLOOR_2,  "spawn": "FlatSpawn",     "elevator": false},
+	"go_upstairs":     {"scene": SceneManager.LOBBY,    "spawn": "StairsSpawn",   "elevator": false},
+	"go_downstairs":   {"scene": SceneManager.BASEMENT, "spawn": "StairsSpawn",   "elevator": false}
 }
 
 func _ready():

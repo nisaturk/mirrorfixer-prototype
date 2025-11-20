@@ -69,14 +69,24 @@ func _on_detector_area_exited(area):
 func _update_interaction_focus():
 	var best_interactable = null
 	var valid_interactables = []
+	var to_remove = []
 	
 	for area in nearby_interactables:
+		if not is_instance_valid(area):
+			to_remove.append(area)
+			continue
+			
 		if area.has_method("can_interact"):
 			if area.can_interact():
 				valid_interactables.append(area)
 		else:
 			valid_interactables.append(area)
 	
+	for area in to_remove:
+		nearby_interactables.erase(area)
+	
+	if not valid_interactables.is_empty():
+		best_interactable = valid_interactables[0]
 	if not valid_interactables.is_empty():
 		best_interactable = valid_interactables[0]
 		if valid_interactables.size() > 1:
@@ -105,7 +115,7 @@ func _unhandled_input(event):
 		return
 
 	var is_ui_visible = DialogueUI.visible
-	if current_best_interactable != null and event.is_action_pressed("interact") and not is_ui_visible:
+	if current_best_interactable != null and is_instance_valid(current_best_interactable) and event.is_action_pressed("interact") and not is_ui_visible:
 		get_viewport().set_input_as_handled()
 		emit_signal("interacted", current_best_interactable)
 		current_best_interactable.hide_hint()

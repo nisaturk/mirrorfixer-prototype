@@ -6,7 +6,7 @@ var has_shard: bool:
 		return collected_shards > 0
 var collected_shards: int = 0
 var spoke_to_miss_manager: bool = false
-var unlocked_floors: Array[String] = ["BASEMENT", "LOBBY"]
+var unlocked_floors: Array[String] = [SceneManager.BASEMENT, SceneManager.LOBBY]
 var finished_dialogues: Array = []
 var just_used_elevator: bool = false
 
@@ -43,9 +43,9 @@ func load_game():
 		
 		if data:
 			spoke_to_miss_manager = data.get("spoke_to_miss_manager", false)
-			next_spawn_point = data.get("next_spawn_point", "LOBBY")
+			next_spawn_point = data.get("next_spawn_point", SceneManager.LOBBY)
 			collected_shards = data.get("collected_shards", 0)
-			unlocked_floors = data.get("unlocked_floors", ["BASEMENT", "LOBBY"])
+			unlocked_floors = data.get("unlocked_floors", [SceneManager.BASEMENT, SceneManager.LOBBY])
 			finished_dialogues = data.get("finished_dialogues", [])
 			
 			print("Game loaded successfully.")

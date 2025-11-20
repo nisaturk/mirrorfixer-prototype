@@ -11,10 +11,10 @@ func _on_continue_button_pressed() -> void:
 	print("no load yet")
 
 func _on_start_button_pressed() -> void:
-	SceneManager.change_scene("BASEMENT")
+	SceneManager.change_scene(SceneManager.BASEMENT)
 
 func _on_credits_button_pressed() -> void:
-	SceneManager.change_scene("CREDITS")
+	SceneManager.change_scene(SceneManager.CREDITS)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

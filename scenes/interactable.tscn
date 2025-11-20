@@ -33,6 +33,7 @@ offset_right = 99.0
 offset_bottom = 28.0
 scale = Vector2(0.50204676, 0.50204676)
 theme_override_fonts/font = ExtResource("2_ij5l6")
+text = "[click]"
 horizontal_alignment = 1
 vertical_alignment = 1
 

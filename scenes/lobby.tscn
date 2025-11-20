@@ -3608,6 +3608,7 @@ collision_layer = 5
 [node name="Elevator" parent="." instance=ExtResource("12_wjff0")]
 position = Vector2(-376, -18)
 scale = Vector2(1.3243045, 1.15077)
+dialogue_id = "elevator"
 
 [node name="Player" parent="." instance=ExtResource("13_h1rib")]
 position = Vector2(317, 58)
