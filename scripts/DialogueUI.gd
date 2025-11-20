@@ -20,17 +20,15 @@ var current_start_id: String = ""
 
 func _ready():
 	hide_box()
+	Events.request_dialogue.connect(start_dialogue)
 	
 func process_node(id: String):
 	for button in choice_container.get_children():
 		button.queue_free()
 	
 	if id == "end":
-		if not GlobalState.finished_dialogues.has(current_start_id):
-			GlobalState.finished_dialogues.append(current_start_id)
-			print("dialogue is dooone: ", current_start_id)
-		emit_signal("dialogue_cancelled", current_caller)
 		hide_box()
+		Events.emit_signal("dialogue_ended", current_caller)
 		return
 	
 	var node_data = DialogueData.get_dialogue_node(id)
@@ -91,7 +89,8 @@ func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 		portrait_box.show()
 	else:
 		portrait_box.hide()
-	
+
+	Events.emit_signal("dialogue_started")
 	process_node(start_id)
 
 func _on_choice_made(next_id: String):
@@ -109,6 +108,8 @@ func hide_box():
 
 # replaced _input with this
 func _unhandled_input(event):
+	if event.is_action_pressed("interact"):
+		print("DialogueUI heard Interact!")
 	if not visible:
 		return
 		

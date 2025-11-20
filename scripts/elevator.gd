@@ -25,8 +25,6 @@ func _ready():
 		animated_sprite.stop()
 		animated_sprite.frame = animated_sprite.sprite_frames.get_frame_count("close") - 1
 
-# removed the input and interaction stuff
-
 func open_doors():
 	close_timer.stop()
 	

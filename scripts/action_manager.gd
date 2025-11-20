@@ -3,17 +3,40 @@ extends Node
 var player = null 
 var action_handler = {}
 var TRANSITION_DATA = {
-	"go_to_floor_2":   {"scene": SceneManager.FLOOR_2,  "spawn": "ElevatorSpawn", "elevator": true},
-	"go_to_floor_1":   {"scene": SceneManager.LOBBY,    "spawn": "ElevatorSpawn", "elevator": true},
-	"go_to_flat_1":    {"scene": SceneManager.FLAT_1,   "spawn": "FlatSpawn",     "elevator": false},
-	"go_out":          {"scene": SceneManager.FLOOR_2,  "spawn": "FlatSpawn",     "elevator": false},
-	"go_upstairs":     {"scene": SceneManager.LOBBY,    "spawn": "StairsSpawn",   "elevator": false},
-	"go_downstairs":   {"scene": SceneManager.BASEMENT, "spawn": "StairsSpawn",   "elevator": false}
+	"go_to_floor_2": {
+		"scene": GameConsts.SCENE_FLOOR_2, 
+		"spawn": GameConsts.SPAWN_ELEVATOR, 
+		"elevator": true
+	},
+	"go_to_floor_1": {
+		"scene": GameConsts.SCENE_LOBBY,   
+		"spawn": GameConsts.SPAWN_ELEVATOR, 
+		"elevator": true
+	},
+	"go_to_flat_1": {
+		"scene": GameConsts.SCENE_FLAT_1,  
+		"spawn": GameConsts.SPAWN_FLAT,     
+		"elevator": false
+	},
+	"go_out": {
+		"scene": GameConsts.SCENE_FLOOR_2, 
+		"spawn": GameConsts.SPAWN_FLAT,     
+		"elevator": false
+	},
+	"go_upstairs": {
+		"scene": GameConsts.SCENE_LOBBY,    
+		"spawn": GameConsts.SPAWN_STAIRS,   
+		"elevator": false
+	},
+	"go_downstairs": {
+		"scene": GameConsts.SCENE_BASEMENT, 
+		"spawn": GameConsts.SPAWN_STAIRS,   
+		"elevator": false
+	}
 }
 
 func _ready():
-	DialogueUI.action_triggered.connect(_on_DialogueUI_action_triggered)
-	
+	Events.action_triggered.connect(_on_action_triggered)	
 	action_handler = {
 		"take_shard": _action_take_shard,
 		"allow_pass": _action_allow_pass,
@@ -28,7 +51,7 @@ func register_player(player_node):
 	else:
 		print("manager failure: player is null")
 
-func _on_DialogueUI_action_triggered(action_name: String, caller_node):
+func _on_action_triggered(action_name: String, caller_node):
 	# check if this is a movement action
 	if TRANSITION_DATA.has(action_name):
 		var data = TRANSITION_DATA[action_name]
@@ -46,7 +69,6 @@ func _change_location(scene_name: String, spawn_point: String, used_elevator: bo
 	SceneManager.change_scene(scene_name, spawn_point)
 
 func _action_take_shard(caller_node):
-	# DialogueData.has_shard = true is now deprecated bc all data is in GlobalState 
 	GlobalState.collected_shards += 1
 	
 	print("shard collected: ", GlobalState.collected_shards)

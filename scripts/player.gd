@@ -10,9 +10,10 @@ signal interacted(interactable)
 
 var nearby_interactables: Array[Area2D] = []
 var current_best_interactable: Area2D = null
+var is_interacting: bool = false
 
 func _physics_process(delta: float) -> void:
-	
+
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -50,75 +51,71 @@ func _ready():
 			print("couldnt find spawn point '", GlobalState.next_spawn_point, "'")
 		GlobalState.next_spawn_point = ""
 		
+	Events.dialogue_started.connect(_on_dialogue_started)
+	Events.dialogue_ended.connect(_on_dialogue_ended)
+		
 	$InteractionDetector.area_entered.connect(_on_detector_area_entered)
 	$InteractionDetector.area_exited.connect(_on_detector_area_exited)
 	DialogueUI.dialogue_cancelled.connect(_on_dialogue_ended)
 
 func _on_detector_area_entered(area):
-	if not nearby_interactables.has(area):
-		nearby_interactables.append(area)
-	print("Player entered: ", area.name)
-	_update_interaction_focus()
+	if area is Interactable:
+		if not nearby_interactables.has(area):
+			nearby_interactables.append(area)
+			print("Interactable found: ", area.name)
+			_update_interaction_focus()
 
 func _on_detector_area_exited(area):
 	if nearby_interactables.has(area):
 		nearby_interactables.erase(area)
-	print("Player exited: ", area.name)
-	_update_interaction_focus()
+		_update_interaction_focus()
 
 func _update_interaction_focus():
-	var best_interactable = null
-	var valid_interactables = []
-	var to_remove = []
+	nearby_interactables = nearby_interactables.filter(is_instance_valid)
 	
-	for area in nearby_interactables:
-		if not is_instance_valid(area):
-			to_remove.append(area)
-			continue
-			
-		if area.has_method("can_interact"):
-			if area.can_interact():
-				valid_interactables.append(area)
-		else:
-			valid_interactables.append(area)
-	
-	for area in to_remove:
-		nearby_interactables.erase(area)
-	
-	if not valid_interactables.is_empty():
-		best_interactable = valid_interactables[0]
-	if not valid_interactables.is_empty():
-		best_interactable = valid_interactables[0]
-		if valid_interactables.size() > 1:
-			for i in range(1, valid_interactables.size()):
-				if valid_interactables[i].prioritylevel > best_interactable.prioritylevel:
-					best_interactable = valid_interactables[i]
-	
-	if best_interactable != current_best_interactable:
-		if current_best_interactable != null:
+	if nearby_interactables.is_empty():
+		if current_best_interactable:
 			current_best_interactable.hide_hint()
-			
-		current_best_interactable = best_interactable
+		current_best_interactable = null
+		return
+
+	nearby_interactables.sort_custom(func(a, b): return a.prioritylevel > b.prioritylevel)
+	var best_candidate = nearby_interactables[0]
+	
+	if best_candidate.has_method("can_interact") and not best_candidate.can_interact():
+		best_candidate = null
+
+	if best_candidate != current_best_interactable:
+		if current_best_interactable:
+			current_best_interactable.hide_hint()
 		
-		if current_best_interactable != null:
+		current_best_interactable = best_candidate
+		
+		if current_best_interactable:
 			current_best_interactable.show_hint()
 
 func _unhandled_input(event):
+	if is_interacting:
+		return 
+
 	if event.is_action_pressed("pause"):
-		if get_tree().paused:
-			PauseMenu._on_continue_button_pressed()
-		else:
-			PauseMenu.show_menu()
 		return
 
-	if get_tree().paused:
-		return
+	if event.is_action_pressed("interact"):
+		print("Player heard Interact! is_interacting = ", is_interacting)
+		
+		if current_best_interactable != null:
+			get_viewport().set_input_as_handled()
+			Events.emit_signal("request_dialogue", 
+				current_best_interactable.dialogue_id, 
+				current_best_interactable, 
+				current_best_interactable.portrait_id
+			)
+			current_best_interactable.hide_hint()
 
-	var is_ui_visible = DialogueUI.visible
-	if current_best_interactable != null and is_instance_valid(current_best_interactable) and event.is_action_pressed("interact") and not is_ui_visible:
-		get_viewport().set_input_as_handled()
-		emit_signal("interacted", current_best_interactable)
-		current_best_interactable.hide_hint()
+func _on_dialogue_started():
+	is_interacting = true
+	animated_sprite.play("idle")
 
-func _on_dialogue_ended(_caller_node):
-	_update_interaction_focus()
+func _on_dialogue_ended(_caller):
+	is_interacting = false

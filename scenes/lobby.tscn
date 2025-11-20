@@ -3620,10 +3620,10 @@ zoom = Vector2(1.5, 1.5)
 [node name="SpawnPoints" type="Node" parent="."]
 
 [node name="ElevatorSpawn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-375, 20)
+position = Vector2(-379, 33)
 
 [node name="StairsSpawn" type="Marker2D" parent="SpawnPoints"]
-position = Vector2(-375, 20)
+position = Vector2(361, 26)
 
 [connection signal="appeared" from="MissManager" to="Bell" method="deactivate"]
 [connection signal="bell_rung" from="Bell" to="MissManager" method="_on_bell_bell_rung"]

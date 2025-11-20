@@ -8,13 +8,16 @@ func _ready():
 	pass
 
 func _on_continue_button_pressed() -> void:
-	print("no load yet")
+	if GlobalState.load_game():
+		SceneManager.change_scene(GlobalState.next_spawn_point)
+	else:
+		print("No save file found.")
 
 func _on_start_button_pressed() -> void:
-	SceneManager.change_scene(SceneManager.BASEMENT)
+	SceneManager.change_scene(GameConsts.SCENE_BASEMENT)
 
 func _on_credits_button_pressed() -> void:
-	SceneManager.change_scene(SceneManager.CREDITS)
+	SceneManager.change_scene(GameConsts.SCENE_CREDITS)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

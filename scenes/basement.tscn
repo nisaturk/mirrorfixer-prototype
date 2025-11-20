@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://f7x31th511xf"]
+[gd_scene load_steps=34 format=4 uid="uid://f7x31th511xf"]
 
 [ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/floorswalls_LRK.png" id="2_ofwxs"]
 [ext_resource type="Texture2D" uid="uid://df1o10b3id1mf" path="res://assets/sprites/interior/doorswindowsstairs_LRK.png" id="3_fqfvj"]
@@ -11,86 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dttu5x0kixbi6" path="res://scenes/DialogueUI.tscn" id="8_nvrgk"]
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="9_5j8jl"]
 [ext_resource type="PackedScene" uid="uid://mu6xyf36gys6" path="res://scenes/player.tscn" id="11_6lwow"]
-
-[sub_resource type="GDScript" id="GDScript_2efs0"]
-script/source = "extends Node
-# new script who dis?? time to confront miss manager ;D
-@onready var player = $Player 
-
-var action_handler = {} # dictionary for actions
-
-func _ready():
-	#  will listen for signals from other nodes and decide what to do
-	if player:
-		player.interacted.connect(_on_Player_interacted)
-	else:
-		print(\"Manager failure: Cannot find Player dumbass.\")
-
-	DialogueUI.action_triggered.connect(_on_DialogueUI_action_triggered)
-	
-	action_handler = {
-		\"take_shard\": _action_take_shard,
-		\"allow_pass\": _action_allow_pass,
-		\"open_elevator\": _action_open_elevator,
-		
-		\"go_to_floor_2\": _action_go_to_floor_2,
-		\"go_to_floor_1\": _action_go_to_floor_1,
-		\"go_to_flat_1\": _action_go_to_flat_1,
-		\"go_out\": _action_go_out,
-		\"go_upstairs\": _action_go_upstairs,
-		\"go_downstairs\": _action_go_downstairs
-	}
-
-func _on_DialogueUI_action_triggered(action_name: String, caller_node):
-	if action_handler.has(action_name):
-		action_handler[action_name].call(caller_node)
-	else:
-		print(\"Manager failure: tf you doin buddy?: \", action_name)
-
-func _action_take_shard(caller_node):
-	DialogueData.has_shard = true
-	if caller_node:
-		caller_node.queue_free() # the shard object disappears
-
-func _action_allow_pass(caller_node):
-	if caller_node and caller_node.has_method(\"allow_pass\"):
-		caller_node.allow_pass()
-
-func _action_open_elevator(caller_node):
-	if caller_node and caller_node.has_method(\"open_doors\"):
-		caller_node.open_doors()
-
-func _action_go_to_floor_2(_caller_node):
-	DialogueData.just_used_elevator = true
-	SceneManager.change_scene(\"FLOOR_2\") 
-
-func _action_go_to_floor_1(_caller_node):
-	DialogueData.just_used_elevator = true
-	SceneManager.change_scene(\"LOBBY\")
-
-func _action_go_to_flat_1(_caller_node):
-	DialogueData.just_used_elevator = true
-	SceneManager.change_scene(\"FLAT_1\")
-		
-func _action_go_out(_caller_node):
-	DialogueData.just_used_elevator = true 
-	SceneManager.change_scene(\"FLOOR_2\") 
-
-# run when player emits signal interacted
-func _on_Player_interacted(interactable_node):
-	var object_id = interactable_node.dialogue_id
-	var caller = interactable_node.get_parent()
-	var portrait = interactable_node.portrait_id 
-	
-	if not object_id.is_empty():
-		DialogueUI.start_dialogue(object_id, caller, portrait)
-		
-func _action_go_upstairs(_caller_node):
-	SceneManager.change_scene(\"LOBBY\")
-
-func _action_go_downstairs(_caller_node):
-	SceneManager.change_scene(\"BASEMENT\")
-"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("2_ofwxs")
@@ -4184,7 +4104,6 @@ size = Vector2(70.5, 172)
 size = Vector2(71.5, 198.5)
 
 [node name="Basement" type="Node2D"]
-script = SubResource("GDScript_2efs0")
 
 [node name="StairsSpawn" type="Marker2D" parent="."]
 position = Vector2(313, 21)

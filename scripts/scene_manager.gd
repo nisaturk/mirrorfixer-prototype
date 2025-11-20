@@ -4,20 +4,14 @@ signal scene_ready
 
 @onready var animation_player = $AnimationPlayer
 
-const MAIN_MENU = "MAIN_MENU"
-const CREDITS = "CREDITS"
-const BASEMENT = "BASEMENT"
-const LOBBY = "LOBBY"
-const FLOOR_2 = "FLOOR_2"
-const FLAT_1 = "FLAT_1"
-
+# updated dictionary using new consts
 const SCENES = {
-	"MAIN_MENU": "res://scenes/main_menu.tscn",
-	"CREDITS": "res://scenes/credits.tscn",
-	"BASEMENT": "res://scenes/basement.tscn",
-	"LOBBY": "res://scenes/lobby.tscn",
-	"FLOOR_2": "res://scenes/floor.tscn",
-	"FLAT_1": "res://scenes/flat.tscn"
+	GameConsts.SCENE_MAIN_MENU: "res://scenes/main_menu.tscn",
+	GameConsts.SCENE_CREDITS: "res://scenes/credits.tscn",
+	GameConsts.SCENE_BASEMENT: "res://scenes/basement.tscn",
+	GameConsts.SCENE_LOBBY: "res://scenes/lobby.tscn",
+	GameConsts.SCENE_FLOOR_2: "res://scenes/floor.tscn",
+	GameConsts.SCENE_FLAT_1: "res://scenes/flat.tscn"
 }
 
 func fade_in():
