@@ -3963,7 +3963,7 @@ visible = false
 position = Vector2(5, -35)
 
 [node name="IA2UnlockedDoor" parent="IAAreas" instance=ExtResource("9_ghsyk")]
-position = Vector2(132, -9)
+position = Vector2(133.00002, -9)
 scale = Vector2(0.909556, 1)
 dialogue_id = "unlocked"
 portrait_id = "player_default"

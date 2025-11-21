@@ -84,7 +84,6 @@ func _action_open_elevator(caller_node):
 		caller_node.open_doors()
 
 func _on_Player_interacted(interactable_node):
-	# get variables JUST in case the object is a simple Area2D node
 	var object_id = interactable_node.get("dialogue_id")
 	var portrait_id = interactable_node.get("portrait_id")
 	# if it's a child node (like Miss Manager's interactable), the caller is the parent

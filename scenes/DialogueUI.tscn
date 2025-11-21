@@ -56,6 +56,7 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.9754084, 0.9754084)
+mouse_filter = 2
 
 [node name="PortraitBox" type="PanelContainer" parent="MainLayout"]
 custom_minimum_size = Vector2(72, 72)
@@ -93,6 +94,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.98846734, 0.7700071)
+mouse_filter = 2
 theme = SubResource("Theme_rmr67")
 
 [node name="MarginContainer" type="MarginContainer" parent="MainLayout/ContentBox/MainLayoutContainer"]
@@ -105,6 +107,7 @@ theme_override_constants/margin_right = 6
 theme_override_constants/margin_bottom = 6
 
 [node name="DialogueLabel" type="Label" parent="MainLayout/ContentBox/MainLayoutContainer/MarginContainer"]
+custom_minimum_size = Vector2(5, 5)
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_7de8d")

@@ -8,7 +8,6 @@ var is_active = true
 
 func _ready():
 	close_timer.timeout.connect(close_doors)
-	DialogueUI.dialogue_cancelled.connect(_on_dialogue_cancelled)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
 	
 	if GlobalState.just_used_elevator:

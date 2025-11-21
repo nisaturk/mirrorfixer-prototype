@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-signal dialogue_cancelled(caller_node)
-signal action_triggered(action_name, caller_node)
-
 const portrait_map = { # new portrait library hehe
 	"player_default": "res://assets/ui/portraits/thep-idle.png",
 	"missmanager_default": "res://assets/ui/portraits/missmanager-idle.png",
@@ -22,15 +19,18 @@ func _ready():
 	hide_box()
 	Events.request_dialogue.connect(start_dialogue)
 	
-func process_node(id: String):
+func process_node(id: String):	
 	for button in choice_container.get_children():
 		button.queue_free()
 	
 	if id == "end":
+		if current_start_id != "" and not GlobalState.finished_dialogues.has(current_start_id):
+			GlobalState.finished_dialogues.append(current_start_id)
+			
 		hide_box()
-		Events.emit_signal("dialogue_ended", current_caller)
+		Events.dialogue_ended.emit(current_caller)
 		return
-	
+		
 	var node_data = DialogueData.get_dialogue_node(id)
 	if not node_data:
 		hide_box()
@@ -90,7 +90,7 @@ func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 	else:
 		portrait_box.hide()
 
-	Events.emit_signal("dialogue_started")
+	Events.dialogue_started.emit()
 	process_node(start_id)
 
 func _on_choice_made(next_id: String):
@@ -106,23 +106,20 @@ func hide_box():
 	for button in choice_container.get_children():
 		button.queue_free()
 
-# replaced _input with this
-func _unhandled_input(event):
-	if event.is_action_pressed("interact"):
-		print("DialogueUI heard Interact!")
+func _input(event):
 	if not visible:
 		return
-		
+	
 	var node_data = DialogueData.get_dialogue_node(current_node_id)
 	if not node_data:
 		return
 
 	if node_data["type"] == "line" and event.is_action_pressed("interact"):
-		get_viewport().set_input_as_handled()
+		get_viewport().set_input_as_handled() 
 		var next_id = node_data.get("next_id", "end")
 		process_node(next_id)
 
 # handles the "action" tags from the JSON
 func handle_action(action_name: String):
 	# updated with a signal instead of the if blocks :')
-	emit_signal("action_triggered", action_name, current_caller)
+	Events.emit_signal("action_triggered", action_name, current_caller)

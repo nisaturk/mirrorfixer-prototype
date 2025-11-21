@@ -56,7 +56,6 @@ func _ready():
 		
 	$InteractionDetector.area_entered.connect(_on_detector_area_entered)
 	$InteractionDetector.area_exited.connect(_on_detector_area_exited)
-	DialogueUI.dialogue_cancelled.connect(_on_dialogue_ended)
 
 func _on_detector_area_entered(area):
 	if area is Interactable:
@@ -94,7 +93,7 @@ func _update_interaction_focus():
 		if current_best_interactable:
 			current_best_interactable.show_hint()
 
-func _unhandled_input(event):
+func _input(event):
 	if is_interacting:
 		return 
 
@@ -102,15 +101,12 @@ func _unhandled_input(event):
 		return
 
 	if event.is_action_pressed("interact"):
-		print("Player heard Interact! is_interacting = ", is_interacting)
+		print("Player heard Interact!")
 		
 		if current_best_interactable != null:
 			get_viewport().set_input_as_handled()
-			Events.emit_signal("request_dialogue", 
-				current_best_interactable.dialogue_id, 
-				current_best_interactable, 
-				current_best_interactable.portrait_id
-			)
+			interacted.emit(current_best_interactable)
+			
 			current_best_interactable.hide_hint()
 
 func _on_dialogue_started():
@@ -118,4 +114,6 @@ func _on_dialogue_started():
 	animated_sprite.play("idle")
 
 func _on_dialogue_ended(_caller):
+	await get_tree().process_frame
 	is_interacting = false
+	_update_interaction_focus()
