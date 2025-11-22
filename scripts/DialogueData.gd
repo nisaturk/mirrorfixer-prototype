@@ -3,7 +3,7 @@ extends Node
 var dialogue_data: Dictionary = {}
 
 func _ready():
-	var file = FileAccess.open("res://dialogue/dialogue-prototype.json", FileAccess.READ)
+	var file = FileAccess.open("res://jsonfiles/dialogue-prototype.json", FileAccess.READ)
 	if file == null:
 		print("ERROR: Could not load dialogue.json")
 		return

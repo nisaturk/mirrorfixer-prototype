@@ -8,6 +8,7 @@ var collected_shards: int = 0
 var spoke_to_miss_manager: bool = false
 var finished_dialogues: Array = []
 var just_used_elevator: bool = false
+var unlocked_notebook_ids: Array = []
 
 const SAVE_PATH = "user://savegame.json"
 

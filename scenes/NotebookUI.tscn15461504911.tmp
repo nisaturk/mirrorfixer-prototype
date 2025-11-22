@@ -1,0 +1,100 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfuxaojq0li84"]
+
+[ext_resource type="Script" uid="uid://bxo1fum27kago" path="res://scripts/NotebookUI.gd" id="1_ux6k2"]
+[ext_resource type="Texture2D" uid="uid://dpl3hp1goeo7k" path="res://assets/ui/dialogue_box_texture.tres" id="2_3w1dn"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="3_4g00e"]
+
+[node name="NotebookUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ux6k2")
+
+[node name="MainControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dimmer" type="ColorRect" parent="MainControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1584723, 0.15847233, 0.1584723, 0.5137255)
+
+[node name="BookBackground" type="TextureRect" parent="MainControl"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_3w1dn")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TabsContainer" type="VBoxContainer" parent="MainControl/BookBackground"]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 11.0
+offset_right = 383.0
+offset_bottom = 112.0
+
+[node name="Btn_NPC" type="Button" parent="MainControl/BookBackground/TabsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4g00e")
+text = "Residents"
+
+[node name="Btn_Items" type="Button" parent="MainControl/BookBackground/TabsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4g00e")
+text = "Objects"
+
+[node name="Btn_Thoughts" type="Button" parent="MainControl/BookBackground/TabsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4g00e")
+text = "Thoughts"
+
+[node name="ContentArea" type="Control" parent="MainControl/BookBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
+offset_top = 35.0
+offset_right = -69.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Page_NPC" type="GridContainer" parent="MainControl/BookBackground/ContentArea"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 3
+
+[node name="Page_Items" type="ScrollContainer" parent="MainControl/BookBackground/ContentArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemList" type="VBoxContainer" parent="MainControl/BookBackground/ContentArea/Page_Items"]
+layout_mode = 2
+
+[node name="Page_Thoughts" type="ScrollContainer" parent="MainControl/BookBackground/ContentArea"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JournalList" type="VBoxContainer" parent="MainControl/BookBackground/ContentArea/Page_Thoughts"]
+layout_mode = 2

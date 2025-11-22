@@ -13,7 +13,8 @@ var current_best_interactable: Area2D = null
 var is_interacting: bool = false
 
 func _physics_process(delta: float) -> void:
-
+	if get_tree().paused:
+		return
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	if Input.is_action_just_pressed("jump") and is_on_floor():

@@ -1,0 +1,36 @@
+{
+	"npcs": {
+		"maxime": {
+			"name": "Maxime",
+			"portrait": "res://assets/ui/portraits/maxime.png",
+			"bio": "Maxime? He seems familiar and chill."
+		},
+		"ninh": {
+			"name": "Ninh",
+			"portrait": "res://assets/ui/portraits/ninh.png",
+			"bio": "Maxime's roommate? Baker?"
+		}
+	},
+	"items": {
+		"shard_lobby": {
+			"name": "Jagged Shard",
+			"image": "res://assets/sprites/interior/shard.png",
+			"description": "Found in the lobby. But the lobby mirror isnt broken."
+		},
+		"bell": {
+			"name": "Reception Bell",
+			"image": "res://assets/sprites/interior/bell/bell-still.png",
+			"description": "Ding ding.. ding dInG diNGGGG"
+		}
+	},
+	"thoughts": {
+		"day1": {
+			"text": "day 1: I woke up near the basement, it was noisy at first.",
+			"timestamp": "what day? is it??"
+		},
+		"day2": {
+			"text": "day 2: ok i havent experienced this yet",
+			"timestamp": "wednesday"
+		}
+	}
+}

@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://byqxbr1umu6io"]
+
+[ext_resource type="Script" uid="uid://b76jcof8156o6" path="res://scripts/object_entry.gd" id="1_seygr"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="2_p11kx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_abhb3"]
+font = ExtResource("2_p11kx")
+
+[sub_resource type="LabelSettings" id="LabelSettings_7vadc"]
+font = ExtResource("2_p11kx")
+
+[node name="ObjectEntry" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_seygr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Icon" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "TITLE TITLE TITLE NAME NAME NAME"
+label_settings = SubResource("LabelSettings_abhb3")
+
+[node name="Description" type="Label" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+text = "descriptive text, its meant to be. but is it? i don't know, to be honest. "
+label_settings = SubResource("LabelSettings_7vadc")
+autowrap_mode = 3
