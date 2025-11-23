@@ -13,7 +13,7 @@ func _schedule_next_drink():
 func _play_drink_animation():
 	if animated_sprite.animation == "idle":
 		animated_sprite.play("drink")
-		await animated_sprite.animation_finished
-		animated_sprite.play("idle")
+	await animated_sprite.animation_finished
+	animated_sprite.play("idle")
 	
 	_schedule_next_drink()

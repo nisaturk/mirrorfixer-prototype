@@ -21,6 +21,16 @@
 			"name": "Reception Bell",
 			"image": "res://assets/sprites/interior/bell/bell-still.png",
 			"description": "Ding ding.. ding dInG diNGGGG"
+		},
+		"cutie": {
+			"name": "Reception Bell",
+			"image": "res://assets/sprites/interior/bell/bell-still.png",
+			"description": "Ding ding.. ding dInG diNGGGG"
+		},
+		"patootie": {
+			"name": "Reception Bell",
+			"image": "res://assets/sprites/interior/bell/bell-still.png",
+			"description": "Ding ding.. ding dInG diNGGGG"
 		}
 	},
 	"thoughts": {

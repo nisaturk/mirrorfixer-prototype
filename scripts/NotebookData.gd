@@ -2,60 +2,48 @@ extends Node
 
 signal notebook_updated
 
-var unlocked_npc_ids: Array = []  
-var collected_item_ids: Array = []
-var journal_entries: Array = [] 
+# master dicc tionary
+var unlocked_content: Dictionary = {
+	"npcs": [],
+	"items": [],
+	"thoughts": []
+}
 
 var notebook_db: Dictionary = {}
 
 func _ready():
 	load_notebook_data()
-	# temporary check-up, these are "unlocked" to test the UI
-	unlock_npc("maxime")
-	unlock_npc("ninh")
-	collect_item("shard_lobby")
-	add_note("day1") 
-	add_note("day2")
+	# testestestest
+	unlock_entry("npcs", "maxime")
+	unlock_entry("npcs", "ninh")
+	unlock_entry("items", "shard_lobby")
+	unlock_entry("items", "bell")
+	unlock_entry("items", "cutie")
+	unlock_entry("items", "patootie")
+	unlock_entry("thoughts", "day1") 
 
 func load_notebook_data():
 	var file = FileAccess.open("res://jsonfiles/notebook-prototype.json", FileAccess.READ)
 	if file:
-		var json_text = file.get_as_text()
-		notebook_db = JSON.parse_string(json_text)
+		notebook_db = JSON.parse_string(file.get_as_text())
 		print("Notebook Data Loaded!")
 	else:
 		printerr("Failed to load notebook-prototype.json")
 
-func unlock_npc(id: String):
-	if id not in notebook_db["npcs"]:
-		printerr("NPC ID not found in DB: " + id)
+func unlock_entry(category: String, id: String):
+	if not notebook_db.has(category):
+		printerr("Category not found in DB: " + category)
 		return
-		
-	if id not in unlocked_npc_ids:
-		unlocked_npc_ids.append(id)
-		emit_signal("notebook_updated")
 
-func collect_item(id: String):
-	if id not in notebook_db["items"]:
-		printerr("Item ID not found in DB: " + id)
+	if not notebook_db[category].has(id):
+		printerr("ID '" + id + "' not found in category '" + category + "'")
 		return
-		
-	if id not in collected_item_ids:
-		collected_item_ids.append(id)
+
+	if id not in unlocked_content[category]:
+		unlocked_content[category].append(id)
 		emit_signal("notebook_updated")
 
-func add_note(id: String):
-	if id not in journal_entries:
-		journal_entries.append(id)
-		emit_signal("notebook_updated")
-
-func get_thought_data(id: String) -> Dictionary:
-	if notebook_db.has("thoughts"):
-		return notebook_db["thoughts"].get(id, {})
+func get_entry_data(category: String, id: String) -> Dictionary:
+	if notebook_db.has(category):
+		return notebook_db[category].get(id, {})
 	return {}
-
-func get_item_data(id: String) -> Dictionary:
-	return notebook_db["items"].get(id, {})
-
-func get_npc_data(id: String) -> Dictionary:
-	return notebook_db["npcs"].get(id, {})
