@@ -1,0 +1,26 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bdpghebwgnl6u"]
+
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="1_u23uv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8ovvk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5hftw"]
+bg_color = Color(0.66790485, 0.5672146, 0.37166518, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yp5uq"]
+bg_color = Color(0.90588236, 0.8352941, 0.7019608, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_coamy"]
+bg_color = Color(0.22745098, 0.4117647, 0.54901963, 1)
+
+[resource]
+Button/colors/font_color = Color(0.23529412, 0.36862746, 0.54509807, 1)
+Button/colors/font_focus_color = Color(0.23529412, 0.36862746, 0.54509807, 1)
+Button/colors/font_hover_color = Color(0.11440302, 0.1973635, 0.30792695, 1)
+Button/colors/font_pressed_color = Color(0.90588236, 0.8352941, 0.7019608, 1)
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_u23uv")
+Button/styles/focus = SubResource("StyleBoxEmpty_8ovvk")
+Button/styles/hover = SubResource("StyleBoxFlat_5hftw")
+Button/styles/normal = SubResource("StyleBoxFlat_yp5uq")
+Button/styles/pressed = SubResource("StyleBoxFlat_coamy")

@@ -1,10 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dfuxaojq0li84"]
+[gd_scene load_steps=4 format=3 uid="uid://dfuxaojq0li84"]
 
 [ext_resource type="Script" uid="uid://bxo1fum27kago" path="res://scripts/NotebookUI.gd" id="1_ux6k2"]
-[ext_resource type="Texture2D" uid="uid://bfw56g6gwpdn2" path="res://assets/ui/openbook.png" id="2_ux6k2"]
-[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="3_4g00e"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ux6k2"]
+[ext_resource type="Texture2D" uid="uid://dox00lfxsd5pn" path="res://assets/ui/openbook.png" id="2_ux6k2"]
+[ext_resource type="Theme" uid="uid://bdpghebwgnl6u" path="res://assets/ui/journal_button.tres" id="3_ux6k2"]
 
 [node name="NotebookUI" type="CanvasLayer"]
 process_mode = 3
@@ -39,146 +37,38 @@ texture = ExtResource("2_ux6k2")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="ContentArea" type="Control" parent="MainControl/BookBackground"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 44.0
-offset_top = 43.0
-offset_right = -94.0
-offset_bottom = -9.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.1083245, 0.8022782)
-
-[node name="Items" type="ScrollContainer" parent="MainControl/BookBackground/ContentArea"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.2934049, 0.8687321)
-
-[node name="ItemList" type="VBoxContainer" parent="MainControl/BookBackground/ContentArea/Items"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Thoughts" type="ScrollContainer" parent="MainControl/BookBackground/ContentArea"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 14.0
-offset_right = 5.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.2442672, 0.8339975)
-
-[node name="JournalList" type="VBoxContainer" parent="MainControl/BookBackground/ContentArea/Thoughts"]
-layout_mode = 2
-
-[node name="ResidentsPage" type="Control" parent="MainControl/BookBackground/ContentArea"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="GalleryView" type="GridContainer" parent="MainControl/BookBackground/ContentArea/ResidentsPage"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 13.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.2951971, 0.8057868)
-columns = 3
-
-[node name="ProfileView" type="Control" parent="MainControl/BookBackground/ContentArea/ResidentsPage"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(1.2918988, 0.9761181)
-
-[node name="Portrait" type="TextureRect" parent="MainControl/BookBackground/ContentArea/ResidentsPage/ProfileView"]
+[node name="LeftPage" type="TextureRect" parent="MainControl/BookBackground"]
+custom_minimum_size = Vector2(400, 600)
 layout_mode = 0
-offset_left = 56.0
-offset_top = 41.0
-offset_right = 146.0
-offset_bottom = 129.0
-texture = SubResource("PlaceholderTexture2D_ux6k2")
+offset_left = 35.0
+offset_top = 37.0
+offset_right = 435.0
+offset_bottom = 637.0
+scale = Vector2(0.3691973, 0.30652982)
 
-[node name="NameLabel" type="Label" parent="MainControl/BookBackground/ContentArea/ResidentsPage/ProfileView"]
+[node name="RightPage" type="TextureRect" parent="MainControl/BookBackground"]
+custom_minimum_size = Vector2(400, 600)
 layout_mode = 0
-offset_left = 168.0
-offset_top = 71.0
-offset_right = 243.0
-offset_bottom = 94.0
-text = "name"
-
-[node name="BioLabel" type="RichTextLabel" parent="MainControl/BookBackground/ContentArea/ResidentsPage/ProfileView"]
-layout_mode = 0
-offset_left = 38.0
-offset_top = 162.0
-offset_right = 218.0
-offset_bottom = 225.0
-text = "some random info about the residents i guess AND it needs to be long so i see if the scroller is working"
-
-[node name="BackButton" type="Button" parent="MainControl/BookBackground/ContentArea/ResidentsPage/ProfileView"]
-layout_mode = 0
-offset_left = -1.0
-offset_top = -2.0
-offset_right = 68.0
-offset_bottom = 29.0
-text = "<--BACK"
-
-[node name="TabsContainer" type="VBoxContainer" parent="MainControl/BookBackground"]
-layout_mode = 0
-offset_left = 311.0
-offset_top = 19.999992
-offset_right = 395.0
-offset_bottom = 120.99999
-scale = Vector2(0.79885644, 0.79885644)
-
-[node name="NPCbutton" type="Button" parent="MainControl/BookBackground/TabsContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_4g00e")
-text = "Residents"
-
-[node name="Itembutton" type="Button" parent="MainControl/BookBackground/TabsContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_4g00e")
-text = "Objects"
-
-[node name="Thoughtbutton" type="Button" parent="MainControl/BookBackground/TabsContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_4g00e")
-text = "Thoughts"
-
-[node name="NextButton" type="Button" parent="MainControl/BookBackground"]
-layout_mode = 0
-offset_left = 333.0
-offset_top = 234.0
-offset_right = 376.0
-offset_bottom = 265.0
-text = "-->"
+offset_left = 199.0
+offset_top = 39.0
+offset_right = 599.0
+offset_bottom = 639.0
+scale = Vector2(0.37898314, 0.3039634)
 
 [node name="PrevButton" type="Button" parent="MainControl/BookBackground"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 230.0
-offset_right = 53.0
-offset_bottom = 261.0
-text = "<--"
+offset_left = 9.0
+offset_top = 240.0
+offset_right = 57.0
+offset_bottom = 271.0
+theme = ExtResource("3_ux6k2")
+text = " <--- "
+
+[node name="NextButton" type="Button" parent="MainControl/BookBackground"]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 240.0
+offset_right = 375.0
+offset_bottom = 271.0
+theme = ExtResource("3_ux6k2")
+text = " ---> "
