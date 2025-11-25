@@ -1,11 +1,12 @@
 extends CanvasLayer
 
-const portrait_map = { # new portrait library hehe
+const portrait_map = { 
 	"player_default": "res://assets/ui/portraits/thep-idle.png",
 	"missmanager_default": "res://assets/ui/portraits/missmanager-idle.png",
 	"maxime_default": "res://assets/ui/portraits/maxime.png",
-	"ninh_default":"res://assets/ui/portraits/ninh.png" }
-	
+	"ninh_default":"res://assets/ui/portraits/ninh.png" 
+}
+
 @onready var portrait_box = $MainLayout/PortraitBox
 @onready var portrait_texture = $MainLayout/PortraitBox/PortraitTexture
 @onready var dialogue_label = $MainLayout/ContentBox/MainLayoutContainer/MarginContainer/DialogueLabel
@@ -15,10 +16,16 @@ var current_caller = null
 var current_node_id: String = ""
 var current_start_id: String = ""
 
+var type_tween: Tween
+var is_typing: bool = false
+const TEXT_SPEED: float = 0.03 # remember, lower is faster
+
 func _ready():
 	hide_box()
 	Events.request_dialogue.connect(start_dialogue)
-	
+	dialogue_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
+	dialogue_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
+
 func process_node(id: String):	
 	for button in choice_container.get_children():
 		button.queue_free()
@@ -41,16 +48,16 @@ func process_node(id: String):
 	if node_data.has("action"):
 		handle_action(node_data["action"])
 	
+	var full_text = node_data.get("text", "...")
+	dialogue_label.text = full_text #preparation for the tween
+	dialogue_label.visible_ratio = 0.0
+	dialogue_label.show()
+	choice_container.hide() 
+
 	if node_data["type"] == "line":
-		dialogue_label.show()
-		dialogue_label.text = node_data.get("text", "...")
-		choice_container.hide()
+		pass
 		
 	elif node_data["type"] == "choice":
-		dialogue_label.show()
-		dialogue_label.text = node_data.get("text", "...")
-		choice_container.show()
-
 		var options = node_data.get("options", [])
 		for option_data in options:
 			var button = Button.new()
@@ -69,8 +76,32 @@ func process_node(id: String):
 			process_node(node_data.get("on_true", "end")) 
 		else: 
 			process_node(node_data.get("on_false", "end"))
+		return 
 
-# extra_portrait_id parameter added (for parented objs)
+	start_text_animation(node_data["type"] == "choice")
+
+func start_text_animation(is_choice_node: bool):
+	is_typing = true
+	dialogue_label.visible_ratio = 0.0
+	
+	if type_tween:
+		type_tween.kill()
+	
+	type_tween = create_tween()
+	var duration = dialogue_label.text.length() * TEXT_SPEED
+	
+	type_tween.tween_property(dialogue_label, "visible_ratio", 1.0, duration)
+	type_tween.finished.connect(func(): _on_typing_finished(is_choice_node))
+
+func _on_typing_finished(is_choice_node: bool):
+	is_typing = false
+	dialogue_label.visible_ratio = 1.0
+	
+	if is_choice_node:
+		choice_container.show()
+		if choice_container.get_child_count() > 0:
+			choice_container.get_child(0).grab_focus()
+
 func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 	if start_id.is_empty():
 		return
@@ -102,11 +133,13 @@ func hide_box():
 	current_node_id = ""
 	portrait_box.hide()
 	
-	# clear buttons when hiding
+	if type_tween:
+		type_tween.kill()
+	
 	for button in choice_container.get_children():
 		button.queue_free()
 
-func _input(event):
+func _unhandled_input(event):
 	if not visible:
 		return
 	
@@ -114,12 +147,18 @@ func _input(event):
 	if not node_data:
 		return
 
-	if node_data["type"] == "line" and event.is_action_pressed("interact"):
+	if event.is_action_pressed("interact"):
 		get_viewport().set_input_as_handled() 
-		var next_id = node_data.get("next_id", "end")
-		process_node(next_id)
+		
+		if is_typing:
+			if type_tween:
+				type_tween.kill()
+			_on_typing_finished(node_data["type"] == "choice")
+			return
 
-# handles the "action" tags from the JSON
+		if node_data["type"] == "line":
+			var next_id = node_data.get("next_id", "end")
+			process_node(next_id)
+
 func handle_action(action_name: String):
-	# updated with a signal instead of the if blocks :')
 	Events.emit_signal("action_triggered", action_name, current_caller)

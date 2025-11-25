@@ -94,7 +94,10 @@ func _update_interaction_focus():
 		if current_best_interactable:
 			current_best_interactable.show_hint()
 
-func _input(event):
+func _unhandled_input(event: InputEvent) -> void:
+	if get_tree().paused:
+		return
+		
 	if is_interacting:
 		return 
 

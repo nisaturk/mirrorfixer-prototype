@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://dttu5x0kixbi6"]
+
+[ext_resource type="Script" uid="uid://b2htyd0eu21ua" path="res://scripts/DialogueUI.gd" id="1_rc1id"]
+[ext_resource type="Texture2D" uid="uid://c5a257cnpafd8" path="res://assets/ui/Border Collection 1.png" id="2_rmr67"]
+[ext_resource type="FontFile" uid="uid://by8f628mb0ucf" path="res://assets/ui/retganon.ttf" id="3_7de8d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmr67"]
+atlas = ExtResource("2_rmr67")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmr67"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmr67"]
+bg_color = Color(0, 0, 0, 0.4745098)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7de8d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmtye"]
+
+[sub_resource type="Theme" id="Theme_rmr67"]
+default_font = ExtResource("3_7de8d")
+default_font_size = 16
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 12
+Button/styles/focus = SubResource("StyleBoxEmpty_rmr67")
+Button/styles/hover = SubResource("StyleBoxFlat_rmr67")
+Button/styles/normal = SubResource("StyleBoxEmpty_7de8d")
+Button/styles/pressed = SubResource("StyleBoxEmpty_nmtye")
+
+[sub_resource type="Theme" id="Theme_rc1id"]
+
+[sub_resource type="Theme" id="Theme_7de8d"]
+
+[node name="DialogueUI" type="CanvasLayer"]
+process_mode = 1
+script = ExtResource("1_rc1id")
+
+[node name="MainLayout" type="HBoxContainer" parent="."]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0000005
+offset_top = -77.000015
+offset_right = 4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.9754084, 0.9754084)
+mouse_filter = 2
+
+[node name="PortraitBox" type="PanelContainer" parent="MainLayout"]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PortraitTexture" type="TextureRect" parent="MainLayout/PortraitBox"]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ContentBox" type="NinePatchRect" parent="MainLayout"]
+custom_minimum_size = Vector2(0, 74)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_rmr67")
+region_rect = Rect2(0, 0, 32, 32)
+patch_margin_left = 4
+patch_margin_top = 5
+patch_margin_right = 12
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 2
+
+[node name="MainLayoutContainer" type="VBoxContainer" parent="MainLayout/ContentBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 5.0
+offset_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.98846734, 0.7700071)
+mouse_filter = 2
+theme = SubResource("Theme_rmr67")
+
+[node name="MarginContainer" type="MarginContainer" parent="MainLayout/ContentBox/MainLayoutContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_rc1id")
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="DialogueLabel" type="Label" parent="MainLayout/ContentBox/MainLayoutContainer/MarginContainer"]
+custom_minimum_size = Vector2(5, 5)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("3_7de8d")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ChoiceContainer" type="GridContainer" parent="MainLayout/ContentBox/MainLayoutContainer"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_7de8d")
+columns = 2
