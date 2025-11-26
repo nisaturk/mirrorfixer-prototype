@@ -280,10 +280,6 @@ offset_right = 256.0
 offset_bottom = 259.0
 theme = SubResource("Theme_bqqt6")
 
-[node name="ContinueButton" type="Button" parent="Menu"]
-layout_mode = 2
-text = "CONTINUE THIS SHIT"
-
 [node name="StartButton" type="Button" parent="Menu"]
 layout_mode = 2
 text = "START THIS SHIT"
@@ -399,7 +395,6 @@ frame_progress = 0.83524764
 flip_h = true
 flip_v = true
 
-[connection signal="pressed" from="Menu/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Menu/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Menu/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Menu/QuitButton" to="." method="_on_quit_button_pressed"]

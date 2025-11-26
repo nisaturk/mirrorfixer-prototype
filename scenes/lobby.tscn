@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://lkwtvc1psycb"]
+[gd_scene load_steps=34 format=4 uid="uid://lkwtvc1psycb"]
 
 [ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/floorswalls_LRK.png" id="1_dyhay"]
 [ext_resource type="Script" uid="uid://bkobkuc0oeot3" path="res://scripts/action_manager.gd" id="1_q6qq2"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://m8d8kmuyeppt" path="res://assets/sprites/interior/cabinets_LRK.png" id="5_0gjkf"]
 [ext_resource type="Texture2D" uid="uid://bko6md13s8lt8" path="res://assets/sprites/interior/kitchen_LRK.png" id="6_o2i1r"]
 [ext_resource type="PackedScene" uid="uid://8xmdwikm2ght" path="res://scenes/miss_manager.tscn" id="7_iulku"]
-[ext_resource type="PackedScene" uid="uid://dttu5x0kixbi6" path="res://scenes/DialogueUI.tscn" id="8_dfnwm"]
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="9_0jb4q"]
 [ext_resource type="PackedScene" uid="uid://cnmhg1unk4m10" path="res://scenes/shard.tscn" id="10_vwf6o"]
 [ext_resource type="PackedScene" uid="uid://bq11jmsomieh6" path="res://scenes/bell.tscn" id="11_iwi7x"]
@@ -3563,9 +3562,6 @@ shape = SubResource("RectangleShape2D_trtic")
 [node name="border2" type="CollisionShape2D" parent="Walkline"]
 position = Vector2(435, -47)
 shape = SubResource("RectangleShape2D_ir15t")
-
-[node name="GameUI" parent="." instance=ExtResource("8_dfnwm")]
-visible = false
 
 [node name="IAAreas" type="Node2D" parent="."]
 position = Vector2(5, -35)

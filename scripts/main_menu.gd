@@ -7,12 +7,6 @@ extends Control
 func _ready():
 	pass
 
-func _on_continue_button_pressed() -> void:
-	if GlobalState.load_game():
-		SceneManager.change_scene(GlobalState.next_spawn_point)
-	else:
-		print("No save file found.")
-
 func _on_start_button_pressed() -> void:
 	SceneManager.change_scene(GameConsts.SCENE_BASEMENT)
 

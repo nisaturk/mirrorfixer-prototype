@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://b7fsav2jcng5w"]
+[gd_scene load_steps=33 format=4 uid="uid://b7fsav2jcng5w"]
 
 [ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/floorswalls_LRK.png" id="1_7j8m3"]
 [ext_resource type="Script" uid="uid://bkobkuc0oeot3" path="res://scripts/action_manager.gd" id="1_ehww1"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bx66ox4gtm7fv" path="res://assets/sprites/interior/livingroom_LRK.png" id="4_hpql5"]
 [ext_resource type="Texture2D" uid="uid://m8d8kmuyeppt" path="res://assets/sprites/interior/cabinets_LRK.png" id="5_mojwh"]
 [ext_resource type="Texture2D" uid="uid://bko6md13s8lt8" path="res://assets/sprites/interior/kitchen_LRK.png" id="6_bkfoi"]
-[ext_resource type="PackedScene" uid="uid://dttu5x0kixbi6" path="res://scenes/DialogueUI.tscn" id="7_jkipv"]
 [ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="8_4n7pq"]
 [ext_resource type="PackedScene" uid="uid://de1vvtwklx3x" path="res://scenes/maxime.tscn" id="8_7j8m3"]
 [ext_resource type="PackedScene" uid="uid://mu6xyf36gys6" path="res://scenes/player.tscn" id="10_rflju"]
@@ -4384,9 +4383,6 @@ shape = SubResource("RectangleShape2D_trtic")
 [node name="border2" type="CollisionShape2D" parent="Walkline"]
 position = Vector2(435, -47)
 shape = SubResource("RectangleShape2D_ir15t")
-
-[node name="GameUI" parent="." instance=ExtResource("7_jkipv")]
-visible = false
 
 [node name="Maxime" parent="." instance=ExtResource("8_7j8m3")]
 position = Vector2(259, -1.9999998)

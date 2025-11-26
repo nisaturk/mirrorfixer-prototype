@@ -102,6 +102,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return 
 
 	if event.is_action_pressed("pause"):
+		PauseMenu.show_menu()
 		return
 
 	if event.is_action_pressed("interact"):
