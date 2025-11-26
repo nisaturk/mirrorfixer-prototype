@@ -194,7 +194,7 @@ script = ExtResource("1_g2els")
 
 [node name="InteractionDetector" type="Area2D" parent="."]
 position = Vector2(-1, 0)
-scale = Vector2(2.045992, 1.3200783)
+scale = Vector2(1.6659776, 1.3041091)
 collision_layer = 0
 collision_mask = 4
 

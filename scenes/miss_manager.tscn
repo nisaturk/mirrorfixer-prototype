@@ -109,8 +109,8 @@ script = ExtResource("1_cfrt7")
 
 [node name="Interactable" parent="." instance=ExtResource("3_7e2hn")]
 visible = false
-position = Vector2(-24, -22)
-scale = Vector2(1.0036105, 1.0074025)
+position = Vector2(-20, -12)
+scale = Vector2(0.8018649, 0.80489475)
 dialogue_id = "miss_manager_greet"
 prioritylevel = 3
 portrait_id = "missmanager_default"

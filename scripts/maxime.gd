@@ -6,7 +6,7 @@ func _ready():
 	_schedule_next_drink()
 
 func _schedule_next_drink():
-	var wait_time = randf_range(5.0, 15.0)
+	var wait_time = randf_range(5.0, 25.0)
 	await get_tree().create_timer(wait_time).timeout
 	_play_drink_animation()
 

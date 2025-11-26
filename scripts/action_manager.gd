@@ -65,12 +65,18 @@ func _on_action_triggered(action_name: String, caller_node):
 		print("Action not found: ", action_name)
 
 func _change_location(scene_name: String, spawn_point: String, used_elevator: bool):
+	var target_path = SceneManager.SCENES.get(scene_name)
+	var current_scene = get_tree().current_scene
+	
+	if current_scene and target_path == current_scene.scene_file_path:
+		#print("i am already on this floor dumbass")
+		return
+		
 	GlobalState.just_used_elevator = used_elevator
 	SceneManager.change_scene(scene_name, spawn_point)
 
 func _action_take_shard(caller_node):
 	GlobalState.collected_shards += 1
-	
 	print("shard collected: ", GlobalState.collected_shards)
 	if caller_node:
 		caller_node.queue_free()

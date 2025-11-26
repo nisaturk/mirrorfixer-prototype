@@ -192,13 +192,11 @@
 },
 "floor_2": {
   "type": "line",
-  "text": "Going up...",
   "action": "go_to_floor_2",
   "next_id": "end"
 },
 "floor_1": {
   "type": "line",
-  "text": "Going down...",
   "action": "go_to_floor_1",
   "next_id": "end"
 },

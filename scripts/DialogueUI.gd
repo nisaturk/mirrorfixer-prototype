@@ -16,15 +16,14 @@ var current_caller = null
 var current_node_id: String = ""
 var current_start_id: String = ""
 
+# new variables for the text animation
 var type_tween: Tween
 var is_typing: bool = false
-const TEXT_SPEED: float = 0.03 # remember, lower is faster
+const TEXT_SPEED: float = 0.06 # remember, lower is faster
 
 func _ready():
 	hide_box()
 	Events.request_dialogue.connect(start_dialogue)
-	dialogue_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
-	dialogue_label.vertical_alignment = VERTICAL_ALIGNMENT_TOP
 
 func process_node(id: String):	
 	for button in choice_container.get_children():

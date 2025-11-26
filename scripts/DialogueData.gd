@@ -5,7 +5,7 @@ var dialogue_data: Dictionary = {}
 func _ready():
 	var file = FileAccess.open("res://jsonfiles/dialogue-prototype.json", FileAccess.READ)
 	if file == null:
-		print("ERROR: Could not load dialogue.json")
+		print("ERROR: Could not load dialogue")
 		return
 
 	var content = file.get_as_text()
@@ -14,7 +14,7 @@ func _ready():
 	if json_data:
 		dialogue_data = json_data
 	else:
-		print("ERROR: Could not parse dialogue.json")
+		print("ERROR: Could not parse dialogue")
 
 func get_dialogue_node(id: String):
 	if dialogue_data.has(id):

@@ -113,7 +113,6 @@ size_flags_vertical = 1
 theme_override_fonts/font = ExtResource("3_7de8d")
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="ChoiceContainer" type="GridContainer" parent="MainLayout/ContentBox/MainLayoutContainer"]
