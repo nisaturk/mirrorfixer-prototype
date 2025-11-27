@@ -205,7 +205,7 @@ animations = [{
 [node name="Maxime" type="CharacterBody2D"]
 script = ExtResource("1_7ki3r")
 
-[node name="InteractableObject" parent="." instance=ExtResource("1_o83ev")]
+[node name="InteractablePerson" parent="." instance=ExtResource("1_o83ev")]
 position = Vector2(-32, -23)
 scale = Vector2(1.2667676, 1.6269584)
 dialogue_id = "maxime_greet"

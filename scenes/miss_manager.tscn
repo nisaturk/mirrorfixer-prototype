@@ -107,7 +107,7 @@ animations = [{
 [node name="MissManager" type="CharacterBody2D"]
 script = ExtResource("1_cfrt7")
 
-[node name="Interactable" parent="." instance=ExtResource("3_7e2hn")]
+[node name="InteractablePerson" parent="." instance=ExtResource("3_7e2hn")]
 visible = false
 position = Vector2(-20, -12)
 scale = Vector2(0.8018649, 0.80489475)

@@ -19,7 +19,3 @@ func ring_bell():
 	if $AudioStreamPlayer2D.playing:
 		$AudioStreamPlayer2D.stop()
 	$AudioStreamPlayer2D.play()
-	
-#func deactivate():
-	#$CollisionShape2D.set_deferred("disabled", true)
-	#$AnimatedSprite2D.stop()

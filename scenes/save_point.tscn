@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://vv83wweejgsk"]
+
+[ext_resource type="Script" uid="uid://dr3xtnb8hibjd" path="res://scripts/save_point.gd" id="1_xvfwu"]
+[ext_resource type="Texture2D" uid="uid://bgj0w2fig3jgp" path="res://assets/sprites/characters/spiral.png" id="2_wiums"]
+[ext_resource type="PackedScene" uid="uid://bbh3286pn2faw" path="res://scenes/interactable.tscn" id="3_wiums"]
+
+[node name="SavePoint" type="Area2D"]
+script = ExtResource("1_xvfwu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_wiums")
+
+[node name="HintLabel" type="Label" parent="."]
+offset_left = -19.0
+offset_top = -26.0
+offset_right = 21.0
+offset_bottom = -3.0
+
+[node name="InteractableObject" parent="." instance=ExtResource("3_wiums")]
+position = Vector2(-24, -28)
+dialogue_id = "save_prompt"
+hint_text = "save_prompt"

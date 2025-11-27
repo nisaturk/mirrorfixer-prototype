@@ -18,7 +18,7 @@ var TRANSITION_DATA = {
 		"spawn": GameConsts.SPAWN_FLAT,     
 		"elevator": false
 	},
-	"go_out": {
+	"go_out_of_flat_1": {
 		"scene": GameConsts.SCENE_FLOOR_2, 
 		"spawn": GameConsts.SPAWN_FLAT,     
 		"elevator": false
@@ -40,7 +40,8 @@ func _ready():
 	action_handler = {
 		"take_shard": _action_take_shard,
 		"allow_pass": _action_allow_pass,
-		"open_elevator": _action_open_elevator
+		"open_elevator": _action_open_elevator,
+		"save_game": _action_save_game
 	}
 
 func register_player(player_node):
@@ -100,3 +101,7 @@ func _on_Player_interacted(interactable_node):
 		DialogueUI.start_dialogue(object_id, caller, portrait_id)
 	elif interactable_node.has_method("interact"):
 		interactable_node.interact()
+
+func _action_save_game(_caller):
+	SaveManager.save_game()
+	print("ActionManager: Game save success")

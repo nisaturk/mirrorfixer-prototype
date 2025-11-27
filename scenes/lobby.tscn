@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://lkwtvc1psycb"]
+[gd_scene load_steps=35 format=4 uid="uid://lkwtvc1psycb"]
 
 [ext_resource type="Texture2D" uid="uid://c26lhfjyjh72o" path="res://assets/sprites/interior/floorswalls_LRK.png" id="1_dyhay"]
 [ext_resource type="Script" uid="uid://bkobkuc0oeot3" path="res://scripts/action_manager.gd" id="1_q6qq2"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bq11jmsomieh6" path="res://scenes/bell.tscn" id="11_iwi7x"]
 [ext_resource type="PackedScene" uid="uid://bglrg2vgdl6e" path="res://scenes/elevator.tscn" id="12_wjff0"]
 [ext_resource type="PackedScene" uid="uid://mu6xyf36gys6" path="res://scenes/player.tscn" id="13_h1rib"]
+[ext_resource type="PackedScene" uid="uid://vv83wweejgsk" path="res://scenes/save_point.tscn" id="14_q6qq2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("1_dyhay")
@@ -3621,5 +3622,7 @@ position = Vector2(-379, 33)
 [node name="StairsSpawn" type="Marker2D" parent="SpawnPoints"]
 position = Vector2(361, 26)
 
-[connection signal="appeared" from="MissManager" to="Bell" method="deactivate"]
+[node name="SavePoint" parent="." instance=ExtResource("14_q6qq2")]
+position = Vector2(-285, 29)
+
 [connection signal="bell_rung" from="Bell" to="MissManager" method="_on_bell_bell_rung"]

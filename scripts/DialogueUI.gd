@@ -43,12 +43,17 @@ func process_node(id: String):
 		return
 
 	current_node_id = id
+	# adding + setting flags for the new save system
+	if node_data.has("set_flag"):
+		var flag_name = node_data["set_flag"]
+		GlobalState.story_flags[flag_name] = true
+		print("Flag Set: ", flag_name)
 	
 	if node_data.has("action"):
 		handle_action(node_data["action"])
 	
 	var full_text = node_data.get("text", "...")
-	dialogue_label.text = full_text #preparation for the tween
+	dialogue_label.text = full_text # preparation for the tween
 	dialogue_label.visible_ratio = 0.0
 	dialogue_label.show()
 	choice_container.hide() 

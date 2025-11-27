@@ -51,7 +51,7 @@ animations = [{
 
 [node name="Ninh" type="CharacterBody2D"]
 
-[node name="InteractableObject" parent="." instance=ExtResource("1_r5kjd")]
+[node name="InteractablePerson" parent="." instance=ExtResource("1_r5kjd")]
 position = Vector2(-39.000004, -37)
 scale = Vector2(1.5285492, 1.9154077)
 dialogue_id = "ninh_greet"

@@ -25,6 +25,7 @@ GlobalState="*res://scripts/global_state.gd"
 ActionManager="*res://scripts/action_manager.gd"
 PauseMenu="*res://scenes/pause_menu.tscn"
 Events="*res://scripts/events.gd"
+SaveManager="*res://scripts/save_manager.gd"
 
 [dialogic]
 

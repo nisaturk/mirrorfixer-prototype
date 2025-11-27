@@ -177,6 +177,7 @@
 	"type": "line",
 	"text": "Ah, you found what you were missing. You may pass.",
 	"action": "allow_pass",
+	"set_flag": "unlocked_save_point",
 	"next_id": "end"
   },
 "elevator": {
@@ -187,7 +188,6 @@
 	{ "text": "✦ Floor 2", "next_id": "floor_2" },
 	{ "text": "✦ Floor 1", "next_id": "floor_1" },
 	{ "text": "✦ Stay", "next_id": "end" }
-
   ]
 },
 "floor_2": {
@@ -338,6 +338,19 @@
   "janitor": {
 	"type": "line",
 	"text": "stop bothering me",
+	"next_id": "end"
+  },
+"save_prompt": {
+	"type": "choice",
+	"text": "Record your progress?",
+	"options": [
+	  { "text": "✦ Yes.", "action": "save_game", "next_id": "save_success" },
+	  { "text": "✦ No.", "next_id": "end" }
+	]
+  },
+  "save_success": {
+	"type": "line",
+	"text": "Your progress has been saved.",
 	"next_id": "end"
   }
 }

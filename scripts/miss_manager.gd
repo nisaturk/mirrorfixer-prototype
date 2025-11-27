@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var start_pos := Vector2(-300, 0) # where she starts (offscreen)
 @export var target_pos := Vector2(-118, 16) # where she should stop
 @export var speed := 60.0
-@onready var interactable: Area2D = $Interactable # fixing the invisible talker bug with this
+@onready var interactable: Area2D = $InteractablePerson # fixing the invisible talker bug with this
 
 signal appeared
 
@@ -34,15 +34,11 @@ func _physics_process(delta):
 			animated_sprite.play("idle") # switch to idle
 			print("Miss Manager arrived.")
 			return
-		# move toward target
 		position = position.move_toward(target_pos, speed * delta)
-		# play the walking animation
 		if animated_sprite.animation != "walk":
 			animated_sprite.play("walk")
-		# flip sprite horizontally based on movement direction
-		animated_sprite.flip_h = velocity.x < 0
+		animated_sprite.flip_h = velocity.x < 0 # flip sprite based on movement direction
 
-# called when bell signal triggers
 func _on_bell_bell_rung(count: int) -> void:
 	if count >= 10 and not active:
 		appear()

@@ -106,7 +106,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("interact"):
-		print("Player heard Interact!")
+		#print("Player heard interact")
 		
 		if current_best_interactable != null:
 			get_viewport().set_input_as_handled()
