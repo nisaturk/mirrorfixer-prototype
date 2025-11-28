@@ -8,17 +8,17 @@ class_name Interactable
 @export var hint_text: String = "interact"
 @export var single_use: bool = false
 
+@onready var hint_label: Label = $HintLabel
+
 # new UPDATED functions hell yeah
 func show_hint():
-	var label_node = get_node_or_null("HintLabel")
-	if label_node:
-		label_node.text = "[" + hint_text + "]"
-		label_node.show()
+	if hint_label:
+		hint_label.text = "[" + hint_text + "]"
+		hint_label.show()
 
 func hide_hint():
-	var label_node = get_node_or_null("HintLabel")
-	if label_node:
-		label_node.hide()
+	if hint_label:
+		hint_label.hide()
 
 # new function to turn off some interactions after theyve been interacted with
 func can_interact() -> bool:

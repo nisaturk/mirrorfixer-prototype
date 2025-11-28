@@ -45,7 +45,12 @@ func _ready():
 	ActionManager.register_player(self)
 	if GlobalState.next_spawn_point != "":
 		var current_scene = get_tree().current_scene
-		var spawn_node = current_scene.find_child(GlobalState.next_spawn_point, true, false)
+		var spawn_container = current_scene.get_node_or_null("SpawnPoints")
+		var spawn_node = null
+
+		if spawn_container:
+			spawn_node = spawn_container.get_node_or_null(GlobalState.next_spawn_point)
+
 		if spawn_node:
 			self.global_position = spawn_node.global_position
 		else:
@@ -101,11 +106,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	if is_interacting:
 		return 
 
-	if event.is_action_pressed("pause"):
+	if event.is_action_pressed(&"pause"):
 		PauseMenu.show_menu()
 		return
 
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed(&"interact"):
 		#print("Player heard interact")
 		
 		if current_best_interactable != null:
@@ -116,7 +121,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_dialogue_started():
 	is_interacting = true
-	animated_sprite.play("idle")
+	animated_sprite.play(&"idle")
 
 func _on_dialogue_ended(_caller):
 	await get_tree().process_frame

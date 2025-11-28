@@ -13,12 +13,14 @@ var active := false
 func _ready():
 	position = start_pos
 	visible = false
+	set_physics_process(false)
 	if interactable:
 		interactable.monitorable = false
 
 func appear():
 	visible = true
 	active = true
+	set_physics_process(true)
 	if interactable:
 		interactable.monitorable = true
 	animated_sprite.play("idle")
@@ -30,13 +32,14 @@ func _physics_process(delta):
 		# if she reached the target
 		if distance < 2.0:
 			active = false
+			set_physics_process(false)
 			position = target_pos # snap precisely
-			animated_sprite.play("idle") # switch to idle
+			animated_sprite.play(&"idle") # switch to idle
 			print("Miss Manager arrived.")
 			return
 		position = position.move_toward(target_pos, speed * delta)
 		if animated_sprite.animation != "walk":
-			animated_sprite.play("walk")
+			animated_sprite.play(&"walk")
 		animated_sprite.flip_h = velocity.x < 0 # flip sprite based on movement direction
 
 func _on_bell_bell_rung(count: int) -> void:

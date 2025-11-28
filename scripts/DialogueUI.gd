@@ -1,10 +1,10 @@
 extends CanvasLayer
 
 const portrait_map = { 
-	"player_default": "res://assets/ui/portraits/thep-idle.png",
-	"missmanager_default": "res://assets/ui/portraits/missmanager-idle.png",
-	"maxime_default": "res://assets/ui/portraits/maxime.png",
-	"ninh_default":"res://assets/ui/portraits/ninh.png" 
+	"player_default": preload("res://assets/ui/portraits/thep-idle.png"),
+	"missmanager_default": preload("res://assets/ui/portraits/missmanager-idle.png"),
+	"maxime_default": preload("res://assets/ui/portraits/maxime.png"),
+	"ninh_default": preload("res://assets/ui/portraits/ninh.png") 
 }
 
 @onready var portrait_box = $MainLayout/PortraitBox
@@ -117,10 +117,10 @@ func start_dialogue(start_id: String, caller, extra_portrait_id: String = ""):
 	var key_to_use = extra_portrait_id
 	
 	if key_to_use and portrait_map.has(key_to_use):
-		portrait_texture.texture = load(portrait_map[key_to_use])
+		portrait_texture.texture = portrait_map[key_to_use] # removed load()
 		portrait_box.show()
 	elif caller and portrait_map.has(caller.name):
-		portrait_texture.texture = load(portrait_map[caller.name])
+		portrait_texture.texture = portrait_map[caller.name] 
 		portrait_box.show()
 	else:
 		portrait_box.hide()

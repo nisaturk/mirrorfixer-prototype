@@ -1,6 +1,8 @@
 extends Interactable
 signal bell_rung(count)
 
+@onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 var ring_count: int = 0
 
 func _ready():
@@ -13,9 +15,10 @@ func interact():
 func ring_bell():
 	ring_count += 1
 	emit_signal("bell_rung", ring_count)
-	$AnimatedSprite2D.frame = 0
-	$AnimatedSprite2D.play("ring")
+	
+	anim_sprite.frame = 0
+	anim_sprite.play("ring")
 
-	if $AudioStreamPlayer2D.playing:
-		$AudioStreamPlayer2D.stop()
-	$AudioStreamPlayer2D.play()
+	if audio.playing:
+		audio.stop()
+	audio.play()
