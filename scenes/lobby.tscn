@@ -3608,7 +3608,7 @@ scale = Vector2(1.3243045, 1.15077)
 dialogue_id = "elevator"
 
 [node name="Player" parent="." instance=ExtResource("13_h1rib")]
-position = Vector2(317, 58)
+position = Vector2(-328, 63)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-17, -54)

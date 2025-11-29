@@ -187,6 +187,7 @@
   "options": [
 	{ "text": "✦ Floor 2", "next_id": "floor_2" },
 	{ "text": "✦ Floor 1", "next_id": "floor_1" },
+	{ "text": "✦ Floop?", "next_id": "floop" },
 	{ "text": "✦ Stay", "next_id": "end" }
   ]
 },
@@ -198,6 +199,11 @@
 "floor_1": {
   "type": "line",
   "action": "go_to_floor_1",
+  "next_id": "end"
+},
+"floop": {
+  "type": "line",
+  "action": "go_to_floop",
   "next_id": "end"
 },
 "lock": {

@@ -11,7 +11,8 @@ const SCENES = {
 	GameConsts.SCENE_BASEMENT: "res://scenes/basement.tscn",
 	GameConsts.SCENE_LOBBY: "res://scenes/lobby.tscn",
 	GameConsts.SCENE_FLOOR_2: "res://scenes/floor.tscn",
-	GameConsts.SCENE_FLAT_1: "res://scenes/flat.tscn"
+	GameConsts.SCENE_FLAT_1: "res://scenes/flat.tscn",
+	GameConsts.SCENE_FLOOP: "res://scenes/floop.tscn"
 }
 
 func fade_in():

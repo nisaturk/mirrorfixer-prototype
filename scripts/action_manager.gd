@@ -32,6 +32,11 @@ var TRANSITION_DATA = {
 		"scene": GameConsts.SCENE_BASEMENT, 
 		"spawn": GameConsts.SPAWN_STAIRS,   
 		"elevator": false
+	},
+	"go_to_floop": {
+		"scene": GameConsts.SCENE_FLOOP, 
+		"spawn": GameConsts.SPAWN_ELEVATOR,   
+		"elevator": true
 	}
 }
 
