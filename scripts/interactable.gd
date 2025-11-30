@@ -8,7 +8,7 @@ class_name Interactable
 @export var hint_text: String = "interact"
 @export var single_use: bool = false
 
-@onready var hint_label: Label = $HintLabel
+var hint_label: Label
 
 # new UPDATED functions hell yeah
 func show_hint():

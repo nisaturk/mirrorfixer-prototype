@@ -28,6 +28,13 @@ func change_scene(scene_key: String, spawn_point: String = ""):
 		print("scene key not found: ", scene_key)
 		return
 		
+	var target_path = SCENES[scene_key]
+	var current_scene = get_tree().current_scene
+	
+	if current_scene and current_scene.scene_file_path == target_path:
+		print("SceneManager: Already in scene ", scene_key)
+		return
+	
 	get_tree().paused = false
 	if get_tree().root.has_node("DialogueUI"):
 		DialogueUI.hide()
